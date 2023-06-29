@@ -2,7 +2,7 @@
     "name": "billabear/php-sdk",
     "description": "The offical PHP SDK for BillaBear",
     "type": "library",
-    "license": "GPLV3",
+    "license": "GPL-3.0-or-later",
     "autoload": {
         "psr-4": {
             "Billabear\\PhpSdk\\": "src/"
