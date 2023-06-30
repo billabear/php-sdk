@@ -32,7 +32,7 @@ use Psr\Http\Message\StreamInterface;
 
 class RequestSenderTest extends TestCase
 {
-    public function testSendRequest()
+    public function testSendRequestNoBody()
     {
         $url = 'https://localhost';
         $apiKey = 'api-key';
@@ -54,6 +54,36 @@ class RequestSenderTest extends TestCase
 
         $requestSender = new RequestSender($apiKey, $url, $client, $requestFactory, $streamFactory);
         $response = $requestSender->send($method, $requestUrl);
+
+        $this->assertNull($response);
+    }
+
+    public function testSendRequestBody()
+    {
+        $url = 'https://localhost';
+        $apiKey = 'api-key';
+        $method = 'POST';
+        $requestUrl = '/api/v1/info';
+        $body = ['content' => 'here'];
+
+        $client = $this->createMock(ClientInterface::class);
+        $requestFactory = $this->createMock(RequestFactoryInterface::class);
+        $streamFactory = $this->createMock(StreamFactoryInterface::class);
+        $request = $this->createMock(RequestInterface::class);
+        $response = $this->createMock(ResponseInterface::class);
+        $stream = $this->createMock(StreamInterface::class);
+        $streamBody = $this->createMock(StreamInterface::class);
+
+        $requestFactory->method('createRequest')->with($method, $url.$requestUrl)->willReturn($request);
+        $request->method('withHeader')->with('X-API-KEY', $apiKey)->willReturnSelf();
+        $streamFactory->method('createStream')->with(json_encode($body))->willReturn($streamBody);
+        $request->expects($this->once())->method('withBody')->with($streamBody)->willReturnSelf();
+        $client->expects($this->once())->method('sendRequest')->with($request)->willReturn($response);
+        $response->method('getStatusCode')->willReturn(200);
+        $response->method('getBody')->willReturn($stream);
+
+        $requestSender = new RequestSender($apiKey, $url, $client, $requestFactory, $streamFactory);
+        $response = $requestSender->send($method, $requestUrl, $body);
 
         $this->assertNull($response);
     }
