@@ -23,6 +23,8 @@ namespace Tests\BillaBear\PhpSdk;
 
 use BillaBear\PhpSdk\Client;
 use BillaBear\PhpSdk\Exception\MissingFieldsException;
+use BillaBear\PhpSdk\Exception\ServerValidationException;
+use BillaBear\PhpSdk\Exception\UnexpectedResponseException;
 use BillaBear\PhpSdk\RequestSenderInterface;
 use BillaBear\PhpSdk\Response;
 use PHPUnit\Framework\TestCase;
@@ -56,5 +58,34 @@ class ClientTest extends TestCase
         $client = new Client($requestSender);
         $actual = $client->createCustomer($payload);
         $this->assertEquals($expected, $actual);
+    }
+
+    public function testCreateCustomerSendsRequestFailsValidation()
+    {
+        $this->expectException(ServerValidationException::class);
+
+        $payload = ['email' => 'iain.cambridge@example'];
+        $requestSender = $this->createMock(RequestSenderInterface::class);
+        $expected = ['errors' => ['email' => 'not valid']];
+        $response = new Response(400, $expected);
+
+        $requestSender->method('send')->with('POST', '/v1/customer', $payload)->willReturn($response);
+
+        $client = new Client($requestSender);
+        $client->createCustomer($payload);
+    }
+
+    public function testCreateCustomerSendsRequestUnexpectedResponse()
+    {
+        $this->expectException(UnexpectedResponseException::class);
+        $payload = ['email' => 'iain.cambridge@example'];
+        $requestSender = $this->createMock(RequestSenderInterface::class);
+        $expected = [];
+        $response = new Response(404, $expected);
+
+        $requestSender->method('send')->with('POST', '/v1/customer', $payload)->willReturn($response);
+
+        $client = new Client($requestSender);
+        $client->createCustomer($payload);
     }
 }

@@ -21,10 +21,17 @@
 
 namespace BillaBear\PhpSdk\Exception;
 
-class MissingFieldsException extends \Exception
+use BillaBear\PhpSdk\Response;
+
+class UnexpectedResponseException extends \Exception
 {
-    public function __construct(array $fields = [], int $code = 0, \Throwable $previous = null)
+    public function __construct(private Response $response)
     {
-        parent::__construct(sprintf('Missing the following fields [%s]', implode(',', $fields)), $code, $previous);
+        parent::__construct(sprintf('Unexpected response from server - status code: %d', $this->response->getStatusCode()));
+    }
+
+    public function getResponse(): Response
+    {
+        return $this->response;
     }
 }

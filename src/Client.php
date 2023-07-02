@@ -22,6 +22,8 @@
 namespace BillaBear\PhpSdk;
 
 use BillaBear\PhpSdk\Exception\MissingFieldsException;
+use BillaBear\PhpSdk\Exception\ServerValidationException;
+use BillaBear\PhpSdk\Exception\UnexpectedResponseException;
 
 final class Client implements ClientInterface
 {
@@ -53,6 +55,10 @@ final class Client implements ClientInterface
             return (array) $response->getContent();
         }
 
-        return [];
+        if (400 === $response->getStatusCode()) {
+            throw new ServerValidationException($response->getContent()['errors']);
+        }
+
+        throw new UnexpectedResponseException($response);
     }
 }

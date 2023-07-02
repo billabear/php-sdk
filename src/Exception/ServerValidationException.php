@@ -21,10 +21,16 @@
 
 namespace BillaBear\PhpSdk\Exception;
 
-class MissingFieldsException extends \Exception
+class ServerValidationException extends \Exception
 {
-    public function __construct(array $fields = [], int $code = 0, \Throwable $previous = null)
+    public function __construct(private array $validationErrors)
     {
-        parent::__construct(sprintf('Missing the following fields [%s]', implode(',', $fields)), $code, $previous);
+        $message = sprintf('Got validation errors for [%s]', implode(',', array_keys($this->validationErrors)));
+        parent::__construct($message);
+    }
+
+    public function getValidationErrors(): array
+    {
+        return $this->validationErrors;
     }
 }
