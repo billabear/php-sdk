@@ -31,3 +31,32 @@ $apiUrl = "http://billabear.example.org/api"; // The URL the API is available at
 
 $client = Client::createClient($apiKey, $apiUrl);
 ```
+
+### Create Customer
+
+For more info https://swagger.billabear.com/#tag/Customers/operation/createCustomer
+
+```php
+<?php
+// ...
+$customerInput = [
+    'email' => 'customer@example.org', // Required
+    'billing_type' => 'card', // Optional - card or invoice are allowed
+    'reference' => 'a reference', // Optional
+    'external_reference' => null, // Optional - Stripe Reference
+    'locale' => 'en', // Optional - defaults to en if null
+    'brand' => 'default', // Optional - defaults to default if null,
+    'address' => [
+        'company_name' => null, // Optional
+        'street_line_one' => null, // Optional
+        'street_line_two' = null // Optional
+        'city' => null, // Optional
+        'region' => null, // Optional
+        'country' => null, // Optional - country code
+        'postcode' => null, // 
+    ]
+];
+
+$client = Client::createClient($apiKey, $apiUrl);
+$customerData = $client->createCustomer($customerInput);
+```

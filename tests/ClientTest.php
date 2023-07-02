@@ -22,6 +22,9 @@
 namespace Tests\BillaBear\PhpSdk;
 
 use BillaBear\PhpSdk\Client;
+use BillaBear\PhpSdk\Exception\MissingFieldsException;
+use BillaBear\PhpSdk\RequestSenderInterface;
+use BillaBear\PhpSdk\Response;
 use PHPUnit\Framework\TestCase;
 
 class ClientTest extends TestCase
@@ -30,5 +33,28 @@ class ClientTest extends TestCase
     {
         $client = Client::createClient('pets', 'https://example.org');
         $this->assertInstanceOf(Client::class, $client);
+    }
+
+    public function testCreateCustomerFailsNoEmail()
+    {
+        $this->expectException(MissingFieldsException::class);
+        $requestSender = $this->createMock(RequestSenderInterface::class);
+
+        $client = new Client($requestSender);
+        $client->createCustomer([]);
+    }
+
+    public function testCreateCustomerSendsRequest()
+    {
+        $payload = ['email' => 'iain.cambridge@example.org'];
+        $requestSender = $this->createMock(RequestSenderInterface::class);
+        $expected = ['id' => 'id-here'];
+        $response = new Response(201, $expected);
+
+        $requestSender->method('send')->with('POST', '/v1/customer', $payload)->willReturn($response);
+
+        $client = new Client($requestSender);
+        $actual = $client->createCustomer($payload);
+        $this->assertEquals($expected, $actual);
     }
 }

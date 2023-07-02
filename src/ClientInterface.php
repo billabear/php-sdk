@@ -21,6 +21,12 @@
 
 namespace BillaBear\PhpSdk;
 
+use BillaBear\PhpSdk\Exception\MissingFieldsException;
+
 interface ClientInterface
 {
+    /**
+     * @throws MissingFieldsException
+     */
+    public function createCustomer(array $input): array;
 }

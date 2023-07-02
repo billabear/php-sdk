@@ -21,6 +21,8 @@
 
 namespace BillaBear\PhpSdk;
 
+use BillaBear\PhpSdk\Exception\MissingFieldsException;
+
 final class Client implements ClientInterface
 {
     public function __construct(private RequestSenderInterface $requestSender)
@@ -32,5 +34,25 @@ final class Client implements ClientInterface
         $requestSender = new RequestSender($apiKey, $apiUrl);
 
         return new self($requestSender);
+    }
+
+    public function createCustomer(array $input): array
+    {
+        $missingFields = [];
+        if (!isset($input['email'])) {
+            $missingFields[] = 'email';
+        }
+
+        if (!empty($missingFields)) {
+            throw new MissingFieldsException($missingFields);
+        }
+
+        $response = $this->requestSender->send('POST', '/v1/customer', $input);
+
+        if (201 === $response->getStatusCode()) {
+            return (array) $response->getContent();
+        }
+
+        return [];
     }
 }

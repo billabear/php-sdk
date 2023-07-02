@@ -21,6 +21,10 @@
 
 namespace BillaBear\PhpSdk\Exception;
 
-class InvalidResponseException extends \Exception
+class MissingFieldsException extends \Exception
 {
+    public function __construct(array $fields = [], int $code = 0, Throwable $previous = null)
+    {
+        parent::__construct(sprintf('Missing the following fields [%s]', implode(',', $fields)), $code, $previous);
+    }
 }
