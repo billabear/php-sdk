@@ -27,7 +27,7 @@ use Psr\Http\Client\ClientInterface as PsrClientInterface;
 use Psr\Http\Message\RequestFactoryInterface as PsrRequestFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 
-class RequestSender implements RequestSenderInterface
+final class RequestSender implements RequestSenderInterface
 {
     private PsrClientInterface $client;
     private PsrRequestFactoryInterface $requestFactory;
