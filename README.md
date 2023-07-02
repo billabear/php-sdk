@@ -18,3 +18,16 @@ This is the offical PHP SDK for [BillaBear - The Subscription Management and Bil
 ```
 composer require billabear/php-sdk
 ```
+
+### Create Client
+
+```php
+<?php
+
+use BillaBear\PhpSdk\Client;
+
+$apiKey = "example-key"; // Fetch one from BillaBear's application.
+$apiUrl = "http://billabear.example.org/api"; // The URL the API is available at.
+
+$client = Client::createClient($apiKey, $apiUrl);
+```

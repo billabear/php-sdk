@@ -21,16 +21,6 @@
 
 namespace BillaBear\PhpSdk;
 
-final class Client implements ClientInterface
+interface ClientInterface
 {
-    public function __construct(private RequestSenderInterface $requestSender)
-    {
-    }
-
-    public static function createClient(string $apiKey, string $apiUrl): self
-    {
-        $requestSender = new RequestSender($apiKey, $apiUrl);
-
-        return new self($requestSender);
-    }
 }
