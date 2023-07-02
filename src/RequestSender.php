@@ -21,7 +21,6 @@
 
 namespace BillaBear\PhpSdk;
 
-use BillaBear\PhpSdk\Exception\InvalidResponseException;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Psr\Http\Client\ClientInterface as PsrClientInterface;
@@ -41,7 +40,7 @@ class RequestSender implements RequestSenderInterface
         $this->streamFactory = $streamFactory ?? Psr17FactoryDiscovery::findStreamFactory();
     }
 
-    public function send(string $method, string $url, array $payload = null): ?array
+    public function send(string $method, string $url, array $payload = null): Response
     {
         $fullUrl = sprintf('%s/%s', rtrim($this->baseUrl, '/'), ltrim($url, '/'));
 
@@ -55,10 +54,6 @@ class RequestSender implements RequestSenderInterface
 
         $jsonData = json_decode($response->getBody()->getContents(), true);
 
-        if (200 !== $response->getStatusCode()) {
-            throw new InvalidResponseException(sprintf('Got a %d response code', $response->getStatusCode()));
-        }
-
-        return $jsonData;
+        return new Response($response->getStatusCode(), $jsonData);
     }
 }

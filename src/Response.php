@@ -21,7 +21,19 @@
 
 namespace BillaBear\PhpSdk;
 
-interface RequestSenderInterface
+final class Response
 {
-    public function send(string $method, string $url, array $payload = null): Response;
+    public function __construct(private int $statusCode, private ?array $content = null)
+    {
+    }
+
+    public function getStatusCode(): int
+    {
+        return $this->statusCode;
+    }
+
+    public function getContent(): ?array
+    {
+        return $this->content;
+    }
 }

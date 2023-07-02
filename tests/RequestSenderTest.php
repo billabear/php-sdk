@@ -55,7 +55,7 @@ class RequestSenderTest extends TestCase
         $requestSender = new RequestSender($apiKey, $url, $client, $requestFactory, $streamFactory);
         $response = $requestSender->send($method, $requestUrl);
 
-        $this->assertNull($response);
+        $this->assertNull($response->getContent());
     }
 
     public function testSendRequestBody()
@@ -85,7 +85,7 @@ class RequestSenderTest extends TestCase
         $requestSender = new RequestSender($apiKey, $url, $client, $requestFactory, $streamFactory);
         $response = $requestSender->send($method, $requestUrl, $body);
 
-        $this->assertNull($response);
+        $this->assertNull($response->getContent());
     }
 
     public function testSendRequestBodyResponseBody()
@@ -117,6 +117,6 @@ class RequestSenderTest extends TestCase
         $requestSender = new RequestSender($apiKey, $url, $client, $requestFactory, $streamFactory);
         $actual = $requestSender->send($method, $requestUrl, $body);
 
-        $this->assertEquals($responseBody, $actual);
+        $this->assertEquals($responseBody, $actual->getContent());
     }
 }
