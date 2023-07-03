@@ -16,8 +16,12 @@ This is the offical PHP SDK for [BillaBear - The Subscription Management and Bil
 ## Getting Started
 
 ```
-composer require billabear/php-sdk
+composer require billabear/php-sdk symfony/http-client nyholm/psr7
 ```
+
+
+
+## Examples
 
 ### Create Client
 
@@ -64,6 +68,30 @@ try {
     // Local validation error
 } catch (\BillaBear\PhpSdk\Exception\ServerValidationException $serverValidationException) {
     // Server validation error
+} catch (\BillaBear\PhpSdk\Exception\UnauthorizedException $unauthorizedException) {
+    // Authorization error
+} catch (\BillaBear\PhpSdk\Exception\UnexpectedResponseException $unexpectedResponseException) {
+    // Unexpected response error
+}
+```
+
+### Fetch Customer Info
+
+For more info https://swagger.billabear.com/#tag/Customers/operation/showCustomerById
+
+```php
+<?php
+// ...
+
+$client = Client::createClient($apiKey, $apiUrl);
+$customerId = 'id-here';
+
+try {
+    $customerData = $client->fetchCustomer($customerId);
+} catch (\BillaBear\PhpSdk\Exception\NotFoundException $exception) {
+    // No such customer
+} catch (\BillaBear\PhpSdk\Exception\UnexpectedResponseException $exception) {
+
 } catch (\BillaBear\PhpSdk\Exception\UnauthorizedException $unauthorizedException) {
     // Authorization error
 } catch (\BillaBear\PhpSdk\Exception\UnexpectedResponseException $unexpectedResponseException) {

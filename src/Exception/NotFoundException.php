@@ -19,28 +19,8 @@
  *
  */
 
-namespace BillaBear\PhpSdk;
+namespace BillaBear\PhpSdk\Exception;
 
-use BillaBear\PhpSdk\Exception\MissingFieldsException;
-use BillaBear\PhpSdk\Exception\ServerValidationException;
-use BillaBear\PhpSdk\Exception\UnauthorizedException;
-use BillaBear\PhpSdk\Exception\UnexpectedResponseException;
-
-interface ClientInterface
+class NotFoundException extends \Exception
 {
-    /**
-     * @throws MissingFieldsException
-     * @throws ServerValidationException
-     * @throws UnauthorizedException
-     * @throws UnexpectedResponseException
-     */
-    public function createCustomer(array $input): array;
-
-    /**
-     * @throws MissingFieldsException
-     * @throws ServerValidationException
-     * @throws UnauthorizedException
-     * @throws UnexpectedResponseException
-     */
-    public function fetchCustomer(string $id): array;
 }

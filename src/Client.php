@@ -22,6 +22,7 @@
 namespace BillaBear\PhpSdk;
 
 use BillaBear\PhpSdk\Exception\MissingFieldsException;
+use BillaBear\PhpSdk\Exception\NotFoundException;
 use BillaBear\PhpSdk\Exception\ServerValidationException;
 use BillaBear\PhpSdk\Exception\UnexpectedResponseException;
 
@@ -57,6 +58,21 @@ final class Client implements ClientInterface
 
         if (400 === $response->getStatusCode()) {
             throw new ServerValidationException($response->getContent()['errors']);
+        }
+
+        throw new UnexpectedResponseException($response);
+    }
+
+    public function fetchCustomer(string $id): array
+    {
+        $response = $this->requestSender->send('GET', sprintf('/v1/customer/%s', $id));
+
+        if (404 === $response->getStatusCode()) {
+            throw new NotFoundException(sprintf("Can't find customer for id '%d'", $id));
+        }
+
+        if (200 === $response->getStatusCode()) {
+            return $response->getContent();
         }
 
         throw new UnexpectedResponseException($response);
