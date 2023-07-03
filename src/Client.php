@@ -101,4 +101,19 @@ final class Client implements ClientInterface
 
         throw new UnexpectedResponseException($response);
     }
+
+    public function disableCustomer(string $id): void
+    {
+        $response = $this->requestSender->send('POST', sprintf('/v1/customer/%s/disable', $id));
+
+        if (404 === $response->getStatusCode()) {
+            throw new NotFoundException(sprintf("Didn't find customer for '%d'", $id));
+        }
+
+        if (201 === $response->getStatusCode()) {
+            return;
+        }
+
+        throw new UnexpectedResponseException($response);
+    }
 }

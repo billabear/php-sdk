@@ -22,6 +22,7 @@
 namespace BillaBear\PhpSdk;
 
 use BillaBear\PhpSdk\Exception\MissingFieldsException;
+use BillaBear\PhpSdk\Exception\NotFoundException;
 use BillaBear\PhpSdk\Exception\ServerValidationException;
 use BillaBear\PhpSdk\Exception\UnauthorizedException;
 use BillaBear\PhpSdk\Exception\UnexpectedResponseException;
@@ -37,9 +38,9 @@ interface ClientInterface
     public function createCustomer(array $input): array;
 
     /**
-     * @throws ServerValidationException
      * @throws UnauthorizedException
      * @throws UnexpectedResponseException
+     * @throws NotFoundException
      */
     public function fetchCustomer(string $id): array;
 
@@ -48,6 +49,14 @@ interface ClientInterface
      * @throws ServerValidationException
      * @throws UnauthorizedException
      * @throws UnexpectedResponseException
+     * @throws NotFoundException
      */
     public function updateCustomer(string $id, array $payload): array;
+
+    /**
+     * @throws UnauthorizedException
+     * @throws UnexpectedResponseException
+     * @throws NotFoundException
+     */
+    public function disableCustomer(string $id): void;
 }
