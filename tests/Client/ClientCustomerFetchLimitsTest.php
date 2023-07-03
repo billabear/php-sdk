@@ -28,7 +28,7 @@ use BillaBear\PhpSdk\RequestSenderInterface;
 use BillaBear\PhpSdk\Response;
 use PHPUnit\Framework\TestCase;
 
-class CustomerFetchLimitsTest extends TestCase
+class ClientCustomerFetchLimitsTest extends TestCase
 {
     public function testFetchCustomerLimitsNotFound()
     {
