@@ -28,7 +28,7 @@ use BillaBear\PhpSdk\RequestSenderInterface;
 use BillaBear\PhpSdk\Response;
 use PHPUnit\Framework\TestCase;
 
-class ClientFetchCustomerTest extends TestCase
+class ClientCustomerFetchTest extends TestCase
 {
     public function testFetchCustomerNotFound()
     {
