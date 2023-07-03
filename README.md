@@ -136,6 +136,7 @@ try {
 
 ### Disable Customer
 
+For more info https://swagger.billabear.com/#tag/Customers/operation/v1DisableCustomer
 
 ```php
 <?php
@@ -157,6 +158,7 @@ try {
 
 ### Enable Customer
 
+for more info https://swagger.billabear.com/#tag/Customers/operation/v1EnableCustomer
 
 ```php
 <?php
