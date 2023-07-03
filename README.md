@@ -90,9 +90,7 @@ try {
     $customerData = $client->fetchCustomer($customerId);
 } catch (\BillaBear\PhpSdk\Exception\NotFoundException $exception) {
     // No such customer
-} catch (\BillaBear\PhpSdk\Exception\UnexpectedResponseException $exception) {
-
-} catch (\BillaBear\PhpSdk\Exception\UnauthorizedException $unauthorizedException) {
+}  catch (\BillaBear\PhpSdk\Exception\UnauthorizedException $unauthorizedException) {
     // Authorization error
 } catch (\BillaBear\PhpSdk\Exception\UnexpectedResponseException $unexpectedResponseException) {
     // Unexpected response error
