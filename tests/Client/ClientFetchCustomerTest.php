@@ -19,7 +19,7 @@
  *
  */
 
-namespace Tests\BillaBear\PhpSdk;
+namespace Tests\BillaBear\PhpSdk\Client;
 
 use BillaBear\PhpSdk\Client;
 use BillaBear\PhpSdk\Exception\NotFoundException;

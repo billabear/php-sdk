@@ -96,3 +96,42 @@ try {
     // Unexpected response error
 }
 ```
+
+### Update Customer Info
+
+More info https://swagger.billabear.com/#tag/Customers/operation/UpdateCustomer
+
+```php
+<?php
+// ...
+$customerInput = [
+    'email' => 'customer@example.org', // Required
+    'billing_type' => 'card', // Optional - card or invoice are allowed
+    'reference' => 'a reference', // Optional
+    'external_reference' => null, // Optional - Stripe Reference
+    'locale' => 'en', // Optional - defaults to en if null
+    'brand' => 'default', // Optional - defaults to default if null,
+    'address' => [
+        'company_name' => null, // Optional
+        'street_line_one' => null, // Optional
+        'street_line_two' = null // Optional
+        'city' => null, // Optional
+        'region' => null, // Optional
+        'country' => null, // Optional - country code
+        'postcode' => null, // 
+    ]
+];
+$customerId = 'id-here';
+$client = Client::createClient($apiKey, $apiUrl);
+try {
+    $customerData = $client->updateCustomer($customerId, $customerInput);
+} catch (\BillaBear\PhpSdk\Exception\MissingFieldsException $missingFieldsException) {
+    // Local validation error
+} catch (\BillaBear\PhpSdk\Exception\ServerValidationException $serverValidationException) {
+    // Server validation error
+} catch (\BillaBear\PhpSdk\Exception\UnauthorizedException $unauthorizedException) {
+    // Authorization error
+} catch (\BillaBear\PhpSdk\Exception\UnexpectedResponseException $unexpectedResponseException) {
+    // Unexpected response error
+}
+```

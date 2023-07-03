@@ -77,4 +77,28 @@ final class Client implements ClientInterface
 
         throw new UnexpectedResponseException($response);
     }
+
+    public function updateCustomer(string $id, array $input): array
+    {
+        $missingFields = [];
+        if (!isset($input['email'])) {
+            $missingFields[] = 'email';
+        }
+
+        if (!empty($missingFields)) {
+            throw new MissingFieldsException($missingFields);
+        }
+
+        $response = $this->requestSender->send('PUT', sprintf('/v1/customer/%s', $id), $input);
+
+        if (201 === $response->getStatusCode()) {
+            return (array) $response->getContent();
+        }
+
+        if (400 === $response->getStatusCode()) {
+            throw new ServerValidationException($response->getContent()['errors']);
+        }
+
+        throw new UnexpectedResponseException($response);
+    }
 }

@@ -19,7 +19,7 @@
  *
  */
 
-namespace Tests\BillaBear\PhpSdk;
+namespace Tests\BillaBear\PhpSdk\Client;
 
 use BillaBear\PhpSdk\Client;
 use BillaBear\PhpSdk\Exception\MissingFieldsException;
@@ -29,7 +29,7 @@ use BillaBear\PhpSdk\RequestSenderInterface;
 use BillaBear\PhpSdk\Response;
 use PHPUnit\Framework\TestCase;
 
-class ClientTest extends TestCase
+class ClientCreateCustomerTest extends TestCase
 {
     public function testCreatesInstance()
     {

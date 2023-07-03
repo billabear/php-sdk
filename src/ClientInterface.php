@@ -37,10 +37,17 @@ interface ClientInterface
     public function createCustomer(array $input): array;
 
     /**
-     * @throws MissingFieldsException
      * @throws ServerValidationException
      * @throws UnauthorizedException
      * @throws UnexpectedResponseException
      */
     public function fetchCustomer(string $id): array;
+
+    /**
+     * @throws MissingFieldsException
+     * @throws ServerValidationException
+     * @throws UnauthorizedException
+     * @throws UnexpectedResponseException
+     */
+    public function updateCustomer(string $id, array $payload): array;
 }
