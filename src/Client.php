@@ -91,6 +91,10 @@ final class Client implements ClientInterface
 
         $response = $this->requestSender->send('PUT', sprintf('/v1/customer/%s', $id), $input);
 
+        if (404 === $response->getStatusCode()) {
+            throw new NotFoundException(sprintf("Didn't find customer for '%d'", $id));
+        }
+
         if (201 === $response->getStatusCode()) {
             return (array) $response->getContent();
         }

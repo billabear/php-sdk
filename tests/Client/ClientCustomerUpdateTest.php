@@ -23,6 +23,7 @@ namespace Tests\BillaBear\PhpSdk\Client;
 
 use BillaBear\PhpSdk\Client;
 use BillaBear\PhpSdk\Exception\MissingFieldsException;
+use BillaBear\PhpSdk\Exception\NotFoundException;
 use BillaBear\PhpSdk\Exception\ServerValidationException;
 use BillaBear\PhpSdk\Exception\UnexpectedResponseException;
 use BillaBear\PhpSdk\RequestSenderInterface;
@@ -72,13 +73,28 @@ class ClientCustomerUpdateTest extends TestCase
         $client->updateCustomer($id, $payload);
     }
 
+    public function testCreateCustomerSendsRequestNotFound()
+    {
+        $this->expectException(NotFoundException::class);
+        $payload = ['email' => 'iain.cambridge@example'];
+        $requestSender = $this->createMock(RequestSenderInterface::class);
+        $expected = [];
+        $response = new Response(404, $expected);
+        $id = 'id-here';
+
+        $requestSender->method('send')->with('PUT', '/v1/customer/'.$id, $payload)->willReturn($response);
+
+        $client = new Client($requestSender);
+        $client->updateCustomer($id, $payload);
+    }
+
     public function testCreateCustomerSendsRequestUnexpectedResponse()
     {
         $this->expectException(UnexpectedResponseException::class);
         $payload = ['email' => 'iain.cambridge@example'];
         $requestSender = $this->createMock(RequestSenderInterface::class);
         $expected = [];
-        $response = new Response(404, $expected);
+        $response = new Response(500, $expected);
         $id = 'id-here';
 
         $requestSender->method('send')->with('PUT', '/v1/customer/'.$id, $payload)->willReturn($response);
