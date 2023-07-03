@@ -19,7 +19,7 @@
  *
  */
 
-namespace Tests\BillaBear\PhpSdk\Client;
+namespace Tests\BillaBear\PhpSdk\ClientCustomer;
 
 use BillaBear\PhpSdk\Client;
 use BillaBear\PhpSdk\Exception\NotFoundException;
@@ -28,45 +28,43 @@ use BillaBear\PhpSdk\RequestSenderInterface;
 use BillaBear\PhpSdk\Response;
 use PHPUnit\Framework\TestCase;
 
-class ClientCustomerEnableTest extends TestCase
+class ClientCustomerFetchTest extends TestCase
 {
-    public function testEnableCustomerNotFound()
+    public function testFetchCustomerNotFound()
     {
         $this->expectException(NotFoundException::class);
-
         $requestSender = $this->createMock(RequestSenderInterface::class);
         $expected = [];
         $response = new Response(404, $expected);
 
-        $requestSender->expects($this->once())->method('send')->with('POST', '/v1/customer/id-here/enable')->willReturn($response);
+        $requestSender->expects($this->once())->method('send')->with('GET', '/v1/customer/id-here')->willReturn($response);
 
         $client = new Client($requestSender);
-        $client->enableCustomer('id-here');
+        $client->fetchCustomer('id-here');
     }
 
-    public function testEnableCustomerUnexpectedResponse()
+    public function testFetchCustomerUnexpectedResponse()
     {
         $this->expectException(UnexpectedResponseException::class);
-
         $requestSender = $this->createMock(RequestSenderInterface::class);
         $expected = [];
         $response = new Response(500, $expected);
 
-        $requestSender->expects($this->once())->method('send')->with('POST', '/v1/customer/id-here/enable')->willReturn($response);
+        $requestSender->expects($this->once())->method('send')->with('GET', '/v1/customer/id-here')->willReturn($response);
 
         $client = new Client($requestSender);
-        $client->enableCustomer('id-here');
+        $client->fetchCustomer('id-here');
     }
 
-    public function testEnableCustomerValidResponse()
+    public function testFetchCustomerValid()
     {
         $requestSender = $this->createMock(RequestSenderInterface::class);
-        $expected = [];
-        $response = new Response(202, $expected);
-
-        $requestSender->expects($this->once())->method('send')->with('POST', '/v1/customer/id-here/enable')->willReturn($response);
+        $expected = ['email' => 'iain.cambridge@example.org'];
+        $response = new Response(200, $expected);
+        $requestSender->expects($this->once())->method('send')->with('GET', '/v1/customer/id-here')->willReturn($response);
 
         $client = new Client($requestSender);
-        $client->enableCustomer('id-here');
+        $actual = $client->fetchCustomer('id-here');
+        $this->assertEquals($expected, $actual);
     }
 }

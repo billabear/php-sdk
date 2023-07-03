@@ -19,28 +19,24 @@
  *
  */
 
-namespace Tests\BillaBear\PhpSdk\Client;
+namespace Tests\BillaBear\PhpSdk\ClientCustomer;
 
 use BillaBear\PhpSdk\Client;
 use BillaBear\PhpSdk\Exception\MissingFieldsException;
+use BillaBear\PhpSdk\Exception\NotFoundException;
 use BillaBear\PhpSdk\Exception\ServerValidationException;
 use BillaBear\PhpSdk\Exception\UnexpectedResponseException;
 use BillaBear\PhpSdk\RequestSenderInterface;
 use BillaBear\PhpSdk\Response;
 use PHPUnit\Framework\TestCase;
 
-class ClientCustomerCreateTest extends TestCase
+class ClientCustomerUpdateTest extends TestCase
 {
-    public function testCreatesInstance()
-    {
-        $client = Client::createClient('pets', 'https://example.org');
-        $this->assertInstanceOf(Client::class, $client);
-    }
-
     public function testCreateCustomerFailsNoEmail()
     {
         $this->expectException(MissingFieldsException::class);
         $requestSender = $this->createMock(RequestSenderInterface::class);
+        $id = 'id-here';
 
         $client = new Client($requestSender);
         $client->createCustomer([]);
@@ -52,11 +48,12 @@ class ClientCustomerCreateTest extends TestCase
         $requestSender = $this->createMock(RequestSenderInterface::class);
         $expected = ['id' => 'id-here'];
         $response = new Response(201, $expected);
+        $id = 'id-here';
 
-        $requestSender->method('send')->with('POST', '/v1/customer', $payload)->willReturn($response);
+        $requestSender->method('send')->with('PUT', '/v1/customer/'.$id, $payload)->willReturn($response);
 
         $client = new Client($requestSender);
-        $actual = $client->createCustomer($payload);
+        $actual = $client->updateCustomer($id, $payload);
         $this->assertEquals($expected, $actual);
     }
 
@@ -68,11 +65,27 @@ class ClientCustomerCreateTest extends TestCase
         $requestSender = $this->createMock(RequestSenderInterface::class);
         $expected = ['errors' => ['email' => 'not valid']];
         $response = new Response(400, $expected);
+        $id = 'id-here';
 
-        $requestSender->method('send')->with('POST', '/v1/customer', $payload)->willReturn($response);
+        $requestSender->method('send')->with('PUT', '/v1/customer/'.$id, $payload)->willReturn($response);
 
         $client = new Client($requestSender);
-        $client->createCustomer($payload);
+        $client->updateCustomer($id, $payload);
+    }
+
+    public function testCreateCustomerSendsRequestNotFound()
+    {
+        $this->expectException(NotFoundException::class);
+        $payload = ['email' => 'iain.cambridge@example'];
+        $requestSender = $this->createMock(RequestSenderInterface::class);
+        $expected = [];
+        $response = new Response(404, $expected);
+        $id = 'id-here';
+
+        $requestSender->method('send')->with('PUT', '/v1/customer/'.$id, $payload)->willReturn($response);
+
+        $client = new Client($requestSender);
+        $client->updateCustomer($id, $payload);
     }
 
     public function testCreateCustomerSendsRequestUnexpectedResponse()
@@ -81,11 +94,12 @@ class ClientCustomerCreateTest extends TestCase
         $payload = ['email' => 'iain.cambridge@example'];
         $requestSender = $this->createMock(RequestSenderInterface::class);
         $expected = [];
-        $response = new Response(404, $expected);
+        $response = new Response(500, $expected);
+        $id = 'id-here';
 
-        $requestSender->method('send')->with('POST', '/v1/customer', $payload)->willReturn($response);
+        $requestSender->method('send')->with('PUT', '/v1/customer/'.$id, $payload)->willReturn($response);
 
         $client = new Client($requestSender);
-        $client->createCustomer($payload);
+        $client->updateCustomer($id, $payload);
     }
 }

@@ -19,7 +19,7 @@
  *
  */
 
-namespace Tests\BillaBear\PhpSdk\Client;
+namespace Tests\BillaBear\PhpSdk\ClientCustomer;
 
 use BillaBear\PhpSdk\Client;
 use BillaBear\PhpSdk\Exception\NotFoundException;
@@ -28,9 +28,9 @@ use BillaBear\PhpSdk\RequestSenderInterface;
 use BillaBear\PhpSdk\Response;
 use PHPUnit\Framework\TestCase;
 
-class ClientCustomerDisableTest extends TestCase
+class ClientCustomerEnableTest extends TestCase
 {
-    public function testDisableCustomerNotFound()
+    public function testEnableCustomerNotFound()
     {
         $this->expectException(NotFoundException::class);
 
@@ -38,13 +38,13 @@ class ClientCustomerDisableTest extends TestCase
         $expected = [];
         $response = new Response(404, $expected);
 
-        $requestSender->expects($this->once())->method('send')->with('POST', '/v1/customer/id-here/disable')->willReturn($response);
+        $requestSender->expects($this->once())->method('send')->with('POST', '/v1/customer/id-here/enable')->willReturn($response);
 
         $client = new Client($requestSender);
-        $client->disableCustomer('id-here');
+        $client->enableCustomer('id-here');
     }
 
-    public function testDisableCustomerUnexpectedResponse()
+    public function testEnableCustomerUnexpectedResponse()
     {
         $this->expectException(UnexpectedResponseException::class);
 
@@ -52,21 +52,21 @@ class ClientCustomerDisableTest extends TestCase
         $expected = [];
         $response = new Response(500, $expected);
 
-        $requestSender->expects($this->once())->method('send')->with('POST', '/v1/customer/id-here/disable')->willReturn($response);
+        $requestSender->expects($this->once())->method('send')->with('POST', '/v1/customer/id-here/enable')->willReturn($response);
 
         $client = new Client($requestSender);
-        $client->disableCustomer('id-here');
+        $client->enableCustomer('id-here');
     }
 
-    public function testDisableCustomerValidResponse()
+    public function testEnableCustomerValidResponse()
     {
         $requestSender = $this->createMock(RequestSenderInterface::class);
         $expected = [];
         $response = new Response(202, $expected);
 
-        $requestSender->expects($this->once())->method('send')->with('POST', '/v1/customer/id-here/disable')->willReturn($response);
+        $requestSender->expects($this->once())->method('send')->with('POST', '/v1/customer/id-here/enable')->willReturn($response);
 
         $client = new Client($requestSender);
-        $client->disableCustomer('id-here');
+        $client->enableCustomer('id-here');
     }
 }
