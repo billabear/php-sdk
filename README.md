@@ -19,8 +19,6 @@ This is the offical PHP SDK for [BillaBear - The Subscription Management and Bil
 composer require billabear/php-sdk symfony/http-client nyholm/psr7
 ```
 
-
-
 ## Examples
 
 ### Create Client
