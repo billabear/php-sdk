@@ -21,6 +21,7 @@
 
 namespace BillaBear\PhpSdk;
 
+use BillaBear\PhpSdk\Exception\UnauthorizedException;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Psr\Http\Client\ClientInterface as PsrClientInterface;
@@ -53,6 +54,10 @@ final class RequestSender implements RequestSenderInterface
         $response = $this->client->sendRequest($request);
 
         $jsonData = json_decode($response->getBody()->getContents(), true);
+
+        if (401 === $response->getStatusCode() || 403 === $response->getStatusCode()) {
+            throw new UnauthorizedException(sprintf('Received the status code %d', $response->getStatusCode()));
+        }
 
         return new Response($response->getStatusCode(), $jsonData);
     }

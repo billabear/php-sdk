@@ -58,5 +58,15 @@ $customerInput = [
 ];
 
 $client = Client::createClient($apiKey, $apiUrl);
-$customerData = $client->createCustomer($customerInput);
+try {
+    $customerData = $client->createCustomer($customerInput);
+} catch (\BillaBear\PhpSdk\Exception\MissingFieldsException $missingFieldsException) {
+    // Local validation error
+} catch (\BillaBear\PhpSdk\Exception\ServerValidationException $serverValidationException) {
+    // Server validation error
+} catch (\BillaBear\PhpSdk\Exception\UnauthorizedException $unauthorizedException) {
+    // Authorization error
+} catch (\BillaBear\PhpSdk\Exception\UnexpectedResponseException $unexpectedResponseException) {
+    // Unexpected response error
+}
 ```
