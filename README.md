@@ -36,7 +36,7 @@ $client = Client::createClient($apiKey, $apiUrl);
 
 ### Create Customer
 
-For more info https://swagger.billabear.com/#tag/Customers/operation/createCustomer
+For more info https://swagger.billabear.com/#tag/Customers/operation/v1CreateCustomer
 
 ```php
 <?php
@@ -75,7 +75,7 @@ try {
 
 ### Fetch Customer Info
 
-For more info https://swagger.billabear.com/#tag/Customers/operation/showCustomerById
+For more info https://swagger.billabear.com/#tag/Customers/operation/v1ShowCustomerById
 
 ```php
 <?php
@@ -97,7 +97,7 @@ try {
 
 ### Update Customer Info
 
-More info https://swagger.billabear.com/#tag/Customers/operation/UpdateCustomer
+More info https://swagger.billabear.com/#tag/Customers/operation/v1UpdateCustomer
 
 ```php
 <?php
