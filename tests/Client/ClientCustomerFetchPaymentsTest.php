@@ -37,7 +37,7 @@ class ClientCustomerFetchPaymentsTest extends TestCase
         $expected = [];
         $response = new Response(404, $expected);
 
-        $requestSender->expects($this->once())->method('send')->with('GET', '/v1/customer/id-here/payments')->willReturn($response);
+        $requestSender->expects($this->once())->method('send')->with('GET', '/v1/customer/id-here/payments?limit=25')->willReturn($response);
 
         $client = new Client($requestSender);
         $client->fetchCustomerPayments('id-here');
@@ -50,7 +50,7 @@ class ClientCustomerFetchPaymentsTest extends TestCase
         $expected = [];
         $response = new Response(500, $expected);
 
-        $requestSender->expects($this->once())->method('send')->with('GET', '/v1/customer/id-here/payments')->willReturn($response);
+        $requestSender->expects($this->once())->method('send')->with('GET', '/v1/customer/id-here/payments?limit=25')->willReturn($response);
 
         $client = new Client($requestSender);
         $client->fetchCustomerPayments('id-here');
@@ -65,10 +65,42 @@ class ClientCustomerFetchPaymentsTest extends TestCase
             'last_key' => 'last-key-here',
         ];
         $response = new Response(200, $expected);
-        $requestSender->expects($this->once())->method('send')->with('GET', '/v1/customer/id-here/payments')->willReturn($response);
+        $requestSender->expects($this->once())->method('send')->with('GET', '/v1/customer/id-here/payments?limit=25')->willReturn($response);
 
         $client = new Client($requestSender);
         $actual = $client->fetchCustomerPayments('id-here');
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testFetchCustomerPaymentsValidNewLimit()
+    {
+        $requestSender = $this->createMock(RequestSenderInterface::class);
+        $expected = [
+            'data' => [],
+            'has_more' => false,
+            'last_key' => 'last-key-here',
+        ];
+        $response = new Response(200, $expected);
+        $requestSender->expects($this->once())->method('send')->with('GET', '/v1/customer/id-here/payments?limit=100')->willReturn($response);
+
+        $client = new Client($requestSender);
+        $actual = $client->fetchCustomerPayments('id-here', 100);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testFetchCustomerPaymentsValidNewLimitLastKey()
+    {
+        $requestSender = $this->createMock(RequestSenderInterface::class);
+        $expected = [
+            'data' => [],
+            'has_more' => false,
+            'last_key' => 'last-key-here',
+        ];
+        $response = new Response(200, $expected);
+        $requestSender->expects($this->once())->method('send')->with('GET', '/v1/customer/id-here/payments?limit=100&last_key=a-last-key')->willReturn($response);
+
+        $client = new Client($requestSender);
+        $actual = $client->fetchCustomerPayments('id-here', 100, 'a-last-key');
         $this->assertEquals($expected, $actual);
     }
 }

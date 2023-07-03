@@ -151,9 +151,15 @@ final class Client implements ClientInterface
         throw new UnexpectedResponseException($response);
     }
 
-    public function fetchCustomerPayments(string $id): array
+    public function fetchCustomerPayments(string $id, int $limit = 25, string $lastKey = null): array
     {
-        $response = $this->requestSender->send('GET', sprintf('/v1/customer/%s/payments', $id));
+        if ($lastKey) {
+            $url = sprintf('/v1/customer/%s/payments?limit=%d&last_key=%s', $id, $limit, $lastKey);
+        } else {
+            $url = sprintf('/v1/customer/%s/payments?limit=%d', $id, $limit);
+        }
+
+        $response = $this->requestSender->send('GET', $url);
 
         if (404 === $response->getStatusCode()) {
             throw new NotFoundException(sprintf("Can't find customer for id '%d'", $id));

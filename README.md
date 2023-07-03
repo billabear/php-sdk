@@ -199,3 +199,27 @@ try {
     // Unexpected response error
 }
 ```
+
+### Fetch Customer Payments
+
+For more info https://swagger.billabear.com/#tag/Customers/operation/v1ListCustomerPayment
+
+```php
+<?php
+// ...
+
+$client = \BillaBear\PhpSdk\Client::createClient($apiKey, $apiUrl);
+$customerId = 'id-here';
+$limit = 25;
+$lastKey = null; // Use last key from previous response
+
+try {
+    $customerLimits = $client->fetchCustomerPayments($customerId, $limit, $lastKey);
+} catch (\BillaBear\PhpSdk\Exception\NotFoundException $exception) {
+    // No such customer
+}  catch (\BillaBear\PhpSdk\Exception\UnauthorizedException $unauthorizedException) {
+    // Authorization error
+} catch (\BillaBear\PhpSdk\Exception\UnexpectedResponseException $unexpectedResponseException) {
+    // Unexpected response error
+}
+```
