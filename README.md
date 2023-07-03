@@ -61,7 +61,7 @@ $customerInput = [
     ]
 ];
 
-$client = Client::createClient($apiKey, $apiUrl);
+$client = \BillaBear\PhpSdk\Client::createClient($apiKey, $apiUrl);
 try {
     $customerData = $client->createCustomer($customerInput);
 } catch (\BillaBear\PhpSdk\Exception\MissingFieldsException $missingFieldsException) {
@@ -83,7 +83,7 @@ For more info https://swagger.billabear.com/#tag/Customers/operation/showCustome
 <?php
 // ...
 
-$client = Client::createClient($apiKey, $apiUrl);
+$client = \BillaBear\PhpSdk\Client::createClient($apiKey, $apiUrl);
 $customerId = 'id-here';
 
 try {
@@ -122,7 +122,7 @@ $customerInput = [
     ]
 ];
 $customerId = 'id-here';
-$client = Client::createClient($apiKey, $apiUrl);
+$client = \BillaBear\PhpSdk\Client::createClient($apiKey, $apiUrl);
 try {
     $customerData = $client->updateCustomer($customerId, $customerInput);
 } catch (\BillaBear\PhpSdk\Exception\MissingFieldsException $missingFieldsException) {
@@ -143,7 +143,7 @@ try {
 <?php
 // ...
 
-$client = Client::createClient($apiKey, $apiUrl);
+$client = \BillaBear\PhpSdk\Client::createClient($apiKey, $apiUrl);
 $customerId = 'id-here';
 
 try {
@@ -164,7 +164,7 @@ try {
 <?php
 // ...
 
-$client = Client::createClient($apiKey, $apiUrl);
+$client = \BillaBear\PhpSdk\Client::createClient($apiKey, $apiUrl);
 $customerId = 'id-here';
 
 try {
