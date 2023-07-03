@@ -135,4 +135,19 @@ final class Client implements ClientInterface
 
         throw new UnexpectedResponseException($response);
     }
+
+    public function fetchCustomerLimits(string $id): array
+    {
+        $response = $this->requestSender->send('GET', sprintf('/v1/customer/%s/limits', $id));
+
+        if (404 === $response->getStatusCode()) {
+            throw new NotFoundException(sprintf("Can't find customer for id '%d'", $id));
+        }
+
+        if (200 === $response->getStatusCode()) {
+            return $response->getContent();
+        }
+
+        throw new UnexpectedResponseException($response);
+    }
 }
