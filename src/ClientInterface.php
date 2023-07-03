@@ -52,6 +52,13 @@ interface ClientInterface
     public function fetchCustomerLimits(string $id): array;
 
     /**
+     * @throws UnauthorizedException
+     * @throws UnexpectedResponseException
+     * @throws NotFoundException
+     */
+    public function fetchCustomerPayments(string $id): array;
+
+    /**
      * @throws MissingFieldsException
      * @throws ServerValidationException
      * @throws UnauthorizedException
