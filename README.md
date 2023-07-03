@@ -156,3 +156,24 @@ try {
     // Unexpected response error
 }
 ```
+
+### Enable Customer
+
+
+```php
+<?php
+// ...
+
+$client = Client::createClient($apiKey, $apiUrl);
+$customerId = 'id-here';
+
+try {
+    $customerData = $client->enableCustomer($customerId);
+} catch (\BillaBear\PhpSdk\Exception\NotFoundException $exception) {
+    // No such customer
+}  catch (\BillaBear\PhpSdk\Exception\UnauthorizedException $unauthorizedException) {
+    // Authorization error
+} catch (\BillaBear\PhpSdk\Exception\UnexpectedResponseException $unexpectedResponseException) {
+    // Unexpected response error
+}
+```
