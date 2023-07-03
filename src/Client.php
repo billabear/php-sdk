@@ -171,4 +171,25 @@ final class Client implements ClientInterface
 
         throw new UnexpectedResponseException($response);
     }
+
+    public function fetchCustomerRefunds(string $id, int $limit = 25, string $lastKey = null): array
+    {
+        if ($lastKey) {
+            $url = sprintf('/v1/customer/%s/refunds?limit=%d&last_key=%s', $id, $limit, $lastKey);
+        } else {
+            $url = sprintf('/v1/customer/%s/refunds?limit=%d', $id, $limit);
+        }
+
+        $response = $this->requestSender->send('GET', $url);
+
+        if (404 === $response->getStatusCode()) {
+            throw new NotFoundException(sprintf("Can't find customer for id '%d'", $id));
+        }
+
+        if (200 === $response->getStatusCode()) {
+            return $response->getContent();
+        }
+
+        throw new UnexpectedResponseException($response);
+    }
 }
