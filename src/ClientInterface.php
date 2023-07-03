@@ -87,4 +87,11 @@ interface ClientInterface
      * @throws NotFoundException
      */
     public function enableCustomer(string $id): void;
+
+    /**
+     * @throws UnauthorizedException
+     * @throws UnexpectedResponseException
+     * @throws NotFoundException
+     */
+    public function fetchRefund(string $id): array;
 }

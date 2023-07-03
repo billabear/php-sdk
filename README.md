@@ -226,6 +226,8 @@ try {
 
 ### Fetch Customer Refunds
 
+For more info https://swagger.billabear.com/#tag/Customers/operation/v1ListCustomerRefund
+
 ```php
 <?php
 // ...
@@ -237,6 +239,28 @@ $lastKey = null; // Use last key from previous response
 
 try {
     $customerLimits = $client->fetchCustomerRefunds($customerId, $limit, $lastKey);
+} catch (\BillaBear\PhpSdk\Exception\NotFoundException $exception) {
+    // No such customer
+}  catch (\BillaBear\PhpSdk\Exception\UnauthorizedException $unauthorizedException) {
+    // Authorization error
+} catch (\BillaBear\PhpSdk\Exception\UnexpectedResponseException $unexpectedResponseException) {
+    // Unexpected response error
+}
+```
+
+### Fetch Refund Info
+
+For more info https://swagger.billabear.com/#tag/Refunds/operation/v1ShowRefundById
+
+```php
+<?php
+// ...
+
+$client = \BillaBear\PhpSdk\Client::createClient($apiKey, $apiUrl);
+$refundId = 'id-here';
+
+try {
+    $customerData = $client->fetchRefund($refundId);
 } catch (\BillaBear\PhpSdk\Exception\NotFoundException $exception) {
     // No such customer
 }  catch (\BillaBear\PhpSdk\Exception\UnauthorizedException $unauthorizedException) {
