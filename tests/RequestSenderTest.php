@@ -21,6 +21,7 @@
 
 namespace Tests\BillaBear\PhpSdk;
 
+use BillaBear\PhpSdk\Exception\UnauthorizedException;
 use BillaBear\PhpSdk\RequestSender;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientInterface;
@@ -32,6 +33,31 @@ use Psr\Http\Message\StreamInterface;
 
 class RequestSenderTest extends TestCase
 {
+    public function testSendRequestNoBodyUnauthorized()
+    {
+        $this->expectException(UnauthorizedException::class);
+        $url = 'https://localhost';
+        $apiKey = 'api-key';
+        $method = 'POST';
+        $requestUrl = '/api/v1/info';
+
+        $client = $this->createMock(ClientInterface::class);
+        $requestFactory = $this->createMock(RequestFactoryInterface::class);
+        $streamFactory = $this->createMock(StreamFactoryInterface::class);
+        $request = $this->createMock(RequestInterface::class);
+        $response = $this->createMock(ResponseInterface::class);
+        $stream = $this->createMock(StreamInterface::class);
+
+        $requestFactory->method('createRequest')->with($method, $url.$requestUrl)->willReturn($request);
+        $request->method('withHeader')->with('X-API-KEY', $apiKey)->willReturnSelf();
+        $client->expects($this->once())->method('sendRequest')->with($request)->willReturn($response);
+        $response->method('getStatusCode')->willReturn(401);
+        $response->method('getBody')->willReturn($stream);
+
+        $requestSender = new RequestSender($apiKey, $url, $client, $requestFactory, $streamFactory);
+        $response = $requestSender->send($method, $requestUrl);
+    }
+
     public function testSendRequestNoBody()
     {
         $url = 'https://localhost';
