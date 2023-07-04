@@ -94,4 +94,11 @@ interface ClientInterface
      * @throws NotFoundException
      */
     public function fetchRefund(string $id): array;
+
+    /**
+     * @throws UnauthorizedException
+     * @throws UnexpectedResponseException
+     * @throws NotFoundException
+     */
+    public function fetchFrontendToken(string $id): string;
 }

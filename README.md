@@ -269,3 +269,26 @@ try {
     // Unexpected response error
 }
 ```
+
+### Get Stripe.JS token
+
+For more info https://swagger.billabear.com/#tag/PaymentDetails/operation/v1StartFrontendPaymentDetails
+
+```php
+<?php
+// ...
+
+$client = \BillaBear\PhpSdk\Client::createClient($apiKey, $apiUrl);
+$customerId = 'id-here';
+
+try {
+    $customerData = $client->fetchFrontendToken($customerId);
+} catch (\BillaBear\PhpSdk\Exception\NotFoundException $exception) {
+    // No such customer
+}  catch (\BillaBear\PhpSdk\Exception\UnauthorizedException $unauthorizedException) {
+    // Authorization error
+} catch (\BillaBear\PhpSdk\Exception\UnexpectedResponseException $unexpectedResponseException) {
+    // Unexpected response error
+}
+```
+### Process token from Stripe.JS

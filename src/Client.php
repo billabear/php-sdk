@@ -207,4 +207,19 @@ final class Client implements ClientInterface
 
         throw new UnexpectedResponseException($response);
     }
+
+    public function fetchFrontendToken(string $id): string
+    {
+        $response = $this->requestSender->send('GET', sprintf('/v1/customer/%s/payment-methods/frontend-payment-token', $id));
+
+        if (404 === $response->getStatusCode()) {
+            throw new NotFoundException(sprintf("Can't find refund for id '%d'", $id));
+        }
+
+        if (200 === $response->getStatusCode()) {
+            return $response->getContent()['token'];
+        }
+
+        throw new UnexpectedResponseException($response);
+    }
 }
