@@ -110,4 +110,11 @@ interface ClientInterface
      * @throws NotFoundException
      */
     public function completeFrontendToken(string $id, string $token): array;
+
+    /**
+     * @throws UnauthorizedException
+     * @throws UnexpectedResponseException
+     * @throws NotFoundException
+     */
+    public function deletePaymentDetails(string $customerId, string $paymentDetailsId): void;
 }
