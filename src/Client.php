@@ -222,4 +222,32 @@ final class Client implements ClientInterface
 
         throw new UnexpectedResponseException($response);
     }
+
+    public function completeFrontendToken(string $id, string $token): array
+    {
+        $missingFields = [];
+        if (empty($token)) {
+            $missingFields[] = 'token';
+        }
+
+        if (!empty($missingFields)) {
+            throw new MissingFieldsException($missingFields);
+        }
+
+        $response = $this->requestSender->send('POST', sprintf('/v1/customer/%s/payment-methods/frontend-payment-token', $id), ['token' => $token]);
+
+        if (404 === $response->getStatusCode()) {
+            throw new NotFoundException(sprintf("Didn't find customer for '%d'", $id));
+        }
+
+        if (201 === $response->getStatusCode()) {
+            return (array) $response->getContent();
+        }
+
+        if (400 === $response->getStatusCode()) {
+            throw new ServerValidationException($response->getContent()['errors']);
+        }
+
+        throw new UnexpectedResponseException($response);
+    }
 }

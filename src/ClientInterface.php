@@ -101,4 +101,13 @@ interface ClientInterface
      * @throws NotFoundException
      */
     public function fetchFrontendToken(string $id): string;
+
+    /**
+     * @throws MissingFieldsException
+     * @throws ServerValidationException
+     * @throws UnauthorizedException
+     * @throws UnexpectedResponseException
+     * @throws NotFoundException
+     */
+    public function completeFrontendToken(string $id, string $token): array;
 }

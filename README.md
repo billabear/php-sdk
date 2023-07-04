@@ -274,6 +274,8 @@ try {
 
 For more info https://swagger.billabear.com/#tag/PaymentDetails/operation/v1StartFrontendPaymentDetails
 
+For more info on Stripe.JS - https://stripe.com/docs/js
+
 ```php
 <?php
 // ...
@@ -292,3 +294,30 @@ try {
 }
 ```
 ### Process token from Stripe.JS
+
+For more info https://swagger.billabear.com/#tag/PaymentDetails/operation/v1CompleteFrontendPaymentDetails
+
+For more info on Stripe.JS - https://stripe.com/docs/js
+
+```php
+<?php
+// ...
+
+$client = \BillaBear\PhpSdk\Client::createClient($apiKey, $apiUrl);
+$customerId = 'id-here';
+$token = "What we get back from the Stripe.JS response";
+
+try {
+    $customerData = $client->completeFrontendToken($customerId, $token);
+} catch (\BillaBear\PhpSdk\Exception\NotFoundException $exception) {
+    // No such customer
+}  catch (\BillaBear\PhpSdk\Exception\MissingFieldsException $missingFieldsException) {
+    // Local validation error
+} catch (\BillaBear\PhpSdk\Exception\ServerValidationException $serverValidationException) {
+    // Server validation error
+}  catch (\BillaBear\PhpSdk\Exception\UnauthorizedException $unauthorizedException) {
+    // Authorization error
+} catch (\BillaBear\PhpSdk\Exception\UnexpectedResponseException $unexpectedResponseException) {
+    // Unexpected response error
+}
+```
