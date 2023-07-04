@@ -214,7 +214,7 @@ $limit = 25;
 $lastKey = null; // Use last key from previous response
 
 try {
-    $customerLimits = $client->fetchCustomerPayments($customerId, $limit, $lastKey);
+    $customerPayments = $client->fetchCustomerPayments($customerId, $limit, $lastKey);
 } catch (\BillaBear\PhpSdk\Exception\NotFoundException $exception) {
     // No such customer
 }  catch (\BillaBear\PhpSdk\Exception\UnauthorizedException $unauthorizedException) {
@@ -238,7 +238,7 @@ $limit = 25;
 $lastKey = null; // Use last key from previous response
 
 try {
-    $customerLimits = $client->fetchCustomerRefunds($customerId, $limit, $lastKey);
+    $customerRefunds = $client->fetchCustomerRefunds($customerId, $limit, $lastKey);
 } catch (\BillaBear\PhpSdk\Exception\NotFoundException $exception) {
     // No such customer
 }  catch (\BillaBear\PhpSdk\Exception\UnauthorizedException $unauthorizedException) {
@@ -260,7 +260,7 @@ $client = \BillaBear\PhpSdk\Client::createClient($apiKey, $apiUrl);
 $refundId = 'id-here';
 
 try {
-    $customerData = $client->fetchRefund($refundId);
+    $refundData = $client->fetchRefund($refundId);
 } catch (\BillaBear\PhpSdk\Exception\NotFoundException $exception) {
     // No such customer
 }  catch (\BillaBear\PhpSdk\Exception\UnauthorizedException $unauthorizedException) {
@@ -308,7 +308,7 @@ $customerId = 'id-here';
 $token = "What we get back from the Stripe.JS response";
 
 try {
-    $customerData = $client->completeFrontendToken($customerId, $token);
+    $paymentDetailsData = $client->completeFrontendToken($customerId, $token);
 } catch (\BillaBear\PhpSdk\Exception\NotFoundException $exception) {
     // No such customer
 }  catch (\BillaBear\PhpSdk\Exception\MissingFieldsException $missingFieldsException) {
@@ -321,3 +321,4 @@ try {
     // Unexpected response error
 }
 ```
+
