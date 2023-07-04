@@ -265,4 +265,19 @@ final class Client implements ClientInterface
 
         throw new UnexpectedResponseException($response);
     }
+
+    public function makePaymentDetailsDefault(string $customerId, string $paymentDetailsId): void
+    {
+        $response = $this->requestSender->send('POST', sprintf('/v1/customer/%s/payment-methods/%s/default', $customerId, $paymentDetailsId));
+
+        if (404 === $response->getStatusCode()) {
+            throw new NotFoundException(sprintf("Didn't find customer for '%d'", $customerId));
+        }
+
+        if (202 === $response->getStatusCode()) {
+            return;
+        }
+
+        throw new UnexpectedResponseException($response);
+    }
 }

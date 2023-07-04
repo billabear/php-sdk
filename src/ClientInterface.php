@@ -117,4 +117,11 @@ interface ClientInterface
      * @throws NotFoundException
      */
     public function deletePaymentDetails(string $customerId, string $paymentDetailsId): void;
+
+    /**
+     * @throws UnauthorizedException
+     * @throws UnexpectedResponseException
+     * @throws NotFoundException
+     */
+    public function makePaymentDetailsDefault(string $customerId, string $paymentDetailsId): void;
 }
