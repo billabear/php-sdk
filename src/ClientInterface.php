@@ -124,4 +124,13 @@ interface ClientInterface
      * @throws NotFoundException
      */
     public function makePaymentDetailsDefault(string $customerId, string $paymentDetailsId): void;
+
+    /**
+     * @throws MissingFieldsException
+     * @throws ServerValidationException
+     * @throws UnauthorizedException
+     * @throws UnexpectedResponseException
+     * @throws NotFoundException
+     */
+    public function startSubscriptionWithIds(string $customerId, string $subscriptionPlanId, string $priceId): array;
 }
