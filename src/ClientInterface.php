@@ -135,9 +135,18 @@ interface ClientInterface
     public function startSubscriptionWithIds(string $customerId, string $subscriptionPlanId, string $priceId): array;
 
     /**
+     * @throws ServerValidationException
      * @throws UnauthorizedException
      * @throws UnexpectedResponseException
      * @throws NotFoundException
      */
     public function cancelSubscription(string $subscriptionId, string $when = 'instantly', string $refundType = 'none'): void;
+
+    /**
+     * @throws ServerValidationException
+     * @throws UnauthorizedException
+     * @throws UnexpectedResponseException
+     * @throws NotFoundException
+     */
+    public function changeSubscription(string $subscriptionId, string $subscriptionPlanId, string $priceId, string $when = 'none'): void;
 }

@@ -414,3 +414,28 @@ try {
     // Unexpected response error
 }
 ```
+
+### Change Subscription
+
+For more info https://swagger.billabear.com/#tag/Subscriptions/operation/v1CustomerChangeSubscriptionPlan
+
+```php
+<?php
+// ...
+
+$client = \BillaBear\PhpSdk\Client::createClient($apiKey, $apiUrl);
+$subscriptionId = 'id-here';
+$when = 'end-of-run';
+$subscriptionPlanId = "subscription-plan-id";
+$priceId = 'price-id';
+
+try {
+    $client->chaangeSubscription($subscriptionId, $subscriptionPlanId, $priceId, $when);
+} catch (\BillaBear\PhpSdk\Exception\NotFoundException $exception) {
+    // No such customer
+}  catch (\BillaBear\PhpSdk\Exception\UnauthorizedException $unauthorizedException) {
+    // Authorization error
+} catch (\BillaBear\PhpSdk\Exception\UnexpectedResponseException $unexpectedResponseException) {
+    // Unexpected response error
+}
+```

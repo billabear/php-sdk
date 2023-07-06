@@ -318,4 +318,23 @@ final class Client implements ClientInterface
 
         throw new UnexpectedResponseException($response);
     }
+
+    public function changeSubscription(string $subscriptionId, string $subscriptionPlanId, string $priceId, string $when = 'instantly'): void
+    {
+        $response = $this->requestSender->send('POST', sprintf('/v1/subscription/%s/plan', $subscriptionId), ['subscription_plan' => $subscriptionPlanId, 'price' => $priceId, 'when' => $when]);
+
+        if (404 === $response->getStatusCode()) {
+            throw new NotFoundException(sprintf("Didn't find subscription for '%d'", $subscriptionId));
+        }
+
+        if (202 === $response->getStatusCode()) {
+            return;
+        }
+
+        if (400 === $response->getStatusCode()) {
+            throw new ServerValidationException($response->getContent()['errors']);
+        }
+
+        throw new UnexpectedResponseException($response);
+    }
 }
