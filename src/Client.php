@@ -299,4 +299,23 @@ final class Client implements ClientInterface
 
         throw new UnexpectedResponseException($response);
     }
+
+    public function cancelSubscription(string $subscriptionId, string $when = 'end-of-run', string $refundType = 'none'): void
+    {
+        $response = $this->requestSender->send('POST', sprintf('/v1/subscription/%s/cancel', $subscriptionId), ['when' => $when, 'refund_type' => $refundType]);
+
+        if (404 === $response->getStatusCode()) {
+            throw new NotFoundException(sprintf("Didn't find subscription for '%d'", $subscriptionId));
+        }
+
+        if (202 === $response->getStatusCode()) {
+            return;
+        }
+
+        if (400 === $response->getStatusCode()) {
+            throw new ServerValidationException($response->getContent()['errors']);
+        }
+
+        throw new UnexpectedResponseException($response);
+    }
 }

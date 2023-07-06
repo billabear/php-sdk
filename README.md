@@ -369,7 +369,7 @@ try {
 
 ### Start Subscription
 
-For more info https://swagger.billabear.com/#tag/Subscriptions/operation/customerStartSubscription
+For more info https://swagger.billabear.com/#tag/Subscriptions/operation/v1CustomerStartSubscription
 
 ```php
 <?php
@@ -382,6 +382,30 @@ $priceId = 'price-id';
 
 try {
     $client->startSubscriptionWithIds($customerId, $subscriptionPlanId, $priceId);
+} catch (\BillaBear\PhpSdk\Exception\NotFoundException $exception) {
+    // No such customer
+}  catch (\BillaBear\PhpSdk\Exception\UnauthorizedException $unauthorizedException) {
+    // Authorization error
+} catch (\BillaBear\PhpSdk\Exception\UnexpectedResponseException $unexpectedResponseException) {
+    // Unexpected response error
+}
+```
+
+### Cancel Subscription
+
+For more info https://swagger.billabear.com/#tag/Subscriptions/operation/v1CancelSubscription
+
+```php
+<?php
+// ...
+
+$client = \BillaBear\PhpSdk\Client::createClient($apiKey, $apiUrl);
+$subscriptionId = 'id-here';
+$when = 'end-of-run';
+$refundType = 'none';
+
+try {
+    $client->cancelSubscription($subscriptionId, $when, $refundType);
 } catch (\BillaBear\PhpSdk\Exception\NotFoundException $exception) {
     // No such customer
 }  catch (\BillaBear\PhpSdk\Exception\UnauthorizedException $unauthorizedException) {

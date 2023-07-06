@@ -133,4 +133,11 @@ interface ClientInterface
      * @throws NotFoundException
      */
     public function startSubscriptionWithIds(string $customerId, string $subscriptionPlanId, string $priceId): array;
+
+    /**
+     * @throws UnauthorizedException
+     * @throws UnexpectedResponseException
+     * @throws NotFoundException
+     */
+    public function cancelSubscription(string $subscriptionId, string $when = 'instantly', string $refundType = 'none'): void;
 }
