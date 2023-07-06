@@ -337,4 +337,23 @@ final class Client implements ClientInterface
 
         throw new UnexpectedResponseException($response);
     }
+
+    public function fetchSubscription(string $subscriptionId): array
+    {
+        $response = $this->requestSender->send('GET', sprintf('/v1/subscription/%s', $subscriptionId));
+
+        if (404 === $response->getStatusCode()) {
+            throw new NotFoundException(sprintf("Didn't find subscription for '%d'", $subscriptionId));
+        }
+
+        if (200 === $response->getStatusCode()) {
+            return $response->getContent();
+        }
+
+        if (400 === $response->getStatusCode()) {
+            throw new ServerValidationException($response->getContent()['errors']);
+        }
+
+        throw new UnexpectedResponseException($response);
+    }
 }

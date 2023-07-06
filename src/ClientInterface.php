@@ -149,4 +149,11 @@ interface ClientInterface
      * @throws NotFoundException
      */
     public function changeSubscription(string $subscriptionId, string $subscriptionPlanId, string $priceId, string $when = 'none'): void;
+
+    /**
+     * @throws UnauthorizedException
+     * @throws UnexpectedResponseException
+     * @throws NotFoundException
+     */
+    public function fetchSubscription(string $subscriptionId): array;
 }

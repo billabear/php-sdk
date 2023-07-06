@@ -439,3 +439,25 @@ try {
     // Unexpected response error
 }
 ```
+
+### Fetch Subscription Information
+
+For more info https://swagger.billabear.com/#tag/Subscriptions/operation/v1ShowSubscriptionById
+
+```php
+<?php
+// ...
+
+$client = \BillaBear\PhpSdk\Client::createClient($apiKey, $apiUrl);
+$subscriptionId = 'id-here';
+
+try {
+    $subscriptionData =BillaBear\PhpSdk\ $client->fetchSubscription($subscriptionId);
+} catch (\BillaBear\PhpSdk\Exception\NotFoundException $exception) {
+    // No such customer
+}  catch (\BillaBear\PhpSdk\Exception\UnauthorizedException $unauthorizedException) {
+    // Authorization error
+} catch (\BillaBear\PhpSdk\Exception\UnexpectedResponseException $unexpectedResponseException) {
+    // Unexpected response error
+}
+```
