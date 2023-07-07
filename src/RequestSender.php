@@ -48,9 +48,8 @@ final class RequestSender implements RequestSenderInterface
         $request = $this->requestFactory->createRequest($method, $fullUrl);
         $request = $request->withHeader('X-API-KEY', $this->apiKey);
         if ($payload) {
-            $request->withBody($this->streamFactory->createStream(json_encode($payload)));
+            $request = $request->withBody($this->streamFactory->createStream(json_encode($payload)));
         }
-
         $response = $this->client->sendRequest($request);
 
         $jsonData = json_decode($response->getBody()->getContents(), true);
