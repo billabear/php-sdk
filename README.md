@@ -390,6 +390,30 @@ try {
     // Unexpected response error
 }
 ```
+### Start Subscription with codes
+
+For more info https://swagger.billabear.com/#tag/Subscriptions/operation/v1CustomerStartSubscription
+
+```php
+<?php
+// ...
+
+$client = \BillaBear\PhpSdk\Client::createClient($apiKey, $apiUrl);
+$customerId = 'id-here';
+$subscriptionPlanCodeName = "subscription-plan";
+$currency = "USD";
+$schedule = "year";
+
+try {
+    $client->startSubscriptionWithCurrencyAndSchedule($customerId, $subscriptionPlanId, $currency, $schedule);
+} catch (\BillaBear\PhpSdk\Exception\NotFoundException $exception) {
+    // No such customer
+}  catch (\BillaBear\PhpSdk\Exception\UnauthorizedException $unauthorizedException) {
+    // Authorization error
+} catch (\BillaBear\PhpSdk\Exception\UnexpectedResponseException $unexpectedResponseException) {
+    // Unexpected response error
+}
+```
 
 ### Cancel Subscription
 
