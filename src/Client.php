@@ -300,6 +300,25 @@ final class Client implements ClientInterface
         throw new UnexpectedResponseException($response);
     }
 
+    public function startSubscriptionWithCurrencyAndSchedule(string $customerId, string $subscriptionPlan, string $currency, string $schedule): array
+    {
+        $response = $this->requestSender->send('POST', sprintf('/v1/customer/%s/subscription/start', $customerId), ['subscription_plan' => $subscriptionPlan, 'currency' => $currency, 'schedule' => $schedule]);
+
+        if (404 === $response->getStatusCode()) {
+            throw new NotFoundException(sprintf("Didn't find customer for '%d'", $customerId));
+        }
+
+        if (201 === $response->getStatusCode()) {
+            return $response->getContent();
+        }
+
+        if (400 === $response->getStatusCode()) {
+            throw new ServerValidationException($response->getContent()['errors']);
+        }
+
+        throw new UnexpectedResponseException($response);
+    }
+
     public function cancelSubscription(string $subscriptionId, string $when = 'end-of-run', string $refundType = 'none'): void
     {
         $response = $this->requestSender->send('POST', sprintf('/v1/subscription/%s/cancel', $subscriptionId), ['when' => $when, 'refund_type' => $refundType]);

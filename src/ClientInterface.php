@@ -135,6 +135,15 @@ interface ClientInterface
     public function startSubscriptionWithIds(string $customerId, string $subscriptionPlanId, string $priceId): array;
 
     /**
+     * @throws MissingFieldsException
+     * @throws ServerValidationException
+     * @throws UnauthorizedException
+     * @throws UnexpectedResponseException
+     * @throws NotFoundException
+     */
+    public function startSubscriptionWithCurrencyAndSchedule(string $customerId, string $subscriptionPlan, string $currency, string $schedule): array;
+
+    /**
      * @throws ServerValidationException
      * @throws UnauthorizedException
      * @throws UnexpectedResponseException
