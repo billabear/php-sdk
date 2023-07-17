@@ -34,7 +34,7 @@ final class Client implements ClientInterface
 
     public static function createClient(string $apiKey, string $apiUrl, string $urlPrefix = 'api'): self
     {
-        $requestSender = new RequestSender($apiKey, rtrim($apiUrl, '/').$urlPrefix);
+        $requestSender = new RequestSender($apiKey, rtrim($apiUrl, '/').'/'.$urlPrefix);
 
         return new self($requestSender);
     }
