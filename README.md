@@ -29,7 +29,7 @@ composer require billabear/php-sdk symfony/http-client nyholm/psr7
 use BillaBear\PhpSdk\Client;
 
 $apiKey = "example-key"; // Fetch one from BillaBear's application.
-$apiUrl = "http://billabear.example.org/api"; // The URL the API is available at.
+$apiUrl = "http://billabear.example.org/"; // The URL the API is available at.
 
 $client = Client::createClient($apiKey, $apiUrl);
 ```
