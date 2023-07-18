@@ -23,6 +23,7 @@ namespace BillaBear\PhpSdk;
 
 use BillaBear\PhpSdk\Exception\MissingFieldsException;
 use BillaBear\PhpSdk\Exception\NotFoundException;
+use BillaBear\PhpSdk\Exception\PaymentFailureException;
 use BillaBear\PhpSdk\Exception\ServerValidationException;
 use BillaBear\PhpSdk\Exception\UnexpectedResponseException;
 
@@ -314,6 +315,10 @@ final class Client implements ClientInterface
 
         if (400 === $response->getStatusCode()) {
             throw new ServerValidationException($response->getContent()['errors']);
+        }
+
+        if (402 === $response->getStatusCode()) {
+            throw new PaymentFailureException();
         }
 
         throw new UnexpectedResponseException($response);
