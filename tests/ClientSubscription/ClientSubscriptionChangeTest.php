@@ -36,7 +36,7 @@ class ClientSubscriptionChangeTest extends TestCase
         $requestSender = $this->createMock(RequestSenderInterface::class);
         $expected = ['id' => 'subscription-id'];
         $response = new Response(404, $expected);
-        $requestSender->expects($this->once())->method('send')->with('POST', '/v1/subscription/subscription-id-here/plan', ['subscription_plan' => 'plan-id', 'price' => 'price-id', 'when' => 'instantly'])->willReturn($response);
+        $requestSender->expects($this->once())->method('send')->with('POST', '/v1/subscription/subscription-id-here/plan', ['plan' => 'plan-id', 'price' => 'price-id', 'when' => 'instantly'])->willReturn($response);
 
         $client = new Client($requestSender);
         $client->changeSubscription('subscription-id-here', 'plan-id', 'price-id');
@@ -48,7 +48,7 @@ class ClientSubscriptionChangeTest extends TestCase
         $requestSender = $this->createMock(RequestSenderInterface::class);
         $expected = ['id' => 'subscription-id'];
         $response = new Response(500, $expected);
-        $requestSender->expects($this->once())->method('send')->with('POST', '/v1/subscription/subscription-id-here/plan', ['subscription_plan' => 'plan-id', 'price' => 'price-id', 'when' => 'instantly'])->willReturn($response);
+        $requestSender->expects($this->once())->method('send')->with('POST', '/v1/subscription/subscription-id-here/plan', ['plan' => 'plan-id', 'price' => 'price-id', 'when' => 'instantly'])->willReturn($response);
 
         $client = new Client($requestSender);
         $client->changeSubscription('subscription-id-here', 'plan-id', 'price-id');
@@ -70,7 +70,7 @@ class ClientSubscriptionChangeTest extends TestCase
         $requestSender = $this->createMock(RequestSenderInterface::class);
         $expected = ['id' => 'subscription-id'];
         $response = new Response(202, $expected);
-        $requestSender->expects($this->once())->method('send')->with('POST', '/v1/subscription/subscription-id-here/plan', ['subscription_plan' => 'plan-id', 'price' => 'price-id', 'when' => 'instantly'])->willReturn($response);
+        $requestSender->expects($this->once())->method('send')->with('POST', '/v1/subscription/subscription-id-here/plan', ['plan' => 'plan-id', 'price' => 'price-id', 'when' => 'instantly'])->willReturn($response);
 
         $client = new Client($requestSender);
         $client->changeSubscription('subscription-id-here', 'plan-id', 'price-id');
@@ -81,7 +81,7 @@ class ClientSubscriptionChangeTest extends TestCase
         $requestSender = $this->createMock(RequestSenderInterface::class);
         $expected = ['id' => 'subscription-id'];
         $response = new Response(202, $expected);
-        $requestSender->expects($this->once())->method('send')->with('POST', '/v1/subscription/subscription-id-here/plan', ['subscription_plan' => 'plan-id', 'price' => 'price-id', 'when' => 'end-of-run'])->willReturn($response);
+        $requestSender->expects($this->once())->method('send')->with('POST', '/v1/subscription/subscription-id-here/plan', ['plan' => 'plan-id', 'price' => 'price-id', 'when' => 'end-of-run'])->willReturn($response);
 
         $client = new Client($requestSender);
         $client->changeSubscription('subscription-id-here', 'plan-id', 'price-id', 'end-of-run');
