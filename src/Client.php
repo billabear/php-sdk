@@ -282,6 +282,21 @@ final class Client implements ClientInterface
         throw new UnexpectedResponseException($response);
     }
 
+    public function fetchPaymentDetails(string $customerId): array
+    {
+        $response = $this->requestSender->send('GET', sprintf('/v1/customer/%s/payment-details', $customerId));
+
+        if (404 === $response->getStatusCode()) {
+            throw new NotFoundException(sprintf("Didn't find customer for '%d'", $customerId));
+        }
+
+        if (200 === $response->getStatusCode()) {
+            return $response->getContent();
+        }
+
+        throw new UnexpectedResponseException($response);
+    }
+
     public function startSubscriptionWithIds(string $customerId, string $subscriptionPlanId, string $priceId): array
     {
         $response = $this->requestSender->send('POST', sprintf('/v1/customer/%s/subscription/start', $customerId), ['subscription_plan' => $subscriptionPlanId, 'price' => $priceId]);
