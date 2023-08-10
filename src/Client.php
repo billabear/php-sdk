@@ -284,7 +284,7 @@ final class Client implements ClientInterface
 
     public function fetchPaymentDetails(string $customerId): array
     {
-        $response = $this->requestSender->send('GET', sprintf('/v1/customer/%s/payment-details', $customerId));
+        $response = $this->requestSender->send('GET', sprintf('/v1/customer/%s/payment-methods', $customerId));
 
         if (404 === $response->getStatusCode()) {
             throw new NotFoundException(sprintf("Didn't find customer for '%d'", $customerId));
