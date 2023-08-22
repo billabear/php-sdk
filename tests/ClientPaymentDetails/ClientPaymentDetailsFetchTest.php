@@ -37,7 +37,7 @@ class ClientPaymentDetailsFetchTest extends TestCase
         $expected = [];
         $response = new Response(404, $expected);
 
-        $requestSender->expects($this->once())->method('send')->with('GET', '/v1/customer/id-here/payment-details')->willReturn($response);
+        $requestSender->expects($this->once())->method('send')->with('GET', '/v1/customer/id-here/payment-methods')->willReturn($response);
 
         $client = new Client($requestSender);
         $client->fetchPaymentDetails('id-here');
@@ -50,7 +50,7 @@ class ClientPaymentDetailsFetchTest extends TestCase
         $expected = [];
         $response = new Response(500, $expected);
 
-        $requestSender->expects($this->once())->method('send')->with('GET', '/v1/customer/id-here/payment-details')->willReturn($response);
+        $requestSender->expects($this->once())->method('send')->with('GET', '/v1/customer/id-here/payment-methods')->willReturn($response);
 
         $client = new Client($requestSender);
         $client->fetchPaymentDetails('id-here');
@@ -61,7 +61,7 @@ class ClientPaymentDetailsFetchTest extends TestCase
         $requestSender = $this->createMock(RequestSenderInterface::class);
         $expected = ['limits' => ['limit' => 1], 'features' => ['feature_one'], 'user_count' => 10];
         $response = new Response(200, $expected);
-        $requestSender->expects($this->once())->method('send')->with('GET', '/v1/customer/id-here/payment-details')->willReturn($response);
+        $requestSender->expects($this->once())->method('send')->with('GET', '/v1/customer/id-here/payment-methods')->willReturn($response);
 
         $client = new Client($requestSender);
         $actual = $client->fetchPaymentDetails('id-here');
