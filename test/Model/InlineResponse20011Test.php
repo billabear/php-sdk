@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  BillaBear
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -26,7 +26,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace Swagger\Client;
+namespace BillaBear;
 
 use PHPUnit\Framework\TestCase;
 
@@ -35,7 +35,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description InlineResponse20011
- * @package     Swagger\Client
+ * @package     BillaBear
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
@@ -78,9 +78,23 @@ class InlineResponse20011Test extends TestCase
     }
 
     /**
-     * Test attribute "success"
+     * Test attribute "data"
      */
-    public function testPropertySuccess()
+    public function testPropertyData()
+    {
+    }
+
+    /**
+     * Test attribute "has_more"
+     */
+    public function testPropertyHasMore()
+    {
+    }
+
+    /**
+     * Test attribute "last_key"
+     */
+    public function testPropertyLastKey()
     {
     }
 }

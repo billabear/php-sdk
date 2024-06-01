@@ -1,11 +1,10 @@
-# InlineResponse20011
+# Limit
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\BillaBear\Model\SubscriptionPlan[]**](SubscriptionPlan.md) |  | [optional] 
-**has_more** | **bool** |  | [optional] 
-**last_key** | **string** |  | [optional] 
+**feature** | [**\BillaBear\Model\Feature**](Feature.md) |  | [optional] 
+**limit** | [**Int**](Int.md) |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

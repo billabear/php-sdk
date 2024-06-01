@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20011
+ * Limit
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \BillaBear\ObjectSerializer;
 
 /**
- * InlineResponse20011 Class Doc Comment
+ * Limit Class Doc Comment
  *
  * @category Class
  * @package  BillaBear
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse20011 implements ModelInterface, ArrayAccess
+class Limit implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class InlineResponse20011 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'inline_response_200_11';
+    protected static $swaggerModelName = 'Limit';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,9 +56,8 @@ class InlineResponse20011 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'data' => '\BillaBear\Model\SubscriptionPlan[]',
-        'has_more' => 'bool',
-        'last_key' => 'string'
+        'feature' => '\BillaBear\Model\Feature',
+        'limit' => 'Int'
     ];
 
     /**
@@ -67,9 +66,8 @@ class InlineResponse20011 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'data' => null,
-        'has_more' => null,
-        'last_key' => 'uuid'
+        'feature' => null,
+        'limit' => null
     ];
 
     /**
@@ -99,9 +97,8 @@ class InlineResponse20011 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'has_more' => 'has_more',
-        'last_key' => 'last_key'
+        'feature' => 'feature',
+        'limit' => 'limit'
     ];
 
     /**
@@ -110,9 +107,8 @@ class InlineResponse20011 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'has_more' => 'setHasMore',
-        'last_key' => 'setLastKey'
+        'feature' => 'setFeature',
+        'limit' => 'setLimit'
     ];
 
     /**
@@ -121,9 +117,8 @@ class InlineResponse20011 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'has_more' => 'getHasMore',
-        'last_key' => 'getLastKey'
+        'feature' => 'getFeature',
+        'limit' => 'getLimit'
     ];
 
     /**
@@ -184,9 +179,8 @@ class InlineResponse20011 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
-        $this->container['has_more'] = isset($data['has_more']) ? $data['has_more'] : null;
-        $this->container['last_key'] = isset($data['last_key']) ? $data['last_key'] : null;
+        $this->container['feature'] = isset($data['feature']) ? $data['feature'] : null;
+        $this->container['limit'] = isset($data['limit']) ? $data['limit'] : null;
     }
 
     /**
@@ -214,73 +208,49 @@ class InlineResponse20011 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets data
+     * Gets feature
      *
-     * @return \BillaBear\Model\SubscriptionPlan[]
+     * @return \BillaBear\Model\Feature
      */
-    public function getData()
+    public function getFeature()
     {
-        return $this->container['data'];
+        return $this->container['feature'];
     }
 
     /**
-     * Sets data
+     * Sets feature
      *
-     * @param \BillaBear\Model\SubscriptionPlan[] $data data
+     * @param \BillaBear\Model\Feature $feature feature
      *
      * @return $this
      */
-    public function setData($data)
+    public function setFeature($feature)
     {
-        $this->container['data'] = $data;
+        $this->container['feature'] = $feature;
 
         return $this;
     }
 
     /**
-     * Gets has_more
+     * Gets limit
      *
-     * @return bool
+     * @return Int
      */
-    public function getHasMore()
+    public function getLimit()
     {
-        return $this->container['has_more'];
+        return $this->container['limit'];
     }
 
     /**
-     * Sets has_more
+     * Sets limit
      *
-     * @param bool $has_more has_more
+     * @param Int $limit limit
      *
      * @return $this
      */
-    public function setHasMore($has_more)
+    public function setLimit($limit)
     {
-        $this->container['has_more'] = $has_more;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_key
-     *
-     * @return string
-     */
-    public function getLastKey()
-    {
-        return $this->container['last_key'];
-    }
-
-    /**
-     * Sets last_key
-     *
-     * @param string $last_key last_key
-     *
-     * @return $this
-     */
-    public function setLastKey($last_key)
-    {
-        $this->container['last_key'] = $last_key;
+        $this->container['limit'] = $limit;
 
         return $this;
     }

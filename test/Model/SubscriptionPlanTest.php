@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  BillaBear
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -26,7 +26,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace Swagger\Client;
+namespace BillaBear;
 
 use PHPUnit\Framework\TestCase;
 
@@ -35,7 +35,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description SubscriptionPlan
- * @package     Swagger\Client
+ * @package     BillaBear
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
@@ -88,6 +88,76 @@ class SubscriptionPlanTest extends TestCase
      * Test attribute "name"
      */
     public function testPropertyName()
+    {
+    }
+
+    /**
+     * Test attribute "code_name"
+     */
+    public function testPropertyCodeName()
+    {
+    }
+
+    /**
+     * Test attribute "user_count"
+     */
+    public function testPropertyUserCount()
+    {
+    }
+
+    /**
+     * Test attribute "per_seat"
+     */
+    public function testPropertyPerSeat()
+    {
+    }
+
+    /**
+     * Test attribute "has_trial"
+     */
+    public function testPropertyHasTrial()
+    {
+    }
+
+    /**
+     * Test attribute "free"
+     */
+    public function testPropertyFree()
+    {
+    }
+
+    /**
+     * Test attribute "public"
+     */
+    public function testPropertyPublic()
+    {
+    }
+
+    /**
+     * Test attribute "limits"
+     */
+    public function testPropertyLimits()
+    {
+    }
+
+    /**
+     * Test attribute "features"
+     */
+    public function testPropertyFeatures()
+    {
+    }
+
+    /**
+     * Test attribute "product"
+     */
+    public function testPropertyProduct()
+    {
+    }
+
+    /**
+     * Test attribute "prices"
+     */
+    public function testPropertyPrices()
     {
     }
 }

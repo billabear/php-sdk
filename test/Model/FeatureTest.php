@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2008Test
+ * FeatureTest
  *
  * PHP version 5
  *
@@ -31,15 +31,15 @@ namespace BillaBear;
 use PHPUnit\Framework\TestCase;
 
 /**
- * InlineResponse2008Test Class Doc Comment
+ * FeatureTest Class Doc Comment
  *
  * @category    Class
- * @description InlineResponse2008
+ * @description Feature
  * @package     BillaBear
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse2008Test extends TestCase
+class FeatureTest extends TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class InlineResponse2008Test extends TestCase
     }
 
     /**
-     * Test "InlineResponse2008"
+     * Test "Feature"
      */
-    public function testInlineResponse2008()
+    public function testFeature()
     {
     }
 
@@ -85,65 +85,23 @@ class InlineResponse2008Test extends TestCase
     }
 
     /**
-     * Test attribute "amount"
+     * Test attribute "name"
      */
-    public function testPropertyAmount()
+    public function testPropertyName()
     {
     }
 
     /**
-     * Test attribute "currency"
+     * Test attribute "code"
      */
-    public function testPropertyCurrency()
+    public function testPropertyCode()
     {
     }
 
     /**
-     * Test attribute "external_reference"
+     * Test attribute "description"
      */
-    public function testPropertyExternalReference()
-    {
-    }
-
-    /**
-     * Test attribute "comment"
-     */
-    public function testPropertyComment()
-    {
-    }
-
-    /**
-     * Test attribute "status"
-     */
-    public function testPropertyStatus()
-    {
-    }
-
-    /**
-     * Test attribute "created_at"
-     */
-    public function testPropertyCreatedAt()
-    {
-    }
-
-    /**
-     * Test attribute "payment"
-     */
-    public function testPropertyPayment()
-    {
-    }
-
-    /**
-     * Test attribute "customer"
-     */
-    public function testPropertyCustomer()
-    {
-    }
-
-    /**
-     * Test attribute "billing_admin"
-     */
-    public function testPropertyBillingAdmin()
+    public function testPropertyDescription()
     {
     }
 }

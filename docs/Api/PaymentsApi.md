@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**refundPayment**](PaymentsApi.md#refundpayment) | **POST** /payment/{paymentId}/refund | Refund Payment
 
 # **chargeInvoice**
-> \BillaBear\Model\InlineResponse20011 chargeInvoice($invoice_id)
+> \BillaBear\Model\InlineResponse20012 chargeInvoice($invoice_id)
 
 Charge Invoice
 
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
+[**\BillaBear\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
 
 ### Authorization
 

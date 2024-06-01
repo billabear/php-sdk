@@ -21,7 +21,7 @@ Method | HTTP request | Description
 [**updateCustomer**](CustomersApi.md#updatecustomer) | **PUT** /customer/{customerId} | Update
 
 # **addSeatsSubscriptions**
-> \BillaBear\Model\InlineResponse20011 addSeatsSubscriptions($body, $customer_id)
+> \BillaBear\Model\InlineResponse20012 addSeatsSubscriptions($body, $customer_id)
 
 Add Seats
 
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
+[**\BillaBear\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
 
 ### Authorization
 
@@ -695,7 +695,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **removeSeatsSubscriptions**
-> \BillaBear\Model\InlineResponse20011 removeSeatsSubscriptions($body, $customer_id)
+> \BillaBear\Model\InlineResponse20012 removeSeatsSubscriptions($body, $customer_id)
 
 Remove Seats
 
@@ -737,7 +737,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
+[**\BillaBear\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
 
 ### Authorization
 

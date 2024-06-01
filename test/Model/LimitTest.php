@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2008Test
+ * LimitTest
  *
  * PHP version 5
  *
@@ -31,15 +31,15 @@ namespace BillaBear;
 use PHPUnit\Framework\TestCase;
 
 /**
- * InlineResponse2008Test Class Doc Comment
+ * LimitTest Class Doc Comment
  *
  * @category    Class
- * @description InlineResponse2008
+ * @description Limit
  * @package     BillaBear
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse2008Test extends TestCase
+class LimitTest extends TestCase
 {
 
     /**
@@ -71,79 +71,23 @@ class InlineResponse2008Test extends TestCase
     }
 
     /**
-     * Test "InlineResponse2008"
+     * Test "Limit"
      */
-    public function testInlineResponse2008()
+    public function testLimit()
     {
     }
 
     /**
-     * Test attribute "id"
+     * Test attribute "feature"
      */
-    public function testPropertyId()
+    public function testPropertyFeature()
     {
     }
 
     /**
-     * Test attribute "amount"
+     * Test attribute "limit"
      */
-    public function testPropertyAmount()
-    {
-    }
-
-    /**
-     * Test attribute "currency"
-     */
-    public function testPropertyCurrency()
-    {
-    }
-
-    /**
-     * Test attribute "external_reference"
-     */
-    public function testPropertyExternalReference()
-    {
-    }
-
-    /**
-     * Test attribute "comment"
-     */
-    public function testPropertyComment()
-    {
-    }
-
-    /**
-     * Test attribute "status"
-     */
-    public function testPropertyStatus()
-    {
-    }
-
-    /**
-     * Test attribute "created_at"
-     */
-    public function testPropertyCreatedAt()
-    {
-    }
-
-    /**
-     * Test attribute "payment"
-     */
-    public function testPropertyPayment()
-    {
-    }
-
-    /**
-     * Test attribute "customer"
-     */
-    public function testPropertyCustomer()
-    {
-    }
-
-    /**
-     * Test attribute "billing_admin"
-     */
-    public function testPropertyBillingAdmin()
+    public function testPropertyLimit()
     {
     }
 }

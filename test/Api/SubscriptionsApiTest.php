@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  BillaBear
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -25,18 +25,18 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace Swagger\Client;
+namespace BillaBear;
 
-use Swagger\Client\Configuration;
-use Swagger\Client\ApiException;
-use Swagger\Client\ObjectSerializer;
+use BillaBear\Configuration;
+use BillaBear\ApiException;
+use BillaBear\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
  * SubscriptionsApiTest Class Doc Comment
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  BillaBear
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -118,6 +118,16 @@ class SubscriptionsApiTest extends TestCase
      *
      */
     public function testListCustomnerSubscriptions()
+    {
+    }
+
+    /**
+     * Test case for listSubscriptionPlans
+     *
+     * List Subscription Plans.
+     *
+     */
+    public function testListSubscriptionPlans()
     {
     }
 

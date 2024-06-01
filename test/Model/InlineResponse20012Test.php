@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2008Test
+ * InlineResponse20012Test
  *
  * PHP version 5
  *
@@ -31,15 +31,15 @@ namespace BillaBear;
 use PHPUnit\Framework\TestCase;
 
 /**
- * InlineResponse2008Test Class Doc Comment
+ * InlineResponse20012Test Class Doc Comment
  *
  * @category    Class
- * @description InlineResponse2008
+ * @description InlineResponse20012
  * @package     BillaBear
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse2008Test extends TestCase
+class InlineResponse20012Test extends TestCase
 {
 
     /**
@@ -71,79 +71,16 @@ class InlineResponse2008Test extends TestCase
     }
 
     /**
-     * Test "InlineResponse2008"
+     * Test "InlineResponse20012"
      */
-    public function testInlineResponse2008()
+    public function testInlineResponse20012()
     {
     }
 
     /**
-     * Test attribute "id"
+     * Test attribute "success"
      */
-    public function testPropertyId()
-    {
-    }
-
-    /**
-     * Test attribute "amount"
-     */
-    public function testPropertyAmount()
-    {
-    }
-
-    /**
-     * Test attribute "currency"
-     */
-    public function testPropertyCurrency()
-    {
-    }
-
-    /**
-     * Test attribute "external_reference"
-     */
-    public function testPropertyExternalReference()
-    {
-    }
-
-    /**
-     * Test attribute "comment"
-     */
-    public function testPropertyComment()
-    {
-    }
-
-    /**
-     * Test attribute "status"
-     */
-    public function testPropertyStatus()
-    {
-    }
-
-    /**
-     * Test attribute "created_at"
-     */
-    public function testPropertyCreatedAt()
-    {
-    }
-
-    /**
-     * Test attribute "payment"
-     */
-    public function testPropertyPayment()
-    {
-    }
-
-    /**
-     * Test attribute "customer"
-     */
-    public function testPropertyCustomer()
-    {
-    }
-
-    /**
-     * Test attribute "billing_admin"
-     */
-    public function testPropertyBillingAdmin()
+    public function testPropertySuccess()
     {
     }
 }

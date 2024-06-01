@@ -95,7 +95,7 @@ class PaymentsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \BillaBear\Model\InlineResponse20011
+     * @return \BillaBear\Model\InlineResponse20012
      */
     public function chargeInvoice($invoice_id)
     {
@@ -112,11 +112,11 @@ class PaymentsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \BillaBear\Model\InlineResponse20011, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BillaBear\Model\InlineResponse20012, HTTP status code, HTTP response headers (array of strings)
      */
     public function chargeInvoiceWithHttpInfo($invoice_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse20011';
+        $returnType = '\BillaBear\Model\InlineResponse20012';
         $request = $this->chargeInvoiceRequest($invoice_id);
 
         try {
@@ -168,7 +168,7 @@ class PaymentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\BillaBear\Model\InlineResponse20011',
+                        '\BillaBear\Model\InlineResponse20012',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -226,7 +226,7 @@ class PaymentsApi
      */
     public function chargeInvoiceAsyncWithHttpInfo($invoice_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse20011';
+        $returnType = '\BillaBear\Model\InlineResponse20012';
         $request = $this->chargeInvoiceRequest($invoice_id);
 
         return $this->client

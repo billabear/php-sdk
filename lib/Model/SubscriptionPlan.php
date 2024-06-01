@@ -57,7 +57,17 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'id' => 'string',
-        'name' => 'string'
+        'name' => 'string',
+        'code_name' => 'string',
+        'user_count' => 'Int',
+        'per_seat' => 'bool',
+        'has_trial' => 'bool',
+        'free' => 'bool',
+        'public' => 'bool',
+        'limits' => '\BillaBear\Model\Limit[]',
+        'features' => '\BillaBear\Model\Feature[]',
+        'product' => 'Product',
+        'prices' => '\BillaBear\Model\Price[]'
     ];
 
     /**
@@ -67,7 +77,17 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'id' => 'uuid',
-        'name' => null
+        'name' => null,
+        'code_name' => null,
+        'user_count' => null,
+        'per_seat' => null,
+        'has_trial' => null,
+        'free' => null,
+        'public' => null,
+        'limits' => null,
+        'features' => null,
+        'product' => null,
+        'prices' => null
     ];
 
     /**
@@ -98,7 +118,17 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'name' => 'name'
+        'name' => 'name',
+        'code_name' => 'code_name',
+        'user_count' => 'user_count',
+        'per_seat' => 'per_seat',
+        'has_trial' => 'has_trial',
+        'free' => 'free',
+        'public' => 'public',
+        'limits' => 'limits',
+        'features' => 'features',
+        'product' => 'product',
+        'prices' => 'prices'
     ];
 
     /**
@@ -108,7 +138,17 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
-        'name' => 'setName'
+        'name' => 'setName',
+        'code_name' => 'setCodeName',
+        'user_count' => 'setUserCount',
+        'per_seat' => 'setPerSeat',
+        'has_trial' => 'setHasTrial',
+        'free' => 'setFree',
+        'public' => 'setPublic',
+        'limits' => 'setLimits',
+        'features' => 'setFeatures',
+        'product' => 'setProduct',
+        'prices' => 'setPrices'
     ];
 
     /**
@@ -118,7 +158,17 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
-        'name' => 'getName'
+        'name' => 'getName',
+        'code_name' => 'getCodeName',
+        'user_count' => 'getUserCount',
+        'per_seat' => 'getPerSeat',
+        'has_trial' => 'getHasTrial',
+        'free' => 'getFree',
+        'public' => 'getPublic',
+        'limits' => 'getLimits',
+        'features' => 'getFeatures',
+        'product' => 'getProduct',
+        'prices' => 'getPrices'
     ];
 
     /**
@@ -181,6 +231,16 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['code_name'] = isset($data['code_name']) ? $data['code_name'] : null;
+        $this->container['user_count'] = isset($data['user_count']) ? $data['user_count'] : null;
+        $this->container['per_seat'] = isset($data['per_seat']) ? $data['per_seat'] : null;
+        $this->container['has_trial'] = isset($data['has_trial']) ? $data['has_trial'] : null;
+        $this->container['free'] = isset($data['free']) ? $data['free'] : null;
+        $this->container['public'] = isset($data['public']) ? $data['public'] : null;
+        $this->container['limits'] = isset($data['limits']) ? $data['limits'] : null;
+        $this->container['features'] = isset($data['features']) ? $data['features'] : null;
+        $this->container['product'] = isset($data['product']) ? $data['product'] : null;
+        $this->container['prices'] = isset($data['prices']) ? $data['prices'] : null;
     }
 
     /**
@@ -251,6 +311,246 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets code_name
+     *
+     * @return string
+     */
+    public function getCodeName()
+    {
+        return $this->container['code_name'];
+    }
+
+    /**
+     * Sets code_name
+     *
+     * @param string $code_name code_name
+     *
+     * @return $this
+     */
+    public function setCodeName($code_name)
+    {
+        $this->container['code_name'] = $code_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_count
+     *
+     * @return Int
+     */
+    public function getUserCount()
+    {
+        return $this->container['user_count'];
+    }
+
+    /**
+     * Sets user_count
+     *
+     * @param Int $user_count user_count
+     *
+     * @return $this
+     */
+    public function setUserCount($user_count)
+    {
+        $this->container['user_count'] = $user_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets per_seat
+     *
+     * @return bool
+     */
+    public function getPerSeat()
+    {
+        return $this->container['per_seat'];
+    }
+
+    /**
+     * Sets per_seat
+     *
+     * @param bool $per_seat per_seat
+     *
+     * @return $this
+     */
+    public function setPerSeat($per_seat)
+    {
+        $this->container['per_seat'] = $per_seat;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_trial
+     *
+     * @return bool
+     */
+    public function getHasTrial()
+    {
+        return $this->container['has_trial'];
+    }
+
+    /**
+     * Sets has_trial
+     *
+     * @param bool $has_trial has_trial
+     *
+     * @return $this
+     */
+    public function setHasTrial($has_trial)
+    {
+        $this->container['has_trial'] = $has_trial;
+
+        return $this;
+    }
+
+    /**
+     * Gets free
+     *
+     * @return bool
+     */
+    public function getFree()
+    {
+        return $this->container['free'];
+    }
+
+    /**
+     * Sets free
+     *
+     * @param bool $free free
+     *
+     * @return $this
+     */
+    public function setFree($free)
+    {
+        $this->container['free'] = $free;
+
+        return $this;
+    }
+
+    /**
+     * Gets public
+     *
+     * @return bool
+     */
+    public function getPublic()
+    {
+        return $this->container['public'];
+    }
+
+    /**
+     * Sets public
+     *
+     * @param bool $public public
+     *
+     * @return $this
+     */
+    public function setPublic($public)
+    {
+        $this->container['public'] = $public;
+
+        return $this;
+    }
+
+    /**
+     * Gets limits
+     *
+     * @return \BillaBear\Model\Limit[]
+     */
+    public function getLimits()
+    {
+        return $this->container['limits'];
+    }
+
+    /**
+     * Sets limits
+     *
+     * @param \BillaBear\Model\Limit[] $limits limits
+     *
+     * @return $this
+     */
+    public function setLimits($limits)
+    {
+        $this->container['limits'] = $limits;
+
+        return $this;
+    }
+
+    /**
+     * Gets features
+     *
+     * @return \BillaBear\Model\Feature[]
+     */
+    public function getFeatures()
+    {
+        return $this->container['features'];
+    }
+
+    /**
+     * Sets features
+     *
+     * @param \BillaBear\Model\Feature[] $features features
+     *
+     * @return $this
+     */
+    public function setFeatures($features)
+    {
+        $this->container['features'] = $features;
+
+        return $this;
+    }
+
+    /**
+     * Gets product
+     *
+     * @return Product
+     */
+    public function getProduct()
+    {
+        return $this->container['product'];
+    }
+
+    /**
+     * Sets product
+     *
+     * @param Product $product product
+     *
+     * @return $this
+     */
+    public function setProduct($product)
+    {
+        $this->container['product'] = $product;
+
+        return $this;
+    }
+
+    /**
+     * Gets prices
+     *
+     * @return \BillaBear\Model\Price[]
+     */
+    public function getPrices()
+    {
+        return $this->container['prices'];
+    }
+
+    /**
+     * Sets prices
+     *
+     * @param \BillaBear\Model\Price[] $prices prices
+     *
+     * @return $this
+     */
+    public function setPrices($prices)
+    {
+        $this->container['prices'] = $prices;
 
         return $this;
     }
