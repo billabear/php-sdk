@@ -195,6 +195,7 @@ class Price implements ModelInterface, ArrayAccess
     const SCHEDULE_WEEK = 'week';
     const SCHEDULE_MONTH = 'month';
     const SCHEDULE_YEAR = 'year';
+    const SCHEDULE_ONE_OFF = 'one-off';
 
     /**
      * Gets allowable values of the enum
@@ -207,6 +208,7 @@ class Price implements ModelInterface, ArrayAccess
             self::SCHEDULE_WEEK,
             self::SCHEDULE_MONTH,
             self::SCHEDULE_YEAR,
+            self::SCHEDULE_ONE_OFF,
         ];
     }
 
