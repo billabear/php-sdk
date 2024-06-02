@@ -67,7 +67,8 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
         'limits' => '\BillaBear\Model\Limit[]',
         'features' => '\BillaBear\Model\Feature[]',
         'product' => '\BillaBear\Model\Product',
-        'prices' => '\BillaBear\Model\Price[]'
+        'prices' => '\BillaBear\Model\Price[]',
+        'trial_length_days' => 'int'
     ];
 
     /**
@@ -87,7 +88,8 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
         'limits' => null,
         'features' => null,
         'product' => null,
-        'prices' => null
+        'prices' => null,
+        'trial_length_days' => null
     ];
 
     /**
@@ -128,7 +130,8 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
         'limits' => 'limits',
         'features' => 'features',
         'product' => 'product',
-        'prices' => 'prices'
+        'prices' => 'prices',
+        'trial_length_days' => 'trial_length_days'
     ];
 
     /**
@@ -148,7 +151,8 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
         'limits' => 'setLimits',
         'features' => 'setFeatures',
         'product' => 'setProduct',
-        'prices' => 'setPrices'
+        'prices' => 'setPrices',
+        'trial_length_days' => 'setTrialLengthDays'
     ];
 
     /**
@@ -168,7 +172,8 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
         'limits' => 'getLimits',
         'features' => 'getFeatures',
         'product' => 'getProduct',
-        'prices' => 'getPrices'
+        'prices' => 'getPrices',
+        'trial_length_days' => 'getTrialLengthDays'
     ];
 
     /**
@@ -241,6 +246,7 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
         $this->container['features'] = isset($data['features']) ? $data['features'] : null;
         $this->container['product'] = isset($data['product']) ? $data['product'] : null;
         $this->container['prices'] = isset($data['prices']) ? $data['prices'] : null;
+        $this->container['trial_length_days'] = isset($data['trial_length_days']) ? $data['trial_length_days'] : null;
     }
 
     /**
@@ -551,6 +557,30 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
     public function setPrices($prices)
     {
         $this->container['prices'] = $prices;
+
+        return $this;
+    }
+
+    /**
+     * Gets trial_length_days
+     *
+     * @return int
+     */
+    public function getTrialLengthDays()
+    {
+        return $this->container['trial_length_days'];
+    }
+
+    /**
+     * Sets trial_length_days
+     *
+     * @param int $trial_length_days trial_length_days
+     *
+     * @return $this
+     */
+    public function setTrialLengthDays($trial_length_days)
+    {
+        $this->container['trial_length_days'] = $trial_length_days;
 
         return $this;
     }

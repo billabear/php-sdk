@@ -63,8 +63,7 @@ class Price implements ModelInterface, ArrayAccess
         'recurring' => 'bool',
         'schedule' => 'string',
         'including_tax' => 'bool',
-        'public' => 'bool',
-        'trial_length_days' => 'int'
+        'public' => 'bool'
     ];
 
     /**
@@ -80,8 +79,7 @@ class Price implements ModelInterface, ArrayAccess
         'recurring' => null,
         'schedule' => null,
         'including_tax' => null,
-        'public' => null,
-        'trial_length_days' => null
+        'public' => null
     ];
 
     /**
@@ -118,8 +116,7 @@ class Price implements ModelInterface, ArrayAccess
         'recurring' => 'recurring',
         'schedule' => 'schedule',
         'including_tax' => 'including_tax',
-        'public' => 'public',
-        'trial_length_days' => 'trial_length_days'
+        'public' => 'public'
     ];
 
     /**
@@ -135,8 +132,7 @@ class Price implements ModelInterface, ArrayAccess
         'recurring' => 'setRecurring',
         'schedule' => 'setSchedule',
         'including_tax' => 'setIncludingTax',
-        'public' => 'setPublic',
-        'trial_length_days' => 'setTrialLengthDays'
+        'public' => 'setPublic'
     ];
 
     /**
@@ -152,8 +148,7 @@ class Price implements ModelInterface, ArrayAccess
         'recurring' => 'getRecurring',
         'schedule' => 'getSchedule',
         'including_tax' => 'getIncludingTax',
-        'public' => 'getPublic',
-        'trial_length_days' => 'getTrialLengthDays'
+        'public' => 'getPublic'
     ];
 
     /**
@@ -240,7 +235,6 @@ class Price implements ModelInterface, ArrayAccess
         $this->container['schedule'] = isset($data['schedule']) ? $data['schedule'] : null;
         $this->container['including_tax'] = isset($data['including_tax']) ? $data['including_tax'] : null;
         $this->container['public'] = isset($data['public']) ? $data['public'] : null;
-        $this->container['trial_length_days'] = isset($data['trial_length_days']) ? $data['trial_length_days'] : null;
     }
 
     /**
@@ -481,30 +475,6 @@ class Price implements ModelInterface, ArrayAccess
     public function setPublic($public)
     {
         $this->container['public'] = $public;
-
-        return $this;
-    }
-
-    /**
-     * Gets trial_length_days
-     *
-     * @return int
-     */
-    public function getTrialLengthDays()
-    {
-        return $this->container['trial_length_days'];
-    }
-
-    /**
-     * Sets trial_length_days
-     *
-     * @param int $trial_length_days trial_length_days
-     *
-     * @return $this
-     */
-    public function setTrialLengthDays($trial_length_days)
-    {
-        $this->container['trial_length_days'] = $trial_length_days;
 
         return $this;
     }

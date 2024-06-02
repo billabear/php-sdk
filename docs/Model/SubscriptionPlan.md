@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **features** | [**\BillaBear\Model\Feature[]**](Feature.md) |  | [optional] 
 **product** | [**\BillaBear\Model\Product**](Product.md) |  | [optional] 
 **prices** | [**\BillaBear\Model\Price[]**](Price.md) |  | [optional] 
+**trial_length_days** | **int** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
