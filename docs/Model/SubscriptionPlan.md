@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **id** | **string** |  | [optional] 
 **name** | **string** |  | [optional] 
 **code_name** | **string** |  | [optional] 
-**user_count** | [**Int**](Int.md) |  | [optional] 
+**user_count** | **int** |  | [optional] 
 **per_seat** | **bool** |  | [optional] 
 **has_trial** | **bool** |  | [optional] 
 **free** | **bool** |  | [optional] 

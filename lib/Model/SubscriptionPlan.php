@@ -59,7 +59,7 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
         'id' => 'string',
         'name' => 'string',
         'code_name' => 'string',
-        'user_count' => 'Int',
+        'user_count' => 'int',
         'per_seat' => 'bool',
         'has_trial' => 'bool',
         'free' => 'bool',
@@ -342,7 +342,7 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
     /**
      * Gets user_count
      *
-     * @return Int
+     * @return int
      */
     public function getUserCount()
     {
@@ -352,7 +352,7 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
     /**
      * Sets user_count
      *
-     * @param Int $user_count user_count
+     * @param int $user_count user_count
      *
      * @return $this
      */
