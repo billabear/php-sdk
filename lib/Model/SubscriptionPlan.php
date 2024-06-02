@@ -66,7 +66,7 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
         'public' => 'bool',
         'limits' => '\BillaBear\Model\Limit[]',
         'features' => '\BillaBear\Model\Feature[]',
-        'product' => 'Product',
+        'product' => '\BillaBear\Model\Product',
         'prices' => '\BillaBear\Model\Price[]'
     ];
 
@@ -510,7 +510,7 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
     /**
      * Gets product
      *
-     * @return Product
+     * @return \BillaBear\Model\Product
      */
     public function getProduct()
     {
@@ -520,7 +520,7 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
     /**
      * Sets product
      *
-     * @param Product $product product
+     * @param \BillaBear\Model\Product $product product
      *
      * @return $this
      */
