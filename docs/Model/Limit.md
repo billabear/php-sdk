@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **feature** | [**\BillaBear\Model\Feature**](Feature.md) |  | [optional] 
-**limit** | [**Int**](Int.md) |  | [optional] 
+**limit** | **int** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

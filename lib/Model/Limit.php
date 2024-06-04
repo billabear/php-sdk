@@ -57,7 +57,7 @@ class Limit implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'feature' => '\BillaBear\Model\Feature',
-        'limit' => 'Int'
+        'limit' => 'int'
     ];
 
     /**
@@ -234,7 +234,7 @@ class Limit implements ModelInterface, ArrayAccess
     /**
      * Gets limit
      *
-     * @return Int
+     * @return int
      */
     public function getLimit()
     {
@@ -244,7 +244,7 @@ class Limit implements ModelInterface, ArrayAccess
     /**
      * Sets limit
      *
-     * @param Int $limit limit
+     * @param int $limit limit
      *
      * @return $this
      */

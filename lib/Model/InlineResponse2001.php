@@ -58,7 +58,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'limits' => 'null[]',
         'features' => 'null[]',
-        'user_count' => 'Int'
+        'user_count' => 'int'
     ];
 
     /**
@@ -264,7 +264,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
     /**
      * Gets user_count
      *
-     * @return Int
+     * @return int
      */
     public function getUserCount()
     {
@@ -274,7 +274,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
     /**
      * Sets user_count
      *
-     * @param Int $user_count user_count
+     * @param int $user_count user_count
      *
      * @return $this
      */
