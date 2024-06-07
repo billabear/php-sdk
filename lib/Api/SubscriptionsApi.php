@@ -1259,7 +1259,7 @@ class SubscriptionsApi
     }
 
     /**
-     * Operation listCustomnerSubscriptions
+     * Operation getForCustomer
      *
      * List Customer Subscriptions
      *
@@ -1269,14 +1269,14 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return \BillaBear\Model\InlineResponse2006
      */
-    public function listCustomnerSubscriptions($customer_id)
+    public function getForCustomer($customer_id)
     {
-        list($response) = $this->listCustomnerSubscriptionsWithHttpInfo($customer_id);
+        list($response) = $this->getForCustomerWithHttpInfo($customer_id);
         return $response;
     }
 
     /**
-     * Operation listCustomnerSubscriptionsWithHttpInfo
+     * Operation getForCustomerWithHttpInfo
      *
      * List Customer Subscriptions
      *
@@ -1286,10 +1286,10 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return array of \BillaBear\Model\InlineResponse2006, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listCustomnerSubscriptionsWithHttpInfo($customer_id)
+    public function getForCustomerWithHttpInfo($customer_id)
     {
         $returnType = '\BillaBear\Model\InlineResponse2006';
-        $request = $this->listCustomnerSubscriptionsRequest($customer_id);
+        $request = $this->getForCustomerRequest($customer_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1359,7 +1359,7 @@ class SubscriptionsApi
     }
 
     /**
-     * Operation listCustomnerSubscriptionsAsync
+     * Operation getForCustomerAsync
      *
      * List Customer Subscriptions
      *
@@ -1368,9 +1368,9 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCustomnerSubscriptionsAsync($customer_id)
+    public function getForCustomerAsync($customer_id)
     {
-        return $this->listCustomnerSubscriptionsAsyncWithHttpInfo($customer_id)
+        return $this->getForCustomerAsyncWithHttpInfo($customer_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1379,7 +1379,7 @@ class SubscriptionsApi
     }
 
     /**
-     * Operation listCustomnerSubscriptionsAsyncWithHttpInfo
+     * Operation getForCustomerAsyncWithHttpInfo
      *
      * List Customer Subscriptions
      *
@@ -1388,10 +1388,10 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCustomnerSubscriptionsAsyncWithHttpInfo($customer_id)
+    public function getForCustomerAsyncWithHttpInfo($customer_id)
     {
         $returnType = '\BillaBear\Model\InlineResponse2006';
-        $request = $this->listCustomnerSubscriptionsRequest($customer_id);
+        $request = $this->getForCustomerRequest($customer_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1431,19 +1431,19 @@ class SubscriptionsApi
     }
 
     /**
-     * Create request for operation 'listCustomnerSubscriptions'
+     * Create request for operation 'getForCustomer'
      *
      * @param  string $customer_id The id of the customer to retrieve (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function listCustomnerSubscriptionsRequest($customer_id)
+    protected function getForCustomerRequest($customer_id)
     {
         // verify the required parameter 'customer_id' is set
         if ($customer_id === null || (is_array($customer_id) && count($customer_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $customer_id when calling listCustomnerSubscriptions'
+                'Missing the required parameter $customer_id when calling getForCustomer'
             );
         }
 

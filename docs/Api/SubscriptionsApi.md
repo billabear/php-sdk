@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**cancelSubscription**](SubscriptionsApi.md#cancelsubscription) | **POST** /subscription/{subscriptionId}/cancel | Cancel Subscription
 [**customerChangeSubscriptionPlan**](SubscriptionsApi.md#customerchangesubscriptionplan) | **POST** /subscription/{subscriptionId}/plan | Change Subscription Plan
 [**customerStartSubscription**](SubscriptionsApi.md#customerstartsubscription) | **POST** /customer/{customerId}/subscription/start | Start Subscription For Customer
-[**listCustomnerSubscriptions**](SubscriptionsApi.md#listcustomnersubscriptions) | **GET** /customer/{customerId}/subscription | List Customer Subscriptions
+[**getForCustomer**](SubscriptionsApi.md#getforcustomer) | **GET** /customer/{customerId}/subscription | List Customer Subscriptions
 [**listSubscriptionPlans**](SubscriptionsApi.md#listsubscriptionplans) | **GET** /subscription/plans | List Subscription Plans
 [**listSubscriptions**](SubscriptionsApi.md#listsubscriptions) | **GET** /subscription | List
 [**removeSeatsSubscriptions**](SubscriptionsApi.md#removeseatssubscriptions) | **POST** /subscription/{subscriptionId}/seats/remove | Remove Seats
@@ -238,8 +238,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **listCustomnerSubscriptions**
-> \BillaBear\Model\InlineResponse2006 listCustomnerSubscriptions($customer_id)
+# **getForCustomer**
+> \BillaBear\Model\InlineResponse2006 getForCustomer($customer_id)
 
 List Customer Subscriptions
 
@@ -263,10 +263,10 @@ $apiInstance = new BillaBear\Api\SubscriptionsApi(
 $customer_id = "customer_id_example"; // string | The id of the customer to retrieve
 
 try {
-    $result = $apiInstance->listCustomnerSubscriptions($customer_id);
+    $result = $apiInstance->getForCustomer($customer_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SubscriptionsApi->listCustomnerSubscriptions: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SubscriptionsApi->getForCustomer: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```

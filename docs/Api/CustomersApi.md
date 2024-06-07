@@ -10,11 +10,11 @@ Method | HTTP request | Description
 [**disableCustomer**](CustomersApi.md#disablecustomer) | **POST** /customer/{customerId}/disable | Disable Customer
 [**enableCustomer**](CustomersApi.md#enablecustomer) | **POST** /customer/{customerId}/enable | Enable Customer
 [**fetchCustomerById**](CustomersApi.md#fetchcustomerbyid) | **GET** /customer/{customerId} | Detail
+[**getForCustomer**](CustomersApi.md#getforcustomer) | **GET** /customer/{customerId}/subscription | List Customer Subscriptions
 [**listCustomerInvoices**](CustomersApi.md#listcustomerinvoices) | **GET** /customer/{customerId}/invoices | List Customer Invoices
 [**listCustomerPayment**](CustomersApi.md#listcustomerpayment) | **GET** /customer/{customerId}/payment | List Customer Payments
 [**listCustomerRefund**](CustomersApi.md#listcustomerrefund) | **GET** /customer/{customerId}/refund | List Customer Refunds
 [**listCustomers**](CustomersApi.md#listcustomers) | **GET** /customer | List
-[**listCustomnerSubscriptions**](CustomersApi.md#listcustomnersubscriptions) | **GET** /customer/{customerId}/subscription | List Customer Subscriptions
 [**listPaymentDetails**](CustomersApi.md#listpaymentdetails) | **GET** /customer/{customerId}/payment-methods | List Customer&#x27;s Payment Details
 [**removeSeatsSubscriptions**](CustomersApi.md#removeseatssubscriptions) | **POST** /subscription/{subscriptionId}/seats/remove | Remove Seats
 [**showCustomerLimitsById**](CustomersApi.md#showcustomerlimitsbyid) | **GET** /customer/{customerId}/limits | Fetch Customer Limits
@@ -348,6 +348,60 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **getForCustomer**
+> \BillaBear\Model\InlineResponse2006 getForCustomer($customer_id)
+
+List Customer Subscriptions
+
+List all customer subscriptions<br><br><strong>Since 1.1</strong>
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: ApiKeyAuth
+$config = BillaBear\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = BillaBear\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
+
+$apiInstance = new BillaBear\Api\CustomersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$customer_id = "customer_id_example"; // string | The id of the customer to retrieve
+
+try {
+    $result = $apiInstance->getForCustomer($customer_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CustomersApi->getForCustomer: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customer_id** | **string**| The id of the customer to retrieve |
+
+### Return type
+
+[**\BillaBear\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
+
+### Authorization
+
+[ApiKeyAuth](../../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **listCustomerInvoices**
 > \BillaBear\Model\InlineResponse2004 listCustomerInvoices($customer_id)
 
@@ -574,60 +628,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\BillaBear\Model\InlineResponse200**](../Model/InlineResponse200.md)
-
-### Authorization
-
-[ApiKeyAuth](../../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **listCustomnerSubscriptions**
-> \BillaBear\Model\InlineResponse2006 listCustomnerSubscriptions($customer_id)
-
-List Customer Subscriptions
-
-List all customer subscriptions<br><br><strong>Since 1.1</strong>
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: ApiKeyAuth
-$config = BillaBear\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = BillaBear\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
-
-$apiInstance = new BillaBear\Api\CustomersApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$customer_id = "customer_id_example"; // string | The id of the customer to retrieve
-
-try {
-    $result = $apiInstance->listCustomnerSubscriptions($customer_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CustomersApi->listCustomnerSubscriptions: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customer_id** | **string**| The id of the customer to retrieve |
-
-### Return type
-
-[**\BillaBear\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
 
 ### Authorization
 
