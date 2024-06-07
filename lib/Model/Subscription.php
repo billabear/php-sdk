@@ -57,12 +57,12 @@ class Subscription implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'id' => 'string',
-        'seat_number' => 'Int',
+        'seat_number' => 'int',
         'schedule' => 'string',
-        'created_at' => 'Datetime',
-        'updated_at' => 'Datetime',
-        'ended_at' => 'Datetime',
-        'valid_until' => 'Datetime',
+        'created_at' => 'string',
+        'updated_at' => 'string',
+        'ended_at' => 'string',
+        'valid_until' => 'string',
         'main_external_reference' => 'string',
         'child_external_reference' => 'string',
         'price' => 'Price',
@@ -288,7 +288,7 @@ class Subscription implements ModelInterface, ArrayAccess
     /**
      * Gets seat_number
      *
-     * @return Int
+     * @return int
      */
     public function getSeatNumber()
     {
@@ -298,7 +298,7 @@ class Subscription implements ModelInterface, ArrayAccess
     /**
      * Sets seat_number
      *
-     * @param Int $seat_number seat_number
+     * @param int $seat_number seat_number
      *
      * @return $this
      */
@@ -336,7 +336,7 @@ class Subscription implements ModelInterface, ArrayAccess
     /**
      * Gets created_at
      *
-     * @return Datetime
+     * @return string
      */
     public function getCreatedAt()
     {
@@ -346,7 +346,7 @@ class Subscription implements ModelInterface, ArrayAccess
     /**
      * Sets created_at
      *
-     * @param Datetime $created_at created_at
+     * @param string $created_at created_at
      *
      * @return $this
      */
@@ -360,7 +360,7 @@ class Subscription implements ModelInterface, ArrayAccess
     /**
      * Gets updated_at
      *
-     * @return Datetime
+     * @return string
      */
     public function getUpdatedAt()
     {
@@ -370,7 +370,7 @@ class Subscription implements ModelInterface, ArrayAccess
     /**
      * Sets updated_at
      *
-     * @param Datetime $updated_at updated_at
+     * @param string $updated_at updated_at
      *
      * @return $this
      */
@@ -384,7 +384,7 @@ class Subscription implements ModelInterface, ArrayAccess
     /**
      * Gets ended_at
      *
-     * @return Datetime
+     * @return string
      */
     public function getEndedAt()
     {
@@ -394,7 +394,7 @@ class Subscription implements ModelInterface, ArrayAccess
     /**
      * Sets ended_at
      *
-     * @param Datetime $ended_at ended_at
+     * @param string $ended_at ended_at
      *
      * @return $this
      */
@@ -408,7 +408,7 @@ class Subscription implements ModelInterface, ArrayAccess
     /**
      * Gets valid_until
      *
-     * @return Datetime
+     * @return string
      */
     public function getValidUntil()
     {
@@ -418,7 +418,7 @@ class Subscription implements ModelInterface, ArrayAccess
     /**
      * Sets valid_until
      *
-     * @param Datetime $valid_until valid_until
+     * @param string $valid_until valid_until
      *
      * @return $this
      */

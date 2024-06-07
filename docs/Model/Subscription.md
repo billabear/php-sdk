@@ -4,12 +4,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [optional] 
-**seat_number** | [**Int**](Int.md) |  | [optional] 
+**seat_number** | **int** |  | [optional] 
 **schedule** | **string** |  | [optional] 
-**created_at** | [**Datetime**](Datetime.md) |  | [optional] 
-**updated_at** | [**Datetime**](Datetime.md) |  | [optional] 
-**ended_at** | [**Datetime**](Datetime.md) |  | [optional] 
-**valid_until** | [**Datetime**](Datetime.md) |  | [optional] 
+**created_at** | **string** |  | [optional] 
+**updated_at** | **string** |  | [optional] 
+**ended_at** | **string** |  | [optional] 
+**valid_until** | **string** |  | [optional] 
 **main_external_reference** | **string** |  | [optional] 
 **child_external_reference** | **string** |  | [optional] 
 **price** | [**Price**](Price.md) |  | [optional] 
