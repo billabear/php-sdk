@@ -59,7 +59,7 @@ class Product implements ModelInterface, ArrayAccess
         'id' => 'string',
         'name' => 'string',
         'external_reference' => 'string',
-        'tax_type' => 'string'
+        'tax_type' => '\BillaBear\Model\ProductTaxType'
     ];
 
     /**
@@ -297,7 +297,7 @@ class Product implements ModelInterface, ArrayAccess
     /**
      * Gets tax_type
      *
-     * @return string
+     * @return \BillaBear\Model\ProductTaxType
      */
     public function getTaxType()
     {
@@ -307,7 +307,7 @@ class Product implements ModelInterface, ArrayAccess
     /**
      * Sets tax_type
      *
-     * @param string $tax_type The tax type for the product <strong>Since 1.1</strong>
+     * @param \BillaBear\Model\ProductTaxType $tax_type tax_type
      *
      * @return $this
      */
