@@ -92,12 +92,22 @@ class PaymentDetailsApiTest extends TestCase
     }
 
     /**
-     * Test case for deletePaymentDetails_0
+     * Test case for deletePaymentDetailsCustomer
      *
-     * Delete.
+     * Delete With Customer.
      *
      */
-    public function testDeletePaymentDetails0()
+    public function testDeletePaymentDetailsCustomer()
+    {
+    }
+
+    /**
+     * Test case for getPaymentDetails
+     *
+     * Fetch.
+     *
+     */
+    public function testGetPaymentDetails()
     {
     }
 
@@ -118,6 +128,16 @@ class PaymentDetailsApiTest extends TestCase
      *
      */
     public function testMakeDefaultPaymentDetails()
+    {
+    }
+
+    /**
+     * Test case for makeDefaultPaymentDetailsCustomer
+     *
+     * Make Default With Customer.
+     *
+     */
+    public function testMakeDefaultPaymentDetailsCustomer()
     {
     }
 
