@@ -5,8 +5,8 @@ All URIs are relative to *https://{customerId}.billabear.cloud/api/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**completeFrontendPaymentDetails**](PaymentDetailsApi.md#completefrontendpaymentdetails) | **POST** /customer/{customerId}/payment-methods/frontend-payment-token | Complete Frontend Detail Collection
-[**deletePaymentDetails**](PaymentDetailsApi.md#deletepaymentdetails) | **DELETE** /customer/{customerId}/payment-methods/{paymentDetailsId} | Delete
-[**deletePaymentDetails_0**](PaymentDetailsApi.md#deletepaymentdetails_0) | **DELETE** /payment-methods/{paymentDetailsId} | Delete
+[**deletePaymentDetails**](PaymentDetailsApi.md#deletepaymentdetails) | **DELETE** /payment-methods/{paymentDetailsId} | Delete
+[**deletePaymentDetailsCustomer**](PaymentDetailsApi.md#deletepaymentdetailscustomer) | **DELETE** /customer/{customerId}/payment-methods/{paymentDetailsId} | Delete With Customer
 [**listPaymentDetails**](PaymentDetailsApi.md#listpaymentdetails) | **GET** /customer/{customerId}/payment-methods | List Customer&#x27;s Payment Details
 [**makeDefaultPaymentDetails**](PaymentDetailsApi.md#makedefaultpaymentdetails) | **POST** /customer/{customerId}/payment-methods/{paymentDetailsId}/default | Make Default
 [**startFrontendPaymentDetails**](PaymentDetailsApi.md#startfrontendpaymentdetails) | **GET** /customer/{customerId}/payment-methods/frontend-payment-token | Start Frontend Detail Collection
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deletePaymentDetails**
-> string deletePaymentDetails($customer_id, $payment_details_id)
+> string deletePaymentDetails($payment_details_id)
 
 Delete
 
@@ -89,11 +89,10 @@ $apiInstance = new BillaBear\Api\PaymentDetailsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$customer_id = "customer_id_example"; // string | The id of the customer to retrieve
 $payment_details_id = "payment_details_id_example"; // string | The id of the payment details
 
 try {
-    $result = $apiInstance->deletePaymentDetails($customer_id, $payment_details_id);
+    $result = $apiInstance->deletePaymentDetails($payment_details_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentDetailsApi->deletePaymentDetails: ', $e->getMessage(), PHP_EOL;
@@ -105,7 +104,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customer_id** | **string**| The id of the customer to retrieve |
  **payment_details_id** | **string**| The id of the payment details |
 
 ### Return type
@@ -123,10 +121,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **deletePaymentDetails_0**
-> string deletePaymentDetails_0($customer_id, $payment_details_id)
+# **deletePaymentDetailsCustomer**
+> string deletePaymentDetailsCustomer($customer_id, $payment_details_id)
 
-Delete
+Delete With Customer
 
 Delete Payment Details
 
@@ -149,10 +147,10 @@ $customer_id = "customer_id_example"; // string | The id of the customer to retr
 $payment_details_id = "payment_details_id_example"; // string | The id of the payment details
 
 try {
-    $result = $apiInstance->deletePaymentDetails_0($customer_id, $payment_details_id);
+    $result = $apiInstance->deletePaymentDetailsCustomer($customer_id, $payment_details_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling PaymentDetailsApi->deletePaymentDetails_0: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PaymentDetailsApi->deletePaymentDetailsCustomer: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```

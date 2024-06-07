@@ -388,16 +388,15 @@ class PaymentDetailsApi
      *
      * Delete
      *
-     * @param  string $customer_id The id of the customer to retrieve (required)
      * @param  string $payment_details_id The id of the payment details (required)
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function deletePaymentDetails($customer_id, $payment_details_id)
+    public function deletePaymentDetails($payment_details_id)
     {
-        list($response) = $this->deletePaymentDetailsWithHttpInfo($customer_id, $payment_details_id);
+        list($response) = $this->deletePaymentDetailsWithHttpInfo($payment_details_id);
         return $response;
     }
 
@@ -406,17 +405,16 @@ class PaymentDetailsApi
      *
      * Delete
      *
-     * @param  string $customer_id The id of the customer to retrieve (required)
      * @param  string $payment_details_id The id of the payment details (required)
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deletePaymentDetailsWithHttpInfo($customer_id, $payment_details_id)
+    public function deletePaymentDetailsWithHttpInfo($payment_details_id)
     {
         $returnType = 'string';
-        $request = $this->deletePaymentDetailsRequest($customer_id, $payment_details_id);
+        $request = $this->deletePaymentDetailsRequest($payment_details_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -498,15 +496,14 @@ class PaymentDetailsApi
      *
      * Delete
      *
-     * @param  string $customer_id The id of the customer to retrieve (required)
      * @param  string $payment_details_id The id of the payment details (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deletePaymentDetailsAsync($customer_id, $payment_details_id)
+    public function deletePaymentDetailsAsync($payment_details_id)
     {
-        return $this->deletePaymentDetailsAsyncWithHttpInfo($customer_id, $payment_details_id)
+        return $this->deletePaymentDetailsAsyncWithHttpInfo($payment_details_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -519,16 +516,15 @@ class PaymentDetailsApi
      *
      * Delete
      *
-     * @param  string $customer_id The id of the customer to retrieve (required)
      * @param  string $payment_details_id The id of the payment details (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deletePaymentDetailsAsyncWithHttpInfo($customer_id, $payment_details_id)
+    public function deletePaymentDetailsAsyncWithHttpInfo($payment_details_id)
     {
         $returnType = 'string';
-        $request = $this->deletePaymentDetailsRequest($customer_id, $payment_details_id);
+        $request = $this->deletePaymentDetailsRequest($payment_details_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -570,20 +566,13 @@ class PaymentDetailsApi
     /**
      * Create request for operation 'deletePaymentDetails'
      *
-     * @param  string $customer_id The id of the customer to retrieve (required)
      * @param  string $payment_details_id The id of the payment details (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function deletePaymentDetailsRequest($customer_id, $payment_details_id)
+    protected function deletePaymentDetailsRequest($payment_details_id)
     {
-        // verify the required parameter 'customer_id' is set
-        if ($customer_id === null || (is_array($customer_id) && count($customer_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $customer_id when calling deletePaymentDetails'
-            );
-        }
         // verify the required parameter 'payment_details_id' is set
         if ($payment_details_id === null || (is_array($payment_details_id) && count($payment_details_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -591,7 +580,7 @@ class PaymentDetailsApi
             );
         }
 
-        $resourcePath = '/customer/{customerId}/payment-methods/{paymentDetailsId}';
+        $resourcePath = '/payment-methods/{paymentDetailsId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -599,14 +588,6 @@ class PaymentDetailsApi
         $multipart = false;
 
 
-        // path params
-        if ($customer_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'customerId' . '}',
-                ObjectSerializer::toPathValue($customer_id),
-                $resourcePath
-            );
-        }
         // path params
         if ($payment_details_id !== null) {
             $resourcePath = str_replace(
@@ -686,9 +667,9 @@ class PaymentDetailsApi
     }
 
     /**
-     * Operation deletePaymentDetails_0
+     * Operation deletePaymentDetailsCustomer
      *
-     * Delete
+     * Delete With Customer
      *
      * @param  string $customer_id The id of the customer to retrieve (required)
      * @param  string $payment_details_id The id of the payment details (required)
@@ -697,16 +678,16 @@ class PaymentDetailsApi
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function deletePaymentDetails_0($customer_id, $payment_details_id)
+    public function deletePaymentDetailsCustomer($customer_id, $payment_details_id)
     {
-        list($response) = $this->deletePaymentDetails_0WithHttpInfo($customer_id, $payment_details_id);
+        list($response) = $this->deletePaymentDetailsCustomerWithHttpInfo($customer_id, $payment_details_id);
         return $response;
     }
 
     /**
-     * Operation deletePaymentDetails_0WithHttpInfo
+     * Operation deletePaymentDetailsCustomerWithHttpInfo
      *
-     * Delete
+     * Delete With Customer
      *
      * @param  string $customer_id The id of the customer to retrieve (required)
      * @param  string $payment_details_id The id of the payment details (required)
@@ -715,10 +696,10 @@ class PaymentDetailsApi
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deletePaymentDetails_0WithHttpInfo($customer_id, $payment_details_id)
+    public function deletePaymentDetailsCustomerWithHttpInfo($customer_id, $payment_details_id)
     {
         $returnType = 'string';
-        $request = $this->deletePaymentDetails_0Request($customer_id, $payment_details_id);
+        $request = $this->deletePaymentDetailsCustomerRequest($customer_id, $payment_details_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -796,9 +777,9 @@ class PaymentDetailsApi
     }
 
     /**
-     * Operation deletePaymentDetails_0Async
+     * Operation deletePaymentDetailsCustomerAsync
      *
-     * Delete
+     * Delete With Customer
      *
      * @param  string $customer_id The id of the customer to retrieve (required)
      * @param  string $payment_details_id The id of the payment details (required)
@@ -806,9 +787,9 @@ class PaymentDetailsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deletePaymentDetails_0Async($customer_id, $payment_details_id)
+    public function deletePaymentDetailsCustomerAsync($customer_id, $payment_details_id)
     {
-        return $this->deletePaymentDetails_0AsyncWithHttpInfo($customer_id, $payment_details_id)
+        return $this->deletePaymentDetailsCustomerAsyncWithHttpInfo($customer_id, $payment_details_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -817,9 +798,9 @@ class PaymentDetailsApi
     }
 
     /**
-     * Operation deletePaymentDetails_0AsyncWithHttpInfo
+     * Operation deletePaymentDetailsCustomerAsyncWithHttpInfo
      *
-     * Delete
+     * Delete With Customer
      *
      * @param  string $customer_id The id of the customer to retrieve (required)
      * @param  string $payment_details_id The id of the payment details (required)
@@ -827,10 +808,10 @@ class PaymentDetailsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deletePaymentDetails_0AsyncWithHttpInfo($customer_id, $payment_details_id)
+    public function deletePaymentDetailsCustomerAsyncWithHttpInfo($customer_id, $payment_details_id)
     {
         $returnType = 'string';
-        $request = $this->deletePaymentDetails_0Request($customer_id, $payment_details_id);
+        $request = $this->deletePaymentDetailsCustomerRequest($customer_id, $payment_details_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -870,7 +851,7 @@ class PaymentDetailsApi
     }
 
     /**
-     * Create request for operation 'deletePaymentDetails_0'
+     * Create request for operation 'deletePaymentDetailsCustomer'
      *
      * @param  string $customer_id The id of the customer to retrieve (required)
      * @param  string $payment_details_id The id of the payment details (required)
@@ -878,22 +859,22 @@ class PaymentDetailsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function deletePaymentDetails_0Request($customer_id, $payment_details_id)
+    protected function deletePaymentDetailsCustomerRequest($customer_id, $payment_details_id)
     {
         // verify the required parameter 'customer_id' is set
         if ($customer_id === null || (is_array($customer_id) && count($customer_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $customer_id when calling deletePaymentDetails_0'
+                'Missing the required parameter $customer_id when calling deletePaymentDetailsCustomer'
             );
         }
         // verify the required parameter 'payment_details_id' is set
         if ($payment_details_id === null || (is_array($payment_details_id) && count($payment_details_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $payment_details_id when calling deletePaymentDetails_0'
+                'Missing the required parameter $payment_details_id when calling deletePaymentDetailsCustomer'
             );
         }
 
-        $resourcePath = '/payment-methods/{paymentDetailsId}';
+        $resourcePath = '/customer/{customerId}/payment-methods/{paymentDetailsId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
