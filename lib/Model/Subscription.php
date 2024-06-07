@@ -57,6 +57,7 @@ class Subscription implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'id' => 'string',
+        'seat_number' => 'Int',
         'schedule' => 'string',
         'created_at' => 'Datetime',
         'updated_at' => 'Datetime',
@@ -75,6 +76,7 @@ class Subscription implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'id' => 'uuid',
+        'seat_number' => null,
         'schedule' => null,
         'created_at' => null,
         'updated_at' => null,
@@ -114,6 +116,7 @@ class Subscription implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'seat_number' => 'seat_number',
         'schedule' => 'schedule',
         'created_at' => 'created_at',
         'updated_at' => 'updated_at',
@@ -132,6 +135,7 @@ class Subscription implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
+        'seat_number' => 'setSeatNumber',
         'schedule' => 'setSchedule',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
@@ -150,6 +154,7 @@ class Subscription implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
+        'seat_number' => 'getSeatNumber',
         'schedule' => 'getSchedule',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
@@ -220,6 +225,7 @@ class Subscription implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['seat_number'] = isset($data['seat_number']) ? $data['seat_number'] : null;
         $this->container['schedule'] = isset($data['schedule']) ? $data['schedule'] : null;
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
         $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
@@ -275,6 +281,30 @@ class Subscription implements ModelInterface, ArrayAccess
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets seat_number
+     *
+     * @return Int
+     */
+    public function getSeatNumber()
+    {
+        return $this->container['seat_number'];
+    }
+
+    /**
+     * Sets seat_number
+     *
+     * @param Int $seat_number seat_number
+     *
+     * @return $this
+     */
+    public function setSeatNumber($seat_number)
+    {
+        $this->container['seat_number'] = $seat_number;
 
         return $this;
     }

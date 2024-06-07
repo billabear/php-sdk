@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [optional] 
+**seat_number** | [**Int**](Int.md) |  | [optional] 
 **schedule** | **string** |  | [optional] 
 **created_at** | [**Datetime**](Datetime.md) |  | [optional] 
 **updated_at** | [**Datetime**](Datetime.md) |  | [optional] 
