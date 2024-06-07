@@ -65,8 +65,8 @@ class Subscription implements ModelInterface, ArrayAccess
         'valid_until' => 'string',
         'main_external_reference' => 'string',
         'child_external_reference' => 'string',
-        'price' => 'Price',
-        'plan' => 'SubscriptionPlan'
+        'price' => '\BillaBear\Model\Price',
+        'plan' => '\BillaBear\Model\SubscriptionPlan'
     ];
 
     /**
@@ -480,7 +480,7 @@ class Subscription implements ModelInterface, ArrayAccess
     /**
      * Gets price
      *
-     * @return Price
+     * @return \BillaBear\Model\Price
      */
     public function getPrice()
     {
@@ -490,7 +490,7 @@ class Subscription implements ModelInterface, ArrayAccess
     /**
      * Sets price
      *
-     * @param Price $price price
+     * @param \BillaBear\Model\Price $price price
      *
      * @return $this
      */
@@ -504,7 +504,7 @@ class Subscription implements ModelInterface, ArrayAccess
     /**
      * Gets plan
      *
-     * @return SubscriptionPlan
+     * @return \BillaBear\Model\SubscriptionPlan
      */
     public function getPlan()
     {
@@ -514,7 +514,7 @@ class Subscription implements ModelInterface, ArrayAccess
     /**
      * Sets plan
      *
-     * @param SubscriptionPlan $plan plan
+     * @param \BillaBear\Model\SubscriptionPlan $plan plan
      *
      * @return $this
      */
