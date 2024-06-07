@@ -1,6 +1,6 @@
 <?php
 /**
- * SubscriptionStartBody
+ * InlineResponse20013
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \BillaBear\ObjectSerializer;
 
 /**
- * SubscriptionStartBody Class Doc Comment
+ * InlineResponse20013 Class Doc Comment
  *
  * @category Class
  * @package  BillaBear
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SubscriptionStartBody implements ModelInterface, ArrayAccess
+class InlineResponse20013 implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'subscription_start_body';
+    protected static $swaggerModelName = 'inline_response_200_13';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,12 +56,8 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'subscription_plan' => 'string',
-        'payment_details' => 'string',
-        'price' => 'string',
-        'schedule' => 'string',
-        'currency' => 'string',
-        'seat_numbrers' => 'int'
+        'paid' => 'bool',
+        'failure_reason' => 'string'
     ];
 
     /**
@@ -70,12 +66,8 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'subscription_plan' => 'uuid',
-        'payment_details' => 'uuid',
-        'price' => 'uuid',
-        'schedule' => null,
-        'currency' => null,
-        'seat_numbrers' => null
+        'paid' => null,
+        'failure_reason' => null
     ];
 
     /**
@@ -105,12 +97,8 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'subscription_plan' => 'subscription_plan',
-        'payment_details' => 'payment_details',
-        'price' => 'price',
-        'schedule' => 'schedule',
-        'currency' => 'currency',
-        'seat_numbrers' => 'seat_numbrers'
+        'paid' => 'paid',
+        'failure_reason' => 'failure_reason'
     ];
 
     /**
@@ -119,12 +107,8 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'subscription_plan' => 'setSubscriptionPlan',
-        'payment_details' => 'setPaymentDetails',
-        'price' => 'setPrice',
-        'schedule' => 'setSchedule',
-        'currency' => 'setCurrency',
-        'seat_numbrers' => 'setSeatNumbrers'
+        'paid' => 'setPaid',
+        'failure_reason' => 'setFailureReason'
     ];
 
     /**
@@ -133,12 +117,8 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'subscription_plan' => 'getSubscriptionPlan',
-        'payment_details' => 'getPaymentDetails',
-        'price' => 'getPrice',
-        'schedule' => 'getSchedule',
-        'currency' => 'getCurrency',
-        'seat_numbrers' => 'getSeatNumbrers'
+        'paid' => 'getPaid',
+        'failure_reason' => 'getFailureReason'
     ];
 
     /**
@@ -182,23 +162,31 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    const SCHEDULE_WEEK = 'week';
-    const SCHEDULE_MONTH = 'month';
-    const SCHEDULE_YEAR = 'year';
-    const SCHEDULE_ONE_OFF = 'one-off';
+    const FAILURE_REASON_EXPIRED_CARD = 'expired_card';
+    const FAILURE_REASON_INVALID_DETAILS = 'invalid_details';
+    const FAILURE_REASON_FRAUD = 'fraud';
+    const FAILURE_REASON_AUTHENTICATION_REQUIRED = 'authentication_required';
+    const FAILURE_REASON_INVALID_CARD = 'invalid_card';
+    const FAILURE_REASON_GENERAL_DECLINE = 'general_decline';
+    const FAILURE_REASON_CONTACT_PROVIDER = 'contact_provider';
+    const FAILURE_REASON_LACK_OF_FUNDS = 'lack_of_funds';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getScheduleAllowableValues()
+    public function getFailureReasonAllowableValues()
     {
         return [
-            self::SCHEDULE_WEEK,
-            self::SCHEDULE_MONTH,
-            self::SCHEDULE_YEAR,
-            self::SCHEDULE_ONE_OFF,
+            self::FAILURE_REASON_EXPIRED_CARD
+            self::FAILURE_REASON_INVALID_DETAILS
+            self::FAILURE_REASON_FRAUD
+            self::FAILURE_REASON_AUTHENTICATION_REQUIRED
+            self::FAILURE_REASON_INVALID_CARD
+            self::FAILURE_REASON_GENERAL_DECLINE
+            self::FAILURE_REASON_CONTACT_PROVIDER
+            self::FAILURE_REASON_LACK_OF_FUNDS
         ];
     }
 
@@ -217,12 +205,8 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['subscription_plan'] = isset($data['subscription_plan']) ? $data['subscription_plan'] : null;
-        $this->container['payment_details'] = isset($data['payment_details']) ? $data['payment_details'] : null;
-        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
-        $this->container['schedule'] = isset($data['schedule']) ? $data['schedule'] : null;
-        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
-        $this->container['seat_numbrers'] = isset($data['seat_numbrers']) ? $data['seat_numbrers'] : null;
+        $this->container['paid'] = isset($data['paid']) ? $data['paid'] : null;
+        $this->container['failure_reason'] = isset($data['failure_reason']) ? $data['failure_reason'] : null;
     }
 
     /**
@@ -234,13 +218,10 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['subscription_plan'] === null) {
-            $invalidProperties[] = "'subscription_plan' can't be null";
-        }
-        $allowedValues = $this->getScheduleAllowableValues();
-        if (!is_null($this->container['schedule']) && !in_array($this->container['schedule'], $allowedValues, true)) {
+        $allowedValues = $this->getFailureReasonAllowableValues();
+        if (!is_null($this->container['failure_reason']) && !in_array($this->container['failure_reason'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'schedule', must be one of '%s'",
+                "invalid value for 'failure_reason', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
@@ -261,154 +242,58 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets subscription_plan
+     * Gets paid
      *
-     * @return string
+     * @return bool
      */
-    public function getSubscriptionPlan()
+    public function getPaid()
     {
-        return $this->container['subscription_plan'];
+        return $this->container['paid'];
     }
 
     /**
-     * Sets subscription_plan
+     * Sets paid
      *
-     * @param string $subscription_plan The ID for the subscription plan to be used
+     * @param bool $paid paid
      *
      * @return $this
      */
-    public function setSubscriptionPlan($subscription_plan)
+    public function setPaid($paid)
     {
-        $this->container['subscription_plan'] = $subscription_plan;
+        $this->container['paid'] = $paid;
 
         return $this;
     }
 
     /**
-     * Gets payment_details
+     * Gets failure_reason
      *
      * @return string
      */
-    public function getPaymentDetails()
+    public function getFailureReason()
     {
-        return $this->container['payment_details'];
+        return $this->container['failure_reason'];
     }
 
     /**
-     * Sets payment_details
+     * Sets failure_reason
      *
-     * @param string $payment_details The Id for the customer's payment details to be used
+     * @param string $failure_reason failure_reason
      *
      * @return $this
      */
-    public function setPaymentDetails($payment_details)
+    public function setFailureReason($failure_reason)
     {
-        $this->container['payment_details'] = $payment_details;
-
-        return $this;
-    }
-
-    /**
-     * Gets price
-     *
-     * @return string
-     */
-    public function getPrice()
-    {
-        return $this->container['price'];
-    }
-
-    /**
-     * Sets price
-     *
-     * @param string $price The ID for the price to be used
-     *
-     * @return $this
-     */
-    public function setPrice($price)
-    {
-        $this->container['price'] = $price;
-
-        return $this;
-    }
-
-    /**
-     * Gets schedule
-     *
-     * @return string
-     */
-    public function getSchedule()
-    {
-        return $this->container['schedule'];
-    }
-
-    /**
-     * Sets schedule
-     *
-     * @param string $schedule The schedule of the plan that is to be started. Only used if price isn't given. Requires currency as well.
-     *
-     * @return $this
-     */
-    public function setSchedule($schedule)
-    {
-        $allowedValues = $this->getScheduleAllowableValues();
-        if (!is_null($schedule) && !in_array($schedule, $allowedValues, true)) {
+        $allowedValues = $this->getFailureReasonAllowableValues();
+        if (!is_null($failure_reason) && !in_array($failure_reason, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'schedule', must be one of '%s'",
+                    "Invalid value for 'failure_reason', must be one of '%s'",
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['schedule'] = $schedule;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency
-     *
-     * @return string
-     */
-    public function getCurrency()
-    {
-        return $this->container['currency'];
-    }
-
-    /**
-     * Sets currency
-     *
-     * @param string $currency The currency of the plan that is to be started. Only used if price isn't given. Requires schedule as well.
-     *
-     * @return $this
-     */
-    public function setCurrency($currency)
-    {
-        $this->container['currency'] = $currency;
-
-        return $this;
-    }
-
-    /**
-     * Gets seat_numbrers
-     *
-     * @return int
-     */
-    public function getSeatNumbrers()
-    {
-        return $this->container['seat_numbrers'];
-    }
-
-    /**
-     * Sets seat_numbrers
-     *
-     * @param int $seat_numbrers seat_numbrers
-     *
-     * @return $this
-     */
-    public function setSeatNumbrers($seat_numbrers)
-    {
-        $this->container['seat_numbrers'] = $seat_numbrers;
+        $this->container['failure_reason'] = $failure_reason;
 
         return $this;
     }

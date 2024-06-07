@@ -1,6 +1,6 @@
 <?php
 /**
- * SubscriptionStartBodyTest
+ * InlineResponse20013Test
  *
  * PHP version 5
  *
@@ -31,15 +31,15 @@ namespace BillaBear;
 use PHPUnit\Framework\TestCase;
 
 /**
- * SubscriptionStartBodyTest Class Doc Comment
+ * InlineResponse20013Test Class Doc Comment
  *
  * @category    Class
- * @description SubscriptionStartBody
+ * @description InlineResponse20013
  * @package     BillaBear
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class SubscriptionStartBodyTest extends TestCase
+class InlineResponse20013Test extends TestCase
 {
 
     /**
@@ -71,51 +71,23 @@ class SubscriptionStartBodyTest extends TestCase
     }
 
     /**
-     * Test "SubscriptionStartBody"
+     * Test "InlineResponse20013"
      */
-    public function testSubscriptionStartBody()
+    public function testInlineResponse20013()
     {
     }
 
     /**
-     * Test attribute "subscription_plan"
+     * Test attribute "paid"
      */
-    public function testPropertySubscriptionPlan()
+    public function testPropertyPaid()
     {
     }
 
     /**
-     * Test attribute "payment_details"
+     * Test attribute "failure_reason"
      */
-    public function testPropertyPaymentDetails()
-    {
-    }
-
-    /**
-     * Test attribute "price"
-     */
-    public function testPropertyPrice()
-    {
-    }
-
-    /**
-     * Test attribute "schedule"
-     */
-    public function testPropertySchedule()
-    {
-    }
-
-    /**
-     * Test attribute "currency"
-     */
-    public function testPropertyCurrency()
-    {
-    }
-
-    /**
-     * Test attribute "seat_numbrers"
-     */
-    public function testPropertySeatNumbrers()
+    public function testPropertyFailureReason()
     {
     }
 }

@@ -160,4 +160,11 @@ class SubscriptionPlanTest extends TestCase
     public function testPropertyPrices()
     {
     }
+
+    /**
+     * Test attribute "trial_length_days"
+     */
+    public function testPropertyTrialLengthDays()
+    {
+    }
 }

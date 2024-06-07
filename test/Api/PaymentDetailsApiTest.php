@@ -92,6 +92,16 @@ class PaymentDetailsApiTest extends TestCase
     }
 
     /**
+     * Test case for deletePaymentDetails_0
+     *
+     * Delete.
+     *
+     */
+    public function testDeletePaymentDetails0()
+    {
+    }
+
+    /**
      * Test case for listPaymentDetails
      *
      * List Customer's Payment Details.
