@@ -56,7 +56,7 @@ class InlineResponse2007Receipts implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'created_at' => 'Datetime',
+        'created_at' => 'string',
         'id' => 'string',
         'valid' => 'bool'
     ];
@@ -216,7 +216,7 @@ class InlineResponse2007Receipts implements ModelInterface, ArrayAccess
     /**
      * Gets created_at
      *
-     * @return Datetime
+     * @return string
      */
     public function getCreatedAt()
     {
@@ -226,7 +226,7 @@ class InlineResponse2007Receipts implements ModelInterface, ArrayAccess
     /**
      * Sets created_at
      *
-     * @param Datetime $created_at created_at
+     * @param string $created_at created_at
      *
      * @return $this
      */

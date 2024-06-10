@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | [**Datetime**](Datetime.md) |  | [optional] 
+**created_at** | **string** |  | [optional] 
 **id** | **string** |  | [optional] 
 **valid** | **bool** |  | [optional] 
 

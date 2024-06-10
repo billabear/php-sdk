@@ -79,7 +79,7 @@ class PaymentDetails implements ModelInterface, ArrayAccess
         'last_four' => null,
         'expiry_month' => null,
         'expiry_year' => null,
-        'created_at' => 'datetime'
+        'created_at' => 'string'
     ];
 
     /**

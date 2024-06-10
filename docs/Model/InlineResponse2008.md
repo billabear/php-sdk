@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **external_reference** | **string** |  | [optional] 
 **comment** | **string** |  | [optional] 
 **status** | **string** |  | [optional] 
-**created_at** | [**Datetime**](Datetime.md) |  | [optional] 
+**created_at** | **string** |  | [optional] 
 **payment** | [**\BillaBear\Model\Paths1paymentGetResponses200ContentApplication1jsonSchemaPropertiesDataItems**](Paths1paymentGetResponses200ContentApplication1jsonSchemaPropertiesDataItems.md) |  | [optional] 
 **customer** | [**\BillaBear\Model\Customer**](Customer.md) |  | [optional] 
 **billing_admin** | [**\BillaBear\Model\Paths1checkoutPostResponses201ContentApplication1jsonSchemaPropertiesBillingAdmin**](Paths1checkoutPostResponses201ContentApplication1jsonSchemaPropertiesBillingAdmin.md) |  | [optional] 

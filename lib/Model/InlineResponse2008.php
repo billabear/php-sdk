@@ -62,7 +62,7 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
         'external_reference' => 'string',
         'comment' => 'string',
         'status' => 'string',
-        'created_at' => 'Datetime',
+        'created_at' => 'string',
         'payment' => '\BillaBear\Model\Paths1paymentGetResponses200ContentApplication1jsonSchemaPropertiesDataItems',
         'customer' => '\BillaBear\Model\Customer',
         'billing_admin' => '\BillaBear\Model\Paths1checkoutPostResponses201ContentApplication1jsonSchemaPropertiesBillingAdmin'
@@ -437,7 +437,7 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
     /**
      * Gets created_at
      *
-     * @return Datetime
+     * @return string
      */
     public function getCreatedAt()
     {
@@ -447,7 +447,7 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
     /**
      * Sets created_at
      *
-     * @param Datetime $created_at created_at
+     * @param string $created_at created_at
      *
      * @return $this
      */

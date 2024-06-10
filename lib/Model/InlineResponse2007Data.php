@@ -61,7 +61,7 @@ class InlineResponse2007Data implements ModelInterface, ArrayAccess
         'currency' => 'string',
         'external_reference' => 'string',
         'status' => 'string',
-        'created_at' => 'Datetime',
+        'created_at' => 'string',
         'customer' => '\BillaBear\Model\Customer',
         'receipts' => '\BillaBear\Model\InlineResponse2007Receipts[]'
     ];
@@ -403,7 +403,7 @@ class InlineResponse2007Data implements ModelInterface, ArrayAccess
     /**
      * Gets created_at
      *
-     * @return Datetime
+     * @return string
      */
     public function getCreatedAt()
     {
@@ -413,7 +413,7 @@ class InlineResponse2007Data implements ModelInterface, ArrayAccess
     /**
      * Sets created_at
      *
-     * @param Datetime $created_at created_at
+     * @param string $created_at created_at
      *
      * @return $this
      */

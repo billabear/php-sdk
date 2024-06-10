@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **currency** | **string** | Three-letter ISO currency code. Must be upper-case | [optional] 
 **external_reference** | **string** |  | [optional] 
 **status** | **string** |  | [optional] 
-**created_at** | [**Datetime**](Datetime.md) |  | [optional] 
+**created_at** | **string** |  | [optional] 
 **customer** | [**\BillaBear\Model\Customer**](Customer.md) |  | [optional] 
 **receipts** | [**\BillaBear\Model\InlineResponse2007Receipts[]**](InlineResponse2007Receipts.md) |  | [optional] 
 
