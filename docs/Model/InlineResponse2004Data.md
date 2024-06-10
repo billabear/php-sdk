@@ -14,9 +14,9 @@ Name | Type | Description | Notes
 **pay_link** | **string** |  | [optional] 
 **created_at** | **string** |  | [optional] 
 **paid_at** | **string** |  | [optional] 
-**due_date** | **string** |  | [optional] 
-**biller_address** | [**Address**](Address.md) |  | [optional] 
-**payeeaddress** | [**Address**](Address.md) |  | [optional] 
+**due_date** | [**Datetime**](Datetime.md) |  | [optional] 
+**biller_address** | [**\BillaBear\Model\Address**](Address.md) |  | [optional] 
+**payeeaddress** | [**\BillaBear\Model\Address**](Address.md) |  | [optional] 
 **lines** | [**\BillaBear\Model\InlineResponse2004Lines[]**](InlineResponse2004Lines.md) |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

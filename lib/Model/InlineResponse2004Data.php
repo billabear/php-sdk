@@ -67,9 +67,9 @@ class InlineResponse2004Data implements ModelInterface, ArrayAccess
         'pay_link' => 'string',
         'created_at' => 'string',
         'paid_at' => 'string',
-        'due_date' => 'string',
-        'biller_address' => 'Address',
-        'payeeaddress' => 'Address',
+        'due_date' => 'Datetime',
+        'biller_address' => '\BillaBear\Model\Address',
+        'payeeaddress' => '\BillaBear\Model\Address',
         'lines' => '\BillaBear\Model\InlineResponse2004Lines[]'
     ];
 
@@ -552,7 +552,7 @@ class InlineResponse2004Data implements ModelInterface, ArrayAccess
     /**
      * Gets due_date
      *
-     * @return string
+     * @return Datetime
      */
     public function getDueDate()
     {
@@ -562,7 +562,7 @@ class InlineResponse2004Data implements ModelInterface, ArrayAccess
     /**
      * Sets due_date
      *
-     * @param string $due_date due_date
+     * @param Datetime $due_date due_date
      *
      * @return $this
      */
@@ -576,7 +576,7 @@ class InlineResponse2004Data implements ModelInterface, ArrayAccess
     /**
      * Gets biller_address
      *
-     * @return Address
+     * @return \BillaBear\Model\Address
      */
     public function getBillerAddress()
     {
@@ -586,7 +586,7 @@ class InlineResponse2004Data implements ModelInterface, ArrayAccess
     /**
      * Sets biller_address
      *
-     * @param Address $biller_address biller_address
+     * @param \BillaBear\Model\Address $biller_address biller_address
      *
      * @return $this
      */
@@ -600,7 +600,7 @@ class InlineResponse2004Data implements ModelInterface, ArrayAccess
     /**
      * Gets payeeaddress
      *
-     * @return Address
+     * @return \BillaBear\Model\Address
      */
     public function getPayeeaddress()
     {
@@ -610,7 +610,7 @@ class InlineResponse2004Data implements ModelInterface, ArrayAccess
     /**
      * Sets payeeaddress
      *
-     * @param Address $payeeaddress payeeaddress
+     * @param \BillaBear\Model\Address $payeeaddress payeeaddress
      *
      * @return $this
      */

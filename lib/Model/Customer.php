@@ -65,7 +65,7 @@ class Customer implements ModelInterface, ArrayAccess
         'type' => 'string',
         'reference' => 'string',
         'external_reference' => 'string',
-        'address' => 'Address',
+        'address' => '\BillaBear\Model\Address',
         'locale' => 'string',
         'brand' => 'string'
     ];
@@ -551,7 +551,7 @@ class Customer implements ModelInterface, ArrayAccess
     /**
      * Gets address
      *
-     * @return Address
+     * @return \BillaBear\Model\Address
      */
     public function getAddress()
     {
@@ -561,7 +561,7 @@ class Customer implements ModelInterface, ArrayAccess
     /**
      * Sets address
      *
-     * @param Address $address address
+     * @param \BillaBear\Model\Address $address address
      *
      * @return $this
      */
