@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **downloadInvoice**
-> downloadInvoice($invoice_id)
+> string downloadInvoice($invoice_id)
 
 Download Invoice
 
@@ -87,7 +87,8 @@ $apiInstance = new BillaBear\Api\InvoicesApi(
 $invoice_id = "invoice_id_example"; // string | The id of the invoice
 
 try {
-    $apiInstance->downloadInvoice($invoice_id);
+    $result = $apiInstance->downloadInvoice($invoice_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InvoicesApi->downloadInvoice: ', $e->getMessage(), PHP_EOL;
 }
@@ -102,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**downloadReceipt**](ReceiptApi.md#downloadreceipt) | **POST** /receipt/{receiptId}/download | Download Receipt
 
 # **downloadReceipt**
-> downloadReceipt($receipt)
+> string downloadReceipt($receipt)
 
 Download Receipt
 
@@ -31,7 +31,8 @@ $apiInstance = new BillaBear\Api\ReceiptApi(
 $receipt = "receipt_example"; // string | The id of the receipt
 
 try {
-    $apiInstance->downloadReceipt($receipt);
+    $result = $apiInstance->downloadReceipt($receipt);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReceiptApi->downloadReceipt: ', $e->getMessage(), PHP_EOL;
 }
@@ -46,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
