@@ -67,7 +67,7 @@ class InlineResponse2004Data implements ModelInterface, ArrayAccess
         'pay_link' => 'string',
         'created_at' => 'string',
         'paid_at' => 'string',
-        'due_date' => 'Datetime',
+        'due_date' => 'string',
         'biller_address' => '\BillaBear\Model\Address',
         'payeeaddress' => '\BillaBear\Model\Address',
         'lines' => '\BillaBear\Model\InlineResponse2004Lines[]'
@@ -552,7 +552,7 @@ class InlineResponse2004Data implements ModelInterface, ArrayAccess
     /**
      * Gets due_date
      *
-     * @return Datetime
+     * @return string
      */
     public function getDueDate()
     {
@@ -562,7 +562,7 @@ class InlineResponse2004Data implements ModelInterface, ArrayAccess
     /**
      * Sets due_date
      *
-     * @param Datetime $due_date due_date
+     * @param string $due_date due_date
      *
      * @return $this
      */
