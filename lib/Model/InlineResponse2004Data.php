@@ -63,7 +63,7 @@ class InlineResponse2004Data implements ModelInterface, ArrayAccess
         'tax_total' => 'int',
         'sub_total' => 'int',
         'amount_due' => 'int',
-        'is_paid' => 'bool',
+        'paid' => 'bool',
         'pay_link' => 'string',
         'created_at' => 'string',
         'paid_at' => 'string',
@@ -86,7 +86,7 @@ class InlineResponse2004Data implements ModelInterface, ArrayAccess
         'tax_total' => null,
         'sub_total' => null,
         'amount_due' => null,
-        'is_paid' => null,
+        'paid' => null,
         'pay_link' => null,
         'created_at' => null,
         'paid_at' => null,
@@ -130,7 +130,7 @@ class InlineResponse2004Data implements ModelInterface, ArrayAccess
         'tax_total' => 'tax_total',
         'sub_total' => 'sub_total',
         'amount_due' => 'amount_due',
-        'is_paid' => 'is_paid',
+        'paid' => 'paid',
         'pay_link' => 'pay_link',
         'created_at' => 'created_at',
         'paid_at' => 'paid_at',
@@ -153,7 +153,7 @@ class InlineResponse2004Data implements ModelInterface, ArrayAccess
         'tax_total' => 'setTaxTotal',
         'sub_total' => 'setSubTotal',
         'amount_due' => 'setAmountDue',
-        'is_paid' => 'setIsPaid',
+        'paid' => 'setPaid',
         'pay_link' => 'setPayLink',
         'created_at' => 'setCreatedAt',
         'paid_at' => 'setPaidAt',
@@ -176,7 +176,7 @@ class InlineResponse2004Data implements ModelInterface, ArrayAccess
         'tax_total' => 'getTaxTotal',
         'sub_total' => 'getSubTotal',
         'amount_due' => 'getAmountDue',
-        'is_paid' => 'getIsPaid',
+        'paid' => 'getPaid',
         'pay_link' => 'getPayLink',
         'created_at' => 'getCreatedAt',
         'paid_at' => 'getPaidAt',
@@ -251,7 +251,7 @@ class InlineResponse2004Data implements ModelInterface, ArrayAccess
         $this->container['tax_total'] = isset($data['tax_total']) ? $data['tax_total'] : null;
         $this->container['sub_total'] = isset($data['sub_total']) ? $data['sub_total'] : null;
         $this->container['amount_due'] = isset($data['amount_due']) ? $data['amount_due'] : null;
-        $this->container['is_paid'] = isset($data['is_paid']) ? $data['is_paid'] : null;
+        $this->container['paid'] = isset($data['paid']) ? $data['paid'] : null;
         $this->container['pay_link'] = isset($data['pay_link']) ? $data['pay_link'] : null;
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
         $this->container['paid_at'] = isset($data['paid_at']) ? $data['paid_at'] : null;
@@ -454,25 +454,25 @@ class InlineResponse2004Data implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets is_paid
+     * Gets paid
      *
      * @return bool
      */
-    public function getIsPaid()
+    public function getPaid()
     {
-        return $this->container['is_paid'];
+        return $this->container['paid'];
     }
 
     /**
-     * Sets is_paid
+     * Sets paid
      *
-     * @param bool $is_paid is_paid
+     * @param bool $paid paid
      *
      * @return $this
      */
-    public function setIsPaid($is_paid)
+    public function setPaid($paid)
     {
-        $this->container['is_paid'] = $is_paid;
+        $this->container['paid'] = $paid;
 
         return $this;
     }

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **tax_total** | **int** |  | [optional] 
 **sub_total** | **int** |  | [optional] 
 **amount_due** | **int** |  | [optional] 
-**is_paid** | **bool** |  | [optional] 
+**paid** | **bool** |  | [optional] 
 **pay_link** | **string** |  | [optional] 
 **created_at** | **string** |  | [optional] 
 **paid_at** | **string** |  | [optional] 
