@@ -4,7 +4,7 @@ All URIs are relative to *https://{customerId}.billabear.cloud/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**downloadReceipt**](ReceiptApi.md#downloadreceipt) | **POST** /receipt/{receiptId}/download | Download Receipt
+[**downloadReceipt**](ReceiptApi.md#downloadreceipt) | **GET** /receipt/{receiptId}/download | Download Receipt
 
 # **downloadReceipt**
 > string downloadReceipt($receipt)

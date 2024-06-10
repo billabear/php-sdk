@@ -5,8 +5,8 @@ All URIs are relative to *https://{customerId}.billabear.cloud/api/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**chargeInvoice**](PaymentsApi.md#chargeinvoice) | **POST** /invoice/{invoiceId}/charge | Charge Invoice
-[**downloadInvoice**](PaymentsApi.md#downloadinvoice) | **POST** /invoice/{invoiceId}/download | Download Invoice
-[**downloadReceipt**](PaymentsApi.md#downloadreceipt) | **POST** /receipt/{receiptId}/download | Download Receipt
+[**downloadInvoice**](PaymentsApi.md#downloadinvoice) | **GET** /invoice/{invoiceId}/download | Download Invoice
+[**downloadReceipt**](PaymentsApi.md#downloadreceipt) | **GET** /receipt/{receiptId}/download | Download Receipt
 [**listCustomerInvoices**](PaymentsApi.md#listcustomerinvoices) | **GET** /customer/{customerId}/invoices | List Customer Invoices
 [**listCustomerPayment**](PaymentsApi.md#listcustomerpayment) | **GET** /customer/{customerId}/payment | List Customer Payments
 [**listPayment**](PaymentsApi.md#listpayment) | **GET** /payment | List
