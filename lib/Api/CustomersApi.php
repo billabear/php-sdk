@@ -4107,15 +4107,16 @@ class CustomersApi
      *
      * Update
      *
+     * @param  \BillaBear\Model\Customer $body body (required)
      * @param  string $customer_id The id of the customer to retrieve (required)
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \BillaBear\Model\Customer
      */
-    public function updateCustomer($customer_id)
+    public function updateCustomer($body, $customer_id)
     {
-        list($response) = $this->updateCustomerWithHttpInfo($customer_id);
+        list($response) = $this->updateCustomerWithHttpInfo($body, $customer_id);
         return $response;
     }
 
@@ -4124,16 +4125,17 @@ class CustomersApi
      *
      * Update
      *
+     * @param  \BillaBear\Model\Customer $body (required)
      * @param  string $customer_id The id of the customer to retrieve (required)
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \BillaBear\Model\Customer, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCustomerWithHttpInfo($customer_id)
+    public function updateCustomerWithHttpInfo($body, $customer_id)
     {
         $returnType = '\BillaBear\Model\Customer';
-        $request = $this->updateCustomerRequest($customer_id);
+        $request = $this->updateCustomerRequest($body, $customer_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4207,14 +4209,15 @@ class CustomersApi
      *
      * Update
      *
+     * @param  \BillaBear\Model\Customer $body (required)
      * @param  string $customer_id The id of the customer to retrieve (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerAsync($customer_id)
+    public function updateCustomerAsync($body, $customer_id)
     {
-        return $this->updateCustomerAsyncWithHttpInfo($customer_id)
+        return $this->updateCustomerAsyncWithHttpInfo($body, $customer_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4227,15 +4230,16 @@ class CustomersApi
      *
      * Update
      *
+     * @param  \BillaBear\Model\Customer $body (required)
      * @param  string $customer_id The id of the customer to retrieve (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerAsyncWithHttpInfo($customer_id)
+    public function updateCustomerAsyncWithHttpInfo($body, $customer_id)
     {
         $returnType = '\BillaBear\Model\Customer';
-        $request = $this->updateCustomerRequest($customer_id);
+        $request = $this->updateCustomerRequest($body, $customer_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4277,13 +4281,20 @@ class CustomersApi
     /**
      * Create request for operation 'updateCustomer'
      *
+     * @param  \BillaBear\Model\Customer $body (required)
      * @param  string $customer_id The id of the customer to retrieve (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updateCustomerRequest($customer_id)
+    protected function updateCustomerRequest($body, $customer_id)
     {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling updateCustomer'
+            );
+        }
         // verify the required parameter 'customer_id' is set
         if ($customer_id === null || (is_array($customer_id) && count($customer_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -4310,6 +4321,9 @@ class CustomersApi
 
         // body params
         $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -4318,7 +4332,7 @@ class CustomersApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                []
+                ['application/json']
             );
         }
 

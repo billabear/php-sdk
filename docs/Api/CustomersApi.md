@@ -805,7 +805,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateCustomer**
-> \BillaBear\Model\Customer updateCustomer($customer_id)
+> \BillaBear\Model\Customer updateCustomer($body, $customer_id)
 
 Update
 
@@ -826,10 +826,11 @@ $apiInstance = new BillaBear\Api\CustomersApi(
     new GuzzleHttp\Client(),
     $config
 );
+$body = new \BillaBear\Model\Customer(); // \BillaBear\Model\Customer | 
 $customer_id = "customer_id_example"; // string | The id of the customer to retrieve
 
 try {
-    $result = $apiInstance->updateCustomer($customer_id);
+    $result = $apiInstance->updateCustomer($body, $customer_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomersApi->updateCustomer: ', $e->getMessage(), PHP_EOL;
@@ -841,6 +842,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**\BillaBear\Model\Customer**](../Model/Customer.md)|  |
  **customer_id** | **string**| The id of the customer to retrieve |
 
 ### Return type
@@ -853,7 +855,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
