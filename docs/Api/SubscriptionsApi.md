@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **customerChangeSubscriptionPlan**
-> \BillaBear\Model\Subscription customerChangeSubscriptionPlan($body, $customer_id)
+> \BillaBear\Model\Subscription customerChangeSubscriptionPlan($body, $subscription_id)
 
 Change Subscription Plan
 
@@ -206,10 +206,10 @@ $apiInstance = new BillaBear\Api\SubscriptionsApi(
     $config
 );
 $body = new \BillaBear\Model\SubscriptionIdPlanBody(); // \BillaBear\Model\SubscriptionIdPlanBody | 
-$customer_id = "customer_id_example"; // string | The id of the customer to retrieve
+$subscription_id = "subscription_id_example"; // string | The id of the subscription to retrieve
 
 try {
-    $result = $apiInstance->customerChangeSubscriptionPlan($body, $customer_id);
+    $result = $apiInstance->customerChangeSubscriptionPlan($body, $subscription_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionsApi->customerChangeSubscriptionPlan: ', $e->getMessage(), PHP_EOL;
@@ -222,7 +222,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\BillaBear\Model\SubscriptionIdPlanBody**](../Model/SubscriptionIdPlanBody.md)|  |
- **customer_id** | **string**| The id of the customer to retrieve |
+ **subscription_id** | **string**| The id of the subscription to retrieve |
 
 ### Return type
 

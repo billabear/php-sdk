@@ -967,15 +967,15 @@ class SubscriptionsApi
      * Change Subscription Plan
      *
      * @param  \BillaBear\Model\SubscriptionIdPlanBody $body body (required)
-     * @param  string $customer_id The id of the customer to retrieve (required)
+     * @param  string $subscription_id The id of the subscription to retrieve (required)
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \BillaBear\Model\Subscription
      */
-    public function customerChangeSubscriptionPlan($body, $customer_id)
+    public function customerChangeSubscriptionPlan($body, $subscription_id)
     {
-        list($response) = $this->customerChangeSubscriptionPlanWithHttpInfo($body, $customer_id);
+        list($response) = $this->customerChangeSubscriptionPlanWithHttpInfo($body, $subscription_id);
         return $response;
     }
 
@@ -985,16 +985,16 @@ class SubscriptionsApi
      * Change Subscription Plan
      *
      * @param  \BillaBear\Model\SubscriptionIdPlanBody $body (required)
-     * @param  string $customer_id The id of the customer to retrieve (required)
+     * @param  string $subscription_id The id of the subscription to retrieve (required)
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \BillaBear\Model\Subscription, HTTP status code, HTTP response headers (array of strings)
      */
-    public function customerChangeSubscriptionPlanWithHttpInfo($body, $customer_id)
+    public function customerChangeSubscriptionPlanWithHttpInfo($body, $subscription_id)
     {
         $returnType = '\BillaBear\Model\Subscription';
-        $request = $this->customerChangeSubscriptionPlanRequest($body, $customer_id);
+        $request = $this->customerChangeSubscriptionPlanRequest($body, $subscription_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1069,14 +1069,14 @@ class SubscriptionsApi
      * Change Subscription Plan
      *
      * @param  \BillaBear\Model\SubscriptionIdPlanBody $body (required)
-     * @param  string $customer_id The id of the customer to retrieve (required)
+     * @param  string $subscription_id The id of the subscription to retrieve (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function customerChangeSubscriptionPlanAsync($body, $customer_id)
+    public function customerChangeSubscriptionPlanAsync($body, $subscription_id)
     {
-        return $this->customerChangeSubscriptionPlanAsyncWithHttpInfo($body, $customer_id)
+        return $this->customerChangeSubscriptionPlanAsyncWithHttpInfo($body, $subscription_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1090,15 +1090,15 @@ class SubscriptionsApi
      * Change Subscription Plan
      *
      * @param  \BillaBear\Model\SubscriptionIdPlanBody $body (required)
-     * @param  string $customer_id The id of the customer to retrieve (required)
+     * @param  string $subscription_id The id of the subscription to retrieve (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function customerChangeSubscriptionPlanAsyncWithHttpInfo($body, $customer_id)
+    public function customerChangeSubscriptionPlanAsyncWithHttpInfo($body, $subscription_id)
     {
         $returnType = '\BillaBear\Model\Subscription';
-        $request = $this->customerChangeSubscriptionPlanRequest($body, $customer_id);
+        $request = $this->customerChangeSubscriptionPlanRequest($body, $subscription_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1141,12 +1141,12 @@ class SubscriptionsApi
      * Create request for operation 'customerChangeSubscriptionPlan'
      *
      * @param  \BillaBear\Model\SubscriptionIdPlanBody $body (required)
-     * @param  string $customer_id The id of the customer to retrieve (required)
+     * @param  string $subscription_id The id of the subscription to retrieve (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function customerChangeSubscriptionPlanRequest($body, $customer_id)
+    protected function customerChangeSubscriptionPlanRequest($body, $subscription_id)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -1154,10 +1154,10 @@ class SubscriptionsApi
                 'Missing the required parameter $body when calling customerChangeSubscriptionPlan'
             );
         }
-        // verify the required parameter 'customer_id' is set
-        if ($customer_id === null || (is_array($customer_id) && count($customer_id) === 0)) {
+        // verify the required parameter 'subscription_id' is set
+        if ($subscription_id === null || (is_array($subscription_id) && count($subscription_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $customer_id when calling customerChangeSubscriptionPlan'
+                'Missing the required parameter $subscription_id when calling customerChangeSubscriptionPlan'
             );
         }
 
@@ -1170,10 +1170,10 @@ class SubscriptionsApi
 
 
         // path params
-        if ($customer_id !== null) {
+        if ($subscription_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'customerId' . '}',
-                ObjectSerializer::toPathValue($customer_id),
+                '{' . 'subscriptionId' . '}',
+                ObjectSerializer::toPathValue($subscription_id),
                 $resourcePath
             );
         }
