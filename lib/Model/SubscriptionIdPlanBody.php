@@ -57,7 +57,7 @@ class SubscriptionIdPlanBody implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'when' => 'string',
-        'subscription_plan' => 'string',
+        'plan' => 'string',
         'price' => 'string'
     ];
 
@@ -68,7 +68,7 @@ class SubscriptionIdPlanBody implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'when' => null,
-        'subscription_plan' => 'uuid',
+        'plan' => 'uuid',
         'price' => 'uuid'
     ];
 
@@ -100,7 +100,7 @@ class SubscriptionIdPlanBody implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'when' => 'when',
-        'subscription_plan' => 'subscription_plan',
+        'plan' => 'plan',
         'price' => 'price'
     ];
 
@@ -111,7 +111,7 @@ class SubscriptionIdPlanBody implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'when' => 'setWhen',
-        'subscription_plan' => 'setSubscriptionPlan',
+        'plan' => 'setPlan',
         'price' => 'setPrice'
     ];
 
@@ -122,7 +122,7 @@ class SubscriptionIdPlanBody implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'when' => 'getWhen',
-        'subscription_plan' => 'getSubscriptionPlan',
+        'plan' => 'getPlan',
         'price' => 'getPrice'
     ];
 
@@ -199,7 +199,7 @@ class SubscriptionIdPlanBody implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['when'] = isset($data['when']) ? $data['when'] : null;
-        $this->container['subscription_plan'] = isset($data['subscription_plan']) ? $data['subscription_plan'] : null;
+        $this->container['plan'] = isset($data['plan']) ? $data['plan'] : null;
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
     }
 
@@ -223,9 +223,6 @@ class SubscriptionIdPlanBody implements ModelInterface, ArrayAccess
             );
         }
 
-        if ($this->container['subscription_plan'] === null) {
-            $invalidProperties[] = "'subscription_plan' can't be null";
-        }
         if ($this->container['price'] === null) {
             $invalidProperties[] = "'price' can't be null";
         }
@@ -278,25 +275,25 @@ class SubscriptionIdPlanBody implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets subscription_plan
+     * Gets plan
      *
      * @return string
      */
-    public function getSubscriptionPlan()
+    public function getPlan()
     {
-        return $this->container['subscription_plan'];
+        return $this->container['plan'];
     }
 
     /**
-     * Sets subscription_plan
+     * Sets plan
      *
-     * @param string $subscription_plan The ID for the subscription plan to be used
+     * @param string $plan The ID for the subscription plan to be used
      *
      * @return $this
      */
-    public function setSubscriptionPlan($subscription_plan)
+    public function setPlan($plan)
     {
-        $this->container['subscription_plan'] = $subscription_plan;
+        $this->container['plan'] = $plan;
 
         return $this;
     }
