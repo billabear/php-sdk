@@ -21,7 +21,7 @@ Method | HTTP request | Description
 [**updateCustomer**](CustomersApi.md#updatecustomer) | **PUT** /customer/{customerId} | Update
 
 # **addSeatsSubscriptions**
-> \BillaBear\Model\InlineResponse20012 addSeatsSubscriptions($body, $customer_id)
+> \BillaBear\Model\InlineResponse20012 addSeatsSubscriptions($body, $subscription_id)
 
 Add Seats
 
@@ -43,10 +43,10 @@ $apiInstance = new BillaBear\Api\CustomersApi(
     $config
 );
 $body = new \BillaBear\Model\SeatsAddBody(); // \BillaBear\Model\SeatsAddBody | 
-$customer_id = "customer_id_example"; // string | The id of the customer to retrieve
+$subscription_id = "subscription_id_example"; // string | The id of the subscription to retrieve
 
 try {
-    $result = $apiInstance->addSeatsSubscriptions($body, $customer_id);
+    $result = $apiInstance->addSeatsSubscriptions($body, $subscription_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomersApi->addSeatsSubscriptions: ', $e->getMessage(), PHP_EOL;
@@ -59,7 +59,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\BillaBear\Model\SeatsAddBody**](../Model/SeatsAddBody.md)|  |
- **customer_id** | **string**| The id of the customer to retrieve |
+ **subscription_id** | **string**| The id of the subscription to retrieve |
 
 ### Return type
 
@@ -695,7 +695,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **removeSeatsSubscriptions**
-> \BillaBear\Model\InlineResponse20012 removeSeatsSubscriptions($body, $customer_id)
+> \BillaBear\Model\InlineResponse20012 removeSeatsSubscriptions($body, $subscription_id)
 
 Remove Seats
 
@@ -717,10 +717,10 @@ $apiInstance = new BillaBear\Api\CustomersApi(
     $config
 );
 $body = new \BillaBear\Model\SeatsRemoveBody(); // \BillaBear\Model\SeatsRemoveBody | 
-$customer_id = "customer_id_example"; // string | The id of the customer to retrieve
+$subscription_id = "subscription_id_example"; // string | The id of the subscription to retrieve
 
 try {
-    $result = $apiInstance->removeSeatsSubscriptions($body, $customer_id);
+    $result = $apiInstance->removeSeatsSubscriptions($body, $subscription_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomersApi->removeSeatsSubscriptions: ', $e->getMessage(), PHP_EOL;
@@ -733,7 +733,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\BillaBear\Model\SeatsRemoveBody**](../Model/SeatsRemoveBody.md)|  |
- **customer_id** | **string**| The id of the customer to retrieve |
+ **subscription_id** | **string**| The id of the subscription to retrieve |
 
 ### Return type
 

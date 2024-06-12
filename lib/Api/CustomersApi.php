@@ -92,15 +92,15 @@ class CustomersApi
      * Add Seats
      *
      * @param  \BillaBear\Model\SeatsAddBody $body body (required)
-     * @param  string $customer_id The id of the customer to retrieve (required)
+     * @param  string $subscription_id The id of the subscription to retrieve (required)
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \BillaBear\Model\InlineResponse20012
      */
-    public function addSeatsSubscriptions($body, $customer_id)
+    public function addSeatsSubscriptions($body, $subscription_id)
     {
-        list($response) = $this->addSeatsSubscriptionsWithHttpInfo($body, $customer_id);
+        list($response) = $this->addSeatsSubscriptionsWithHttpInfo($body, $subscription_id);
         return $response;
     }
 
@@ -110,16 +110,16 @@ class CustomersApi
      * Add Seats
      *
      * @param  \BillaBear\Model\SeatsAddBody $body (required)
-     * @param  string $customer_id The id of the customer to retrieve (required)
+     * @param  string $subscription_id The id of the subscription to retrieve (required)
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \BillaBear\Model\InlineResponse20012, HTTP status code, HTTP response headers (array of strings)
      */
-    public function addSeatsSubscriptionsWithHttpInfo($body, $customer_id)
+    public function addSeatsSubscriptionsWithHttpInfo($body, $subscription_id)
     {
         $returnType = '\BillaBear\Model\InlineResponse20012';
-        $request = $this->addSeatsSubscriptionsRequest($body, $customer_id);
+        $request = $this->addSeatsSubscriptionsRequest($body, $subscription_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -194,14 +194,14 @@ class CustomersApi
      * Add Seats
      *
      * @param  \BillaBear\Model\SeatsAddBody $body (required)
-     * @param  string $customer_id The id of the customer to retrieve (required)
+     * @param  string $subscription_id The id of the subscription to retrieve (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addSeatsSubscriptionsAsync($body, $customer_id)
+    public function addSeatsSubscriptionsAsync($body, $subscription_id)
     {
-        return $this->addSeatsSubscriptionsAsyncWithHttpInfo($body, $customer_id)
+        return $this->addSeatsSubscriptionsAsyncWithHttpInfo($body, $subscription_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -215,15 +215,15 @@ class CustomersApi
      * Add Seats
      *
      * @param  \BillaBear\Model\SeatsAddBody $body (required)
-     * @param  string $customer_id The id of the customer to retrieve (required)
+     * @param  string $subscription_id The id of the subscription to retrieve (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addSeatsSubscriptionsAsyncWithHttpInfo($body, $customer_id)
+    public function addSeatsSubscriptionsAsyncWithHttpInfo($body, $subscription_id)
     {
         $returnType = '\BillaBear\Model\InlineResponse20012';
-        $request = $this->addSeatsSubscriptionsRequest($body, $customer_id);
+        $request = $this->addSeatsSubscriptionsRequest($body, $subscription_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -266,12 +266,12 @@ class CustomersApi
      * Create request for operation 'addSeatsSubscriptions'
      *
      * @param  \BillaBear\Model\SeatsAddBody $body (required)
-     * @param  string $customer_id The id of the customer to retrieve (required)
+     * @param  string $subscription_id The id of the subscription to retrieve (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function addSeatsSubscriptionsRequest($body, $customer_id)
+    protected function addSeatsSubscriptionsRequest($body, $subscription_id)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -279,10 +279,10 @@ class CustomersApi
                 'Missing the required parameter $body when calling addSeatsSubscriptions'
             );
         }
-        // verify the required parameter 'customer_id' is set
-        if ($customer_id === null || (is_array($customer_id) && count($customer_id) === 0)) {
+        // verify the required parameter 'subscription_id' is set
+        if ($subscription_id === null || (is_array($subscription_id) && count($subscription_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $customer_id when calling addSeatsSubscriptions'
+                'Missing the required parameter $subscription_id when calling addSeatsSubscriptions'
             );
         }
 
@@ -295,10 +295,10 @@ class CustomersApi
 
 
         // path params
-        if ($customer_id !== null) {
+        if ($subscription_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'customerId' . '}',
-                ObjectSerializer::toPathValue($customer_id),
+                '{' . 'subscriptionId' . '}',
+                ObjectSerializer::toPathValue($subscription_id),
                 $resourcePath
             );
         }
@@ -3536,15 +3536,15 @@ class CustomersApi
      * Remove Seats
      *
      * @param  \BillaBear\Model\SeatsRemoveBody $body body (required)
-     * @param  string $customer_id The id of the customer to retrieve (required)
+     * @param  string $subscription_id The id of the subscription to retrieve (required)
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \BillaBear\Model\InlineResponse20012
      */
-    public function removeSeatsSubscriptions($body, $customer_id)
+    public function removeSeatsSubscriptions($body, $subscription_id)
     {
-        list($response) = $this->removeSeatsSubscriptionsWithHttpInfo($body, $customer_id);
+        list($response) = $this->removeSeatsSubscriptionsWithHttpInfo($body, $subscription_id);
         return $response;
     }
 
@@ -3554,16 +3554,16 @@ class CustomersApi
      * Remove Seats
      *
      * @param  \BillaBear\Model\SeatsRemoveBody $body (required)
-     * @param  string $customer_id The id of the customer to retrieve (required)
+     * @param  string $subscription_id The id of the subscription to retrieve (required)
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \BillaBear\Model\InlineResponse20012, HTTP status code, HTTP response headers (array of strings)
      */
-    public function removeSeatsSubscriptionsWithHttpInfo($body, $customer_id)
+    public function removeSeatsSubscriptionsWithHttpInfo($body, $subscription_id)
     {
         $returnType = '\BillaBear\Model\InlineResponse20012';
-        $request = $this->removeSeatsSubscriptionsRequest($body, $customer_id);
+        $request = $this->removeSeatsSubscriptionsRequest($body, $subscription_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3638,14 +3638,14 @@ class CustomersApi
      * Remove Seats
      *
      * @param  \BillaBear\Model\SeatsRemoveBody $body (required)
-     * @param  string $customer_id The id of the customer to retrieve (required)
+     * @param  string $subscription_id The id of the subscription to retrieve (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function removeSeatsSubscriptionsAsync($body, $customer_id)
+    public function removeSeatsSubscriptionsAsync($body, $subscription_id)
     {
-        return $this->removeSeatsSubscriptionsAsyncWithHttpInfo($body, $customer_id)
+        return $this->removeSeatsSubscriptionsAsyncWithHttpInfo($body, $subscription_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3659,15 +3659,15 @@ class CustomersApi
      * Remove Seats
      *
      * @param  \BillaBear\Model\SeatsRemoveBody $body (required)
-     * @param  string $customer_id The id of the customer to retrieve (required)
+     * @param  string $subscription_id The id of the subscription to retrieve (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function removeSeatsSubscriptionsAsyncWithHttpInfo($body, $customer_id)
+    public function removeSeatsSubscriptionsAsyncWithHttpInfo($body, $subscription_id)
     {
         $returnType = '\BillaBear\Model\InlineResponse20012';
-        $request = $this->removeSeatsSubscriptionsRequest($body, $customer_id);
+        $request = $this->removeSeatsSubscriptionsRequest($body, $subscription_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3710,12 +3710,12 @@ class CustomersApi
      * Create request for operation 'removeSeatsSubscriptions'
      *
      * @param  \BillaBear\Model\SeatsRemoveBody $body (required)
-     * @param  string $customer_id The id of the customer to retrieve (required)
+     * @param  string $subscription_id The id of the subscription to retrieve (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function removeSeatsSubscriptionsRequest($body, $customer_id)
+    protected function removeSeatsSubscriptionsRequest($body, $subscription_id)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -3723,10 +3723,10 @@ class CustomersApi
                 'Missing the required parameter $body when calling removeSeatsSubscriptions'
             );
         }
-        // verify the required parameter 'customer_id' is set
-        if ($customer_id === null || (is_array($customer_id) && count($customer_id) === 0)) {
+        // verify the required parameter 'subscription_id' is set
+        if ($subscription_id === null || (is_array($subscription_id) && count($subscription_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $customer_id when calling removeSeatsSubscriptions'
+                'Missing the required parameter $subscription_id when calling removeSeatsSubscriptions'
             );
         }
 
@@ -3739,10 +3739,10 @@ class CustomersApi
 
 
         // path params
-        if ($customer_id !== null) {
+        if ($subscription_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'customerId' . '}',
-                ObjectSerializer::toPathValue($customer_id),
+                '{' . 'subscriptionId' . '}',
+                ObjectSerializer::toPathValue($subscription_id),
                 $resourcePath
             );
         }
