@@ -62,6 +62,7 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
         'user_count' => 'int',
         'per_seat' => 'bool',
         'has_trial' => 'bool',
+        'is_trial_standalone' => 'bool',
         'free' => 'bool',
         'public' => 'bool',
         'limits' => '\BillaBear\Model\Limit[]',
@@ -83,6 +84,7 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
         'user_count' => null,
         'per_seat' => null,
         'has_trial' => null,
+        'is_trial_standalone' => null,
         'free' => null,
         'public' => null,
         'limits' => null,
@@ -125,6 +127,7 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
         'user_count' => 'user_count',
         'per_seat' => 'per_seat',
         'has_trial' => 'has_trial',
+        'is_trial_standalone' => 'is_trial_standalone',
         'free' => 'free',
         'public' => 'public',
         'limits' => 'limits',
@@ -146,6 +149,7 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
         'user_count' => 'setUserCount',
         'per_seat' => 'setPerSeat',
         'has_trial' => 'setHasTrial',
+        'is_trial_standalone' => 'setIsTrialStandalone',
         'free' => 'setFree',
         'public' => 'setPublic',
         'limits' => 'setLimits',
@@ -167,6 +171,7 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
         'user_count' => 'getUserCount',
         'per_seat' => 'getPerSeat',
         'has_trial' => 'getHasTrial',
+        'is_trial_standalone' => 'getIsTrialStandalone',
         'free' => 'getFree',
         'public' => 'getPublic',
         'limits' => 'getLimits',
@@ -240,6 +245,7 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
         $this->container['user_count'] = isset($data['user_count']) ? $data['user_count'] : null;
         $this->container['per_seat'] = isset($data['per_seat']) ? $data['per_seat'] : null;
         $this->container['has_trial'] = isset($data['has_trial']) ? $data['has_trial'] : null;
+        $this->container['is_trial_standalone'] = isset($data['is_trial_standalone']) ? $data['is_trial_standalone'] : null;
         $this->container['free'] = isset($data['free']) ? $data['free'] : null;
         $this->container['public'] = isset($data['public']) ? $data['public'] : null;
         $this->container['limits'] = isset($data['limits']) ? $data['limits'] : null;
@@ -413,6 +419,30 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess
     public function setHasTrial($has_trial)
     {
         $this->container['has_trial'] = $has_trial;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_trial_standalone
+     *
+     * @return bool
+     */
+    public function getIsTrialStandalone()
+    {
+        return $this->container['is_trial_standalone'];
+    }
+
+    /**
+     * Sets is_trial_standalone
+     *
+     * @param bool $is_trial_standalone is_trial_standalone
+     *
+     * @return $this
+     */
+    public function setIsTrialStandalone($is_trial_standalone)
+    {
+        $this->container['is_trial_standalone'] = $is_trial_standalone;
 
         return $this;
     }

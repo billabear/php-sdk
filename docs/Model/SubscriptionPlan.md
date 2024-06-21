@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **user_count** | **int** |  | [optional] 
 **per_seat** | **bool** |  | [optional] 
 **has_trial** | **bool** |  | [optional] 
+**is_trial_standalone** | **bool** |  | [optional] 
 **free** | **bool** |  | [optional] 
 **public** | **bool** |  | [optional] 
 **limits** | [**\BillaBear\Model\Limit[]**](Limit.md) |  | [optional] 
