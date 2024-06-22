@@ -57,6 +57,7 @@ class SubscriptionTrialBody implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'subscription_plan' => 'string',
+        'card_token' => 'string',
         'seat_numbrers' => 'int',
         'trial_length_days' => 'int'
     ];
@@ -68,6 +69,7 @@ class SubscriptionTrialBody implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'subscription_plan' => 'uuid',
+        'card_token' => null,
         'seat_numbrers' => null,
         'trial_length_days' => null
     ];
@@ -100,6 +102,7 @@ class SubscriptionTrialBody implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'subscription_plan' => 'subscription_plan',
+        'card_token' => 'card_token',
         'seat_numbrers' => 'seat_numbrers',
         'trial_length_days' => 'trial_length_days'
     ];
@@ -111,6 +114,7 @@ class SubscriptionTrialBody implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'subscription_plan' => 'setSubscriptionPlan',
+        'card_token' => 'setCardToken',
         'seat_numbrers' => 'setSeatNumbrers',
         'trial_length_days' => 'setTrialLengthDays'
     ];
@@ -122,6 +126,7 @@ class SubscriptionTrialBody implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'subscription_plan' => 'getSubscriptionPlan',
+        'card_token' => 'getCardToken',
         'seat_numbrers' => 'getSeatNumbrers',
         'trial_length_days' => 'getTrialLengthDays'
     ];
@@ -185,6 +190,7 @@ class SubscriptionTrialBody implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['subscription_plan'] = isset($data['subscription_plan']) ? $data['subscription_plan'] : null;
+        $this->container['card_token'] = isset($data['card_token']) ? $data['card_token'] : null;
         $this->container['seat_numbrers'] = isset($data['seat_numbrers']) ? $data['seat_numbrers'] : null;
         $this->container['trial_length_days'] = isset($data['trial_length_days']) ? $data['trial_length_days'] : null;
     }
@@ -236,6 +242,30 @@ class SubscriptionTrialBody implements ModelInterface, ArrayAccess
     public function setSubscriptionPlan($subscription_plan)
     {
         $this->container['subscription_plan'] = $subscription_plan;
+
+        return $this;
+    }
+
+    /**
+     * Gets card_token
+     *
+     * @return string
+     */
+    public function getCardToken()
+    {
+        return $this->container['card_token'];
+    }
+
+    /**
+     * Sets card_token
+     *
+     * @param string $card_token A stripe card token that's been created using Stripe's js sdk. It'll create the payment details for the customer.
+     *
+     * @return $this
+     */
+    public function setCardToken($card_token)
+    {
+        $this->container['card_token'] = $card_token;
 
         return $this;
     }
