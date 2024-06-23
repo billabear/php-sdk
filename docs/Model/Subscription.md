@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **string** |  | [optional] 
 **seat_number** | **int** |  | [optional] 
 **schedule** | **string** |  | [optional] 
+**status** | **string** |  | [optional] 
 **created_at** | **string** |  | [optional] 
 **updated_at** | **string** |  | [optional] 
 **ended_at** | **string** |  | [optional] 

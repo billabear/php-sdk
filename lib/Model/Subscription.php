@@ -59,6 +59,7 @@ class Subscription implements ModelInterface, ArrayAccess
         'id' => 'string',
         'seat_number' => 'int',
         'schedule' => 'string',
+        'status' => 'string',
         'created_at' => 'string',
         'updated_at' => 'string',
         'ended_at' => 'string',
@@ -78,6 +79,7 @@ class Subscription implements ModelInterface, ArrayAccess
         'id' => 'uuid',
         'seat_number' => null,
         'schedule' => null,
+        'status' => null,
         'created_at' => null,
         'updated_at' => null,
         'ended_at' => null,
@@ -118,6 +120,7 @@ class Subscription implements ModelInterface, ArrayAccess
         'id' => 'id',
         'seat_number' => 'seat_number',
         'schedule' => 'schedule',
+        'status' => 'status',
         'created_at' => 'created_at',
         'updated_at' => 'updated_at',
         'ended_at' => 'ended_at',
@@ -137,6 +140,7 @@ class Subscription implements ModelInterface, ArrayAccess
         'id' => 'setId',
         'seat_number' => 'setSeatNumber',
         'schedule' => 'setSchedule',
+        'status' => 'setStatus',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
         'ended_at' => 'setEndedAt',
@@ -156,6 +160,7 @@ class Subscription implements ModelInterface, ArrayAccess
         'id' => 'getId',
         'seat_number' => 'getSeatNumber',
         'schedule' => 'getSchedule',
+        'status' => 'getStatus',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
         'ended_at' => 'getEndedAt',
@@ -227,6 +232,7 @@ class Subscription implements ModelInterface, ArrayAccess
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['seat_number'] = isset($data['seat_number']) ? $data['seat_number'] : null;
         $this->container['schedule'] = isset($data['schedule']) ? $data['schedule'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
         $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
         $this->container['ended_at'] = isset($data['ended_at']) ? $data['ended_at'] : null;
@@ -329,6 +335,30 @@ class Subscription implements ModelInterface, ArrayAccess
     public function setSchedule($schedule)
     {
         $this->container['schedule'] = $schedule;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }
