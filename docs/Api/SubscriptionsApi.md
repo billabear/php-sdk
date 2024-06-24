@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**createSubscription**](SubscriptionsApi.md#createsubscription) | **POST** /customer/{customerId}/subscription/start | Create Subscription
 [**customerChangeSubscriptionPlan**](SubscriptionsApi.md#customerchangesubscriptionplan) | **POST** /subscription/{subscriptionId}/plan | Change Subscription Plan
 [**extendTrial**](SubscriptionsApi.md#extendtrial) | **POST** /subscription/{subscriptionId}/extend | Extend Trial Subscription
+[**getActiveForCustomer**](SubscriptionsApi.md#getactiveforcustomer) | **GET** /customer/{customerId}/subscription/active | List Customer Active Subscriptions
 [**getForCustomer**](SubscriptionsApi.md#getforcustomer) | **GET** /customer/{customerId}/subscription | List Customer Subscriptions
 [**listSubscriptionPlans**](SubscriptionsApi.md#listsubscriptionplans) | **GET** /subscription/plans | List Subscription Plans
 [**listSubscriptions**](SubscriptionsApi.md#listsubscriptions) | **GET** /subscription | List
@@ -349,6 +350,60 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getActiveForCustomer**
+> \BillaBear\Model\InlineResponse2006 getActiveForCustomer($customer_id)
+
+List Customer Active Subscriptions
+
+List all Active customer subscriptions
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: ApiKeyAuth
+$config = BillaBear\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = BillaBear\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
+
+$apiInstance = new BillaBear\Api\SubscriptionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$customer_id = "customer_id_example"; // string | The id of the customer to retrieve
+
+try {
+    $result = $apiInstance->getActiveForCustomer($customer_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SubscriptionsApi->getActiveForCustomer: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customer_id** | **string**| The id of the customer to retrieve |
+
+### Return type
+
+[**\BillaBear\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
+
+### Authorization
+
+[ApiKeyAuth](../../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
