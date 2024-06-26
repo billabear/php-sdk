@@ -60,7 +60,7 @@ class InlineResponse201 implements ModelInterface, ArrayAccess
         'name' => 'string',
         'currency' => 'string',
         'customer' => '\BillaBear\Model\Customer',
-        'billing_admin' => '\BillaBear\Model\InlineResponse201BillingAdmin',
+        'billing_admin' => '\BillaBear\Model\BillingAdmin',
         'total' => 'int',
         'sub_total' => 'int',
         'tax_total' => 'int',
@@ -351,7 +351,7 @@ class InlineResponse201 implements ModelInterface, ArrayAccess
     /**
      * Gets billing_admin
      *
-     * @return \BillaBear\Model\InlineResponse201BillingAdmin
+     * @return \BillaBear\Model\BillingAdmin
      */
     public function getBillingAdmin()
     {
@@ -361,7 +361,7 @@ class InlineResponse201 implements ModelInterface, ArrayAccess
     /**
      * Sets billing_admin
      *
-     * @param \BillaBear\Model\InlineResponse201BillingAdmin $billing_admin billing_admin
+     * @param \BillaBear\Model\BillingAdmin $billing_admin billing_admin
      *
      * @return $this
      */

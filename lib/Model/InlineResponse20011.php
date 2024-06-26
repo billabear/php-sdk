@@ -56,9 +56,7 @@ class InlineResponse20011 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'data' => '\BillaBear\Model\SubscriptionPlan[]',
-        'has_more' => 'bool',
-        'last_key' => 'string'
+        'success' => 'bool'
     ];
 
     /**
@@ -67,9 +65,7 @@ class InlineResponse20011 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'data' => null,
-        'has_more' => null,
-        'last_key' => 'uuid'
+        'success' => null
     ];
 
     /**
@@ -99,9 +95,7 @@ class InlineResponse20011 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'has_more' => 'has_more',
-        'last_key' => 'last_key'
+        'success' => 'success'
     ];
 
     /**
@@ -110,9 +104,7 @@ class InlineResponse20011 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'has_more' => 'setHasMore',
-        'last_key' => 'setLastKey'
+        'success' => 'setSuccess'
     ];
 
     /**
@@ -121,9 +113,7 @@ class InlineResponse20011 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'has_more' => 'getHasMore',
-        'last_key' => 'getLastKey'
+        'success' => 'getSuccess'
     ];
 
     /**
@@ -184,9 +174,7 @@ class InlineResponse20011 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
-        $this->container['has_more'] = isset($data['has_more']) ? $data['has_more'] : null;
-        $this->container['last_key'] = isset($data['last_key']) ? $data['last_key'] : null;
+        $this->container['success'] = isset($data['success']) ? $data['success'] : null;
     }
 
     /**
@@ -214,73 +202,25 @@ class InlineResponse20011 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets data
-     *
-     * @return \BillaBear\Model\SubscriptionPlan[]
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \BillaBear\Model\SubscriptionPlan[] $data data
-     *
-     * @return $this
-     */
-    public function setData($data)
-    {
-        $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets has_more
+     * Gets success
      *
      * @return bool
      */
-    public function getHasMore()
+    public function getSuccess()
     {
-        return $this->container['has_more'];
+        return $this->container['success'];
     }
 
     /**
-     * Sets has_more
+     * Sets success
      *
-     * @param bool $has_more has_more
+     * @param bool $success success
      *
      * @return $this
      */
-    public function setHasMore($has_more)
+    public function setSuccess($success)
     {
-        $this->container['has_more'] = $has_more;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_key
-     *
-     * @return string
-     */
-    public function getLastKey()
-    {
-        return $this->container['last_key'];
-    }
-
-    /**
-     * Sets last_key
-     *
-     * @param string $last_key last_key
-     *
-     * @return $this
-     */
-    public function setLastKey($last_key)
-    {
-        $this->container['last_key'] = $last_key;
+        $this->container['success'] = $success;
 
         return $this;
     }

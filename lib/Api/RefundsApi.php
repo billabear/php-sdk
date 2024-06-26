@@ -680,7 +680,7 @@ class RefundsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \BillaBear\Model\InlineResponse2008
+     * @return \BillaBear\Model\Refund
      */
     public function showRefundById($refund_id)
     {
@@ -697,11 +697,11 @@ class RefundsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \BillaBear\Model\InlineResponse2008, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BillaBear\Model\Refund, HTTP status code, HTTP response headers (array of strings)
      */
     public function showRefundByIdWithHttpInfo($refund_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse2008';
+        $returnType = '\BillaBear\Model\Refund';
         $request = $this->showRefundByIdRequest($refund_id);
 
         try {
@@ -753,7 +753,7 @@ class RefundsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\BillaBear\Model\InlineResponse2008',
+                        '\BillaBear\Model\Refund',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -811,7 +811,7 @@ class RefundsApi
      */
     public function showRefundByIdAsyncWithHttpInfo($refund_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse2008';
+        $returnType = '\BillaBear\Model\Refund';
         $request = $this->showRefundByIdRequest($refund_id);
 
         return $this->client

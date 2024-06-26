@@ -96,7 +96,7 @@ class CustomersApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \BillaBear\Model\InlineResponse20012
+     * @return \BillaBear\Model\InlineResponse20011
      */
     public function addSeatsSubscriptions($body, $subscription_id)
     {
@@ -114,11 +114,11 @@ class CustomersApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \BillaBear\Model\InlineResponse20012, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BillaBear\Model\InlineResponse20011, HTTP status code, HTTP response headers (array of strings)
      */
     public function addSeatsSubscriptionsWithHttpInfo($body, $subscription_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse20012';
+        $returnType = '\BillaBear\Model\InlineResponse20011';
         $request = $this->addSeatsSubscriptionsRequest($body, $subscription_id);
 
         try {
@@ -170,7 +170,7 @@ class CustomersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\BillaBear\Model\InlineResponse20012',
+                        '\BillaBear\Model\InlineResponse20011',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -222,7 +222,7 @@ class CustomersApi
      */
     public function addSeatsSubscriptionsAsyncWithHttpInfo($body, $subscription_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse20012';
+        $returnType = '\BillaBear\Model\InlineResponse20011';
         $request = $this->addSeatsSubscriptionsRequest($body, $subscription_id);
 
         return $this->client
@@ -380,7 +380,7 @@ class CustomersApi
      *
      * Apply voucher
      *
-     * @param  \BillaBear\Model\CustomerIdVoucherBody $body body (required)
+     * @param  \BillaBear\Model\VoucherCode $body body (required)
      * @param  string $customer_id The id of the customer to retrieve (required)
      *
      * @throws \BillaBear\ApiException on non-2xx response
@@ -398,7 +398,7 @@ class CustomersApi
      *
      * Apply voucher
      *
-     * @param  \BillaBear\Model\CustomerIdVoucherBody $body (required)
+     * @param  \BillaBear\Model\VoucherCode $body (required)
      * @param  string $customer_id The id of the customer to retrieve (required)
      *
      * @throws \BillaBear\ApiException on non-2xx response
@@ -482,7 +482,7 @@ class CustomersApi
      *
      * Apply voucher
      *
-     * @param  \BillaBear\Model\CustomerIdVoucherBody $body (required)
+     * @param  \BillaBear\Model\VoucherCode $body (required)
      * @param  string $customer_id The id of the customer to retrieve (required)
      *
      * @throws \InvalidArgumentException
@@ -503,7 +503,7 @@ class CustomersApi
      *
      * Apply voucher
      *
-     * @param  \BillaBear\Model\CustomerIdVoucherBody $body (required)
+     * @param  \BillaBear\Model\VoucherCode $body (required)
      * @param  string $customer_id The id of the customer to retrieve (required)
      *
      * @throws \InvalidArgumentException
@@ -554,7 +554,7 @@ class CustomersApi
     /**
      * Create request for operation 'applyVoucherToCustomer'
      *
-     * @param  \BillaBear\Model\CustomerIdVoucherBody $body (required)
+     * @param  \BillaBear\Model\VoucherCode $body (required)
      * @param  string $customer_id The id of the customer to retrieve (required)
      *
      * @throws \InvalidArgumentException
@@ -3815,7 +3815,7 @@ class CustomersApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \BillaBear\Model\InlineResponse20012
+     * @return \BillaBear\Model\InlineResponse20011
      */
     public function removeSeatsSubscriptions($body, $subscription_id)
     {
@@ -3833,11 +3833,11 @@ class CustomersApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \BillaBear\Model\InlineResponse20012, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BillaBear\Model\InlineResponse20011, HTTP status code, HTTP response headers (array of strings)
      */
     public function removeSeatsSubscriptionsWithHttpInfo($body, $subscription_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse20012';
+        $returnType = '\BillaBear\Model\InlineResponse20011';
         $request = $this->removeSeatsSubscriptionsRequest($body, $subscription_id);
 
         try {
@@ -3889,7 +3889,7 @@ class CustomersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\BillaBear\Model\InlineResponse20012',
+                        '\BillaBear\Model\InlineResponse20011',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3941,7 +3941,7 @@ class CustomersApi
      */
     public function removeSeatsSubscriptionsAsyncWithHttpInfo($body, $subscription_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse20012';
+        $returnType = '\BillaBear\Model\InlineResponse20011';
         $request = $this->removeSeatsSubscriptionsRequest($body, $subscription_id);
 
         return $this->client

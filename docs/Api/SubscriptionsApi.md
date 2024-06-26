@@ -19,7 +19,7 @@ Method | HTTP request | Description
 [**startTrial**](SubscriptionsApi.md#starttrial) | **POST** /customer/{customerId}/subscription/trial | Start Trial Subscription For Customer
 
 # **addSeatsSubscriptions**
-> \BillaBear\Model\InlineResponse20012 addSeatsSubscriptions($body, $subscription_id)
+> \BillaBear\Model\InlineResponse20011 addSeatsSubscriptions($body, $subscription_id)
 
 Add Seats
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
+[**\BillaBear\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
 
 ### Authorization
 
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **changeSubscriptionPrice**
-> \BillaBear\Model\InlineResponse20012 changeSubscriptionPrice($body, $subscription_id)
+> \BillaBear\Model\InlineResponse20011 changeSubscriptionPrice($body, $subscription_id)
 
 Change Price
 
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
+[**\BillaBear\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
 
 ### Authorization
 
@@ -463,7 +463,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listSubscriptionPlans**
-> \BillaBear\Model\InlineResponse20011 listSubscriptionPlans($limit, $last_key)
+> \BillaBear\Model\InlineResponse20010 listSubscriptionPlans($limit, $last_key)
 
 List Subscription Plans
 
@@ -505,7 +505,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
+[**\BillaBear\Model\InlineResponse20010**](../Model/InlineResponse20010.md)
 
 ### Authorization
 
@@ -575,7 +575,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **removeSeatsSubscriptions**
-> \BillaBear\Model\InlineResponse20012 removeSeatsSubscriptions($body, $subscription_id)
+> \BillaBear\Model\InlineResponse20011 removeSeatsSubscriptions($body, $subscription_id)
 
 Remove Seats
 
@@ -617,7 +617,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
+[**\BillaBear\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
 
 ### Authorization
 

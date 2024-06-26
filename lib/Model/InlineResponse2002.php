@@ -56,7 +56,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'data' => '\BillaBear\Model\Paths1refund17BrefundId7DGetResponses200ContentApplication1jsonSchema[]',
+        'data' => '\BillaBear\Model\Refund[]',
         'has_more' => 'bool',
         'last_key' => 'string'
     ];
@@ -216,7 +216,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     /**
      * Gets data
      *
-     * @return \BillaBear\Model\Paths1refund17BrefundId7DGetResponses200ContentApplication1jsonSchema[]
+     * @return \BillaBear\Model\Refund[]
      */
     public function getData()
     {
@@ -226,7 +226,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param \BillaBear\Model\Paths1refund17BrefundId7DGetResponses200ContentApplication1jsonSchema[] $data data
+     * @param \BillaBear\Model\Refund[] $data data
      *
      * @return $this
      */

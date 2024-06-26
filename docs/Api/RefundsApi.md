@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **showRefundById**
-> \BillaBear\Model\InlineResponse2008 showRefundById($refund_id)
+> \BillaBear\Model\Refund showRefundById($refund_id)
 
 Detail
 
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
+[**\BillaBear\Model\Refund**](../Model/Refund.md)
 
 ### Authorization
 

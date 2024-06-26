@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**refundPayment**](PaymentsApi.md#refundpayment) | **POST** /payment/{paymentId}/refund | Refund Payment
 
 # **chargeInvoice**
-> \BillaBear\Model\InlineResponse20013 chargeInvoice($invoice_id)
+> \BillaBear\Model\InlineResponse20012 chargeInvoice($invoice_id)
 
 Charge Invoice
 
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse20013**](../Model/InlineResponse20013.md)
+[**\BillaBear\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
 
 ### Authorization
 
@@ -368,7 +368,7 @@ $apiInstance = new BillaBear\Api\PaymentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \BillaBear\Model\PaymentIdRefundBody(); // \BillaBear\Model\PaymentIdRefundBody | 
+$body = new \BillaBear\Model\IssueRefundPayment(); // \BillaBear\Model\IssueRefundPayment | 
 $payment_id = "payment_id_example"; // string | The id of the payment
 
 try {
@@ -384,7 +384,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\BillaBear\Model\PaymentIdRefundBody**](../Model/PaymentIdRefundBody.md)|  |
+ **body** | [**\BillaBear\Model\IssueRefundPayment**](../Model/IssueRefundPayment.md)|  |
  **payment_id** | **string**| The id of the payment |
 
 ### Return type

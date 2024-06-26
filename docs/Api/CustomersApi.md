@@ -22,7 +22,7 @@ Method | HTTP request | Description
 [**updateCustomer**](CustomersApi.md#updatecustomer) | **PUT** /customer/{customerId} | Update
 
 # **addSeatsSubscriptions**
-> \BillaBear\Model\InlineResponse20012 addSeatsSubscriptions($body, $subscription_id)
+> \BillaBear\Model\InlineResponse20011 addSeatsSubscriptions($body, $subscription_id)
 
 Add Seats
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
+[**\BillaBear\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
 
 ### Authorization
 
@@ -99,7 +99,7 @@ $apiInstance = new BillaBear\Api\CustomersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \BillaBear\Model\CustomerIdVoucherBody(); // \BillaBear\Model\CustomerIdVoucherBody | 
+$body = new \BillaBear\Model\VoucherCode(); // \BillaBear\Model\VoucherCode | 
 $customer_id = "customer_id_example"; // string | The id of the customer to retrieve
 
 try {
@@ -115,7 +115,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\BillaBear\Model\CustomerIdVoucherBody**](../Model/CustomerIdVoucherBody.md)|  |
+ **body** | [**\BillaBear\Model\VoucherCode**](../Model/VoucherCode.md)|  |
  **customer_id** | **string**| The id of the customer to retrieve |
 
 ### Return type
@@ -750,7 +750,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **removeSeatsSubscriptions**
-> \BillaBear\Model\InlineResponse20012 removeSeatsSubscriptions($body, $subscription_id)
+> \BillaBear\Model\InlineResponse20011 removeSeatsSubscriptions($body, $subscription_id)
 
 Remove Seats
 
@@ -792,7 +792,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
+[**\BillaBear\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
 
 ### Authorization
 

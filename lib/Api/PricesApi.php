@@ -386,7 +386,7 @@ class PricesApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \BillaBear\Model\InlineResponse20010
+     * @return \BillaBear\Model\InlineResponse2009
      */
     public function listPrice($product_id, $limit = null, $last_key = null)
     {
@@ -405,11 +405,11 @@ class PricesApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \BillaBear\Model\InlineResponse20010, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BillaBear\Model\InlineResponse2009, HTTP status code, HTTP response headers (array of strings)
      */
     public function listPriceWithHttpInfo($product_id, $limit = null, $last_key = null)
     {
-        $returnType = '\BillaBear\Model\InlineResponse20010';
+        $returnType = '\BillaBear\Model\InlineResponse2009';
         $request = $this->listPriceRequest($product_id, $limit, $last_key);
 
         try {
@@ -461,7 +461,7 @@ class PricesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\BillaBear\Model\InlineResponse20010',
+                        '\BillaBear\Model\InlineResponse2009',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -515,7 +515,7 @@ class PricesApi
      */
     public function listPriceAsyncWithHttpInfo($product_id, $limit = null, $last_key = null)
     {
-        $returnType = '\BillaBear\Model\InlineResponse20010';
+        $returnType = '\BillaBear\Model\InlineResponse2009';
         $request = $this->listPriceRequest($product_id, $limit, $last_key);
 
         return $this->client

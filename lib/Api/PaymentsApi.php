@@ -95,7 +95,7 @@ class PaymentsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \BillaBear\Model\InlineResponse20013
+     * @return \BillaBear\Model\InlineResponse20012
      */
     public function chargeInvoice($invoice_id)
     {
@@ -112,11 +112,11 @@ class PaymentsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \BillaBear\Model\InlineResponse20013, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BillaBear\Model\InlineResponse20012, HTTP status code, HTTP response headers (array of strings)
      */
     public function chargeInvoiceWithHttpInfo($invoice_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse20013';
+        $returnType = '\BillaBear\Model\InlineResponse20012';
         $request = $this->chargeInvoiceRequest($invoice_id);
 
         try {
@@ -168,7 +168,7 @@ class PaymentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\BillaBear\Model\InlineResponse20013',
+                        '\BillaBear\Model\InlineResponse20012',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -226,7 +226,7 @@ class PaymentsApi
      */
     public function chargeInvoiceAsyncWithHttpInfo($invoice_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse20013';
+        $returnType = '\BillaBear\Model\InlineResponse20012';
         $request = $this->chargeInvoiceRequest($invoice_id);
 
         return $this->client
@@ -1768,7 +1768,7 @@ class PaymentsApi
      *
      * Refund Payment
      *
-     * @param  \BillaBear\Model\PaymentIdRefundBody $body body (required)
+     * @param  \BillaBear\Model\IssueRefundPayment $body body (required)
      * @param  string $payment_id The id of the payment (required)
      *
      * @throws \BillaBear\ApiException on non-2xx response
@@ -1786,7 +1786,7 @@ class PaymentsApi
      *
      * Refund Payment
      *
-     * @param  \BillaBear\Model\PaymentIdRefundBody $body (required)
+     * @param  \BillaBear\Model\IssueRefundPayment $body (required)
      * @param  string $payment_id The id of the payment (required)
      *
      * @throws \BillaBear\ApiException on non-2xx response
@@ -1886,7 +1886,7 @@ class PaymentsApi
      *
      * Refund Payment
      *
-     * @param  \BillaBear\Model\PaymentIdRefundBody $body (required)
+     * @param  \BillaBear\Model\IssueRefundPayment $body (required)
      * @param  string $payment_id The id of the payment (required)
      *
      * @throws \InvalidArgumentException
@@ -1907,7 +1907,7 @@ class PaymentsApi
      *
      * Refund Payment
      *
-     * @param  \BillaBear\Model\PaymentIdRefundBody $body (required)
+     * @param  \BillaBear\Model\IssueRefundPayment $body (required)
      * @param  string $payment_id The id of the payment (required)
      *
      * @throws \InvalidArgumentException
@@ -1958,7 +1958,7 @@ class PaymentsApi
     /**
      * Create request for operation 'refundPayment'
      *
-     * @param  \BillaBear\Model\PaymentIdRefundBody $body (required)
+     * @param  \BillaBear\Model\IssueRefundPayment $body (required)
      * @param  string $payment_id The id of the payment (required)
      *
      * @throws \InvalidArgumentException

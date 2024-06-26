@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listProduct**
-> \BillaBear\Model\InlineResponse2009 listProduct($limit, $last_key, $name)
+> \BillaBear\Model\InlineResponse2008 listProduct($limit, $last_key, $name)
 
 List
 
@@ -108,7 +108,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse2009**](../Model/InlineResponse2009.md)
+[**\BillaBear\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
 
 ### Authorization
 

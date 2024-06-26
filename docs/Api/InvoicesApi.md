@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**listCustomerInvoices**](InvoicesApi.md#listcustomerinvoices) | **GET** /customer/{customerId}/invoices | List Customer Invoices
 
 # **chargeInvoice**
-> \BillaBear\Model\InlineResponse20013 chargeInvoice($invoice_id)
+> \BillaBear\Model\InlineResponse20012 chargeInvoice($invoice_id)
 
 Charge Invoice
 
@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse20013**](../Model/InlineResponse20013.md)
+[**\BillaBear\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
 
 ### Authorization
 

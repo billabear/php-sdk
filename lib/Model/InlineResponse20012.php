@@ -56,7 +56,8 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'success' => 'bool'
+        'paid' => 'bool',
+        'failure_reason' => 'string'
     ];
 
     /**
@@ -65,7 +66,8 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'success' => null
+        'paid' => null,
+        'failure_reason' => null
     ];
 
     /**
@@ -95,7 +97,8 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'success' => 'success'
+        'paid' => 'paid',
+        'failure_reason' => 'failure_reason'
     ];
 
     /**
@@ -104,7 +107,8 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'success' => 'setSuccess'
+        'paid' => 'setPaid',
+        'failure_reason' => 'setFailureReason'
     ];
 
     /**
@@ -113,7 +117,8 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'success' => 'getSuccess'
+        'paid' => 'getPaid',
+        'failure_reason' => 'getFailureReason'
     ];
 
     /**
@@ -157,7 +162,33 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
+    const FAILURE_REASON_EXPIRED_CARD = 'expired_card';
+    const FAILURE_REASON_INVALID_DETAILS = 'invalid_details';
+    const FAILURE_REASON_FRAUD = 'fraud';
+    const FAILURE_REASON_AUTHENTICATION_REQUIRED = 'authentication_required';
+    const FAILURE_REASON_INVALID_CARD = 'invalid_card';
+    const FAILURE_REASON_GENERAL_DECLINE = 'general_decline';
+    const FAILURE_REASON_CONTACT_PROVIDER = 'contact_provider';
+    const FAILURE_REASON_LACK_OF_FUNDS = 'lack_of_funds';
 
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFailureReasonAllowableValues()
+    {
+        return [
+            self::FAILURE_REASON_EXPIRED_CARD
+            self::FAILURE_REASON_INVALID_DETAILS
+            self::FAILURE_REASON_FRAUD
+            self::FAILURE_REASON_AUTHENTICATION_REQUIRED
+            self::FAILURE_REASON_INVALID_CARD
+            self::FAILURE_REASON_GENERAL_DECLINE
+            self::FAILURE_REASON_CONTACT_PROVIDER
+            self::FAILURE_REASON_LACK_OF_FUNDS
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -174,7 +205,8 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['success'] = isset($data['success']) ? $data['success'] : null;
+        $this->container['paid'] = isset($data['paid']) ? $data['paid'] : null;
+        $this->container['failure_reason'] = isset($data['failure_reason']) ? $data['failure_reason'] : null;
     }
 
     /**
@@ -185,6 +217,14 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getFailureReasonAllowableValues();
+        if (!is_null($this->container['failure_reason']) && !in_array($this->container['failure_reason'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'failure_reason', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -202,25 +242,58 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets success
+     * Gets paid
      *
      * @return bool
      */
-    public function getSuccess()
+    public function getPaid()
     {
-        return $this->container['success'];
+        return $this->container['paid'];
     }
 
     /**
-     * Sets success
+     * Sets paid
      *
-     * @param bool $success success
+     * @param bool $paid paid
      *
      * @return $this
      */
-    public function setSuccess($success)
+    public function setPaid($paid)
     {
-        $this->container['success'] = $success;
+        $this->container['paid'] = $paid;
+
+        return $this;
+    }
+
+    /**
+     * Gets failure_reason
+     *
+     * @return string
+     */
+    public function getFailureReason()
+    {
+        return $this->container['failure_reason'];
+    }
+
+    /**
+     * Sets failure_reason
+     *
+     * @param string $failure_reason failure_reason
+     *
+     * @return $this
+     */
+    public function setFailureReason($failure_reason)
+    {
+        $allowedValues = $this->getFailureReasonAllowableValues();
+        if (!is_null($failure_reason) && !in_array($failure_reason, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'failure_reason', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['failure_reason'] = $failure_reason;
 
         return $this;
     }

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **name** | **string** |  | [optional] 
 **currency** | **string** |  | [optional] 
 **customer** | [**\BillaBear\Model\Customer**](Customer.md) |  | [optional] 
-**billing_admin** | [**\BillaBear\Model\InlineResponse201BillingAdmin**](InlineResponse201BillingAdmin.md) |  | [optional] 
+**billing_admin** | [**\BillaBear\Model\BillingAdmin**](BillingAdmin.md) |  | [optional] 
 **total** | **int** |  | [optional] 
 **sub_total** | **int** |  | [optional] 
 **tax_total** | **int** |  | [optional] 
