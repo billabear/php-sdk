@@ -179,14 +179,14 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
     public function getFailureReasonAllowableValues()
     {
         return [
-            self::FAILURE_REASON_EXPIRED_CARD
-            self::FAILURE_REASON_INVALID_DETAILS
-            self::FAILURE_REASON_FRAUD
-            self::FAILURE_REASON_AUTHENTICATION_REQUIRED
-            self::FAILURE_REASON_INVALID_CARD
-            self::FAILURE_REASON_GENERAL_DECLINE
-            self::FAILURE_REASON_CONTACT_PROVIDER
-            self::FAILURE_REASON_LACK_OF_FUNDS
+            self::FAILURE_REASON_EXPIRED_CARD,
+            self::FAILURE_REASON_INVALID_DETAILS,
+            self::FAILURE_REASON_FRAUD,
+            self::FAILURE_REASON_AUTHENTICATION_REQUIRED,
+            self::FAILURE_REASON_INVALID_CARD,
+            self::FAILURE_REASON_GENERAL_DECLINE,
+            self::FAILURE_REASON_CONTACT_PROVIDER,
+            self::FAILURE_REASON_LACK_OF_FUNDS,
         ];
     }
 
