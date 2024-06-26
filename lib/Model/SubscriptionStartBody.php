@@ -62,7 +62,8 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
         'price' => 'string',
         'schedule' => 'string',
         'currency' => 'string',
-        'seat_numbrers' => 'int'
+        'seat_numbrers' => 'int',
+        'deny_trial' => 'Bool'
     ];
 
     /**
@@ -77,7 +78,8 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
         'price' => 'uuid',
         'schedule' => null,
         'currency' => null,
-        'seat_numbrers' => null
+        'seat_numbrers' => null,
+        'deny_trial' => null
     ];
 
     /**
@@ -113,7 +115,8 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
         'price' => 'price',
         'schedule' => 'schedule',
         'currency' => 'currency',
-        'seat_numbrers' => 'seat_numbrers'
+        'seat_numbrers' => 'seat_numbrers',
+        'deny_trial' => 'deny_trial'
     ];
 
     /**
@@ -128,7 +131,8 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
         'price' => 'setPrice',
         'schedule' => 'setSchedule',
         'currency' => 'setCurrency',
-        'seat_numbrers' => 'setSeatNumbrers'
+        'seat_numbrers' => 'setSeatNumbrers',
+        'deny_trial' => 'setDenyTrial'
     ];
 
     /**
@@ -143,7 +147,8 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
         'price' => 'getPrice',
         'schedule' => 'getSchedule',
         'currency' => 'getCurrency',
-        'seat_numbrers' => 'getSeatNumbrers'
+        'seat_numbrers' => 'getSeatNumbrers',
+        'deny_trial' => 'getDenyTrial'
     ];
 
     /**
@@ -229,6 +234,7 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
         $this->container['schedule'] = isset($data['schedule']) ? $data['schedule'] : null;
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
         $this->container['seat_numbrers'] = isset($data['seat_numbrers']) ? $data['seat_numbrers'] : null;
+        $this->container['deny_trial'] = isset($data['deny_trial']) ? $data['deny_trial'] : null;
     }
 
     /**
@@ -439,6 +445,30 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
     public function setSeatNumbrers($seat_numbrers)
     {
         $this->container['seat_numbrers'] = $seat_numbrers;
+
+        return $this;
+    }
+
+    /**
+     * Gets deny_trial
+     *
+     * @return Bool
+     */
+    public function getDenyTrial()
+    {
+        return $this->container['deny_trial'];
+    }
+
+    /**
+     * Sets deny_trial
+     *
+     * @param Bool $deny_trial deny_trial
+     *
+     * @return $this
+     */
+    public function setDenyTrial($deny_trial)
+    {
+        $this->container['deny_trial'] = $deny_trial;
 
         return $this;
     }
