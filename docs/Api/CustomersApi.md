@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**enableCustomer**](CustomersApi.md#enablecustomer) | **POST** /customer/{customerId}/enable | Enable Customer
 [**fetchCustomerById**](CustomersApi.md#fetchcustomerbyid) | **GET** /customer/{customerId} | Detail
 [**getActiveForCustomer**](CustomersApi.md#getactiveforcustomer) | **GET** /customer/{customerId}/subscription/active | List Customer Active Subscriptions
+[**getCustomerLimitsById**](CustomersApi.md#getcustomerlimitsbyid) | **GET** /customer/{customerId}/limits | Fetch Customer Limits
 [**getForCustomer**](CustomersApi.md#getforcustomer) | **GET** /customer/{customerId}/subscription | List Customer Subscriptions
 [**listCustomerInvoices**](CustomersApi.md#listcustomerinvoices) | **GET** /customer/{customerId}/invoices | List Customer Invoices
 [**listCustomerPayment**](CustomersApi.md#listcustomerpayment) | **GET** /customer/{customerId}/payment | List Customer Payments
@@ -18,7 +19,6 @@ Method | HTTP request | Description
 [**listCustomers**](CustomersApi.md#listcustomers) | **GET** /customer | List
 [**listPaymentDetails**](CustomersApi.md#listpaymentdetails) | **GET** /customer/{customerId}/payment-methods | List Customer&#x27;s Payment Details
 [**removeSeatsSubscriptions**](CustomersApi.md#removeseatssubscriptions) | **POST** /subscription/{subscriptionId}/seats/remove | Remove Seats
-[**showCustomerLimitsById**](CustomersApi.md#showcustomerlimitsbyid) | **GET** /customer/{customerId}/limits | Fetch Customer Limits
 [**updateCustomer**](CustomersApi.md#updatecustomer) | **PUT** /customer/{customerId} | Update
 
 # **addSeatsSubscriptions**
@@ -391,6 +391,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\BillaBear\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
+
+### Authorization
+
+[ApiKeyAuth](../../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getCustomerLimitsById**
+> \BillaBear\Model\InlineResponse2001 getCustomerLimitsById($customer_id)
+
+Fetch Customer Limits
+
+Limits for a specific customer
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: ApiKeyAuth
+$config = BillaBear\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = BillaBear\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
+
+$apiInstance = new BillaBear\Api\CustomersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$customer_id = "customer_id_example"; // string | The id of the customer to retrieve
+
+try {
+    $result = $apiInstance->getCustomerLimitsById($customer_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CustomersApi->getCustomerLimitsById: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customer_id** | **string**| The id of the customer to retrieve |
+
+### Return type
+
+[**\BillaBear\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 
@@ -801,60 +855,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **showCustomerLimitsById**
-> \BillaBear\Model\InlineResponse2001 showCustomerLimitsById($customer_id)
-
-Fetch Customer Limits
-
-Limits for a specific customer
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: ApiKeyAuth
-$config = BillaBear\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = BillaBear\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
-
-$apiInstance = new BillaBear\Api\CustomersApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$customer_id = "customer_id_example"; // string | The id of the customer to retrieve
-
-try {
-    $result = $apiInstance->showCustomerLimitsById($customer_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CustomersApi->showCustomerLimitsById: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customer_id** | **string**| The id of the customer to retrieve |
-
-### Return type
-
-[**\BillaBear\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
-
-### Authorization
-
-[ApiKeyAuth](../../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
