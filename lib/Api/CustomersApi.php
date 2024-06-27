@@ -1501,289 +1501,6 @@ class CustomersApi
     }
 
     /**
-     * Operation fetchCustomerById
-     *
-     * Detail
-     *
-     * @param  string $customer_id The id of the customer to retrieve (required)
-     *
-     * @throws \BillaBear\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \BillaBear\Model\Customer
-     */
-    public function fetchCustomerById($customer_id)
-    {
-        list($response) = $this->fetchCustomerByIdWithHttpInfo($customer_id);
-        return $response;
-    }
-
-    /**
-     * Operation fetchCustomerByIdWithHttpInfo
-     *
-     * Detail
-     *
-     * @param  string $customer_id The id of the customer to retrieve (required)
-     *
-     * @throws \BillaBear\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \BillaBear\Model\Customer, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function fetchCustomerByIdWithHttpInfo($customer_id)
-    {
-        $returnType = '\BillaBear\Model\Customer';
-        $request = $this->fetchCustomerByIdRequest($customer_id);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\BillaBear\Model\Customer',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\BillaBear\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation fetchCustomerByIdAsync
-     *
-     * Detail
-     *
-     * @param  string $customer_id The id of the customer to retrieve (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function fetchCustomerByIdAsync($customer_id)
-    {
-        return $this->fetchCustomerByIdAsyncWithHttpInfo($customer_id)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation fetchCustomerByIdAsyncWithHttpInfo
-     *
-     * Detail
-     *
-     * @param  string $customer_id The id of the customer to retrieve (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function fetchCustomerByIdAsyncWithHttpInfo($customer_id)
-    {
-        $returnType = '\BillaBear\Model\Customer';
-        $request = $this->fetchCustomerByIdRequest($customer_id);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'fetchCustomerById'
-     *
-     * @param  string $customer_id The id of the customer to retrieve (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function fetchCustomerByIdRequest($customer_id)
-    {
-        // verify the required parameter 'customer_id' is set
-        if ($customer_id === null || (is_array($customer_id) && count($customer_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $customer_id when calling fetchCustomerById'
-            );
-        }
-
-        $resourcePath = '/customer/{customerId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-        // path params
-        if ($customer_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'customerId' . '}',
-                ObjectSerializer::toPathValue($customer_id),
-                $resourcePath
-            );
-        }
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-            // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('X-API-Key');
-        if ($apiKey !== null) {
-            $headers['X-API-Key'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation getActiveForCustomer
      *
      * List Customer Active Subscriptions
@@ -1973,6 +1690,599 @@ class CustomersApi
         }
 
         $resourcePath = '/customer/{customerId}/subscription/active';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($customer_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'customerId' . '}',
+                ObjectSerializer::toPathValue($customer_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-API-Key');
+        if ($apiKey !== null) {
+            $headers['X-API-Key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAllCustomers
+     *
+     * List
+     *
+     * @param  int $limit How many items to return at one time (max 100) (optional)
+     * @param  string $last_key The key to be used in pagination to say what the last key of the previous page was (optional)
+     * @param  string $email The email to search for (optional)
+     * @param  string $country The country code to search for (optional)
+     * @param  string $reference The reference to search for (optional)
+     * @param  string $external_reference The external reference to search for (optional)
+     *
+     * @throws \BillaBear\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \BillaBear\Model\InlineResponse200
+     */
+    public function getAllCustomers($limit = null, $last_key = null, $email = null, $country = null, $reference = null, $external_reference = null)
+    {
+        list($response) = $this->getAllCustomersWithHttpInfo($limit, $last_key, $email, $country, $reference, $external_reference);
+        return $response;
+    }
+
+    /**
+     * Operation getAllCustomersWithHttpInfo
+     *
+     * List
+     *
+     * @param  int $limit How many items to return at one time (max 100) (optional)
+     * @param  string $last_key The key to be used in pagination to say what the last key of the previous page was (optional)
+     * @param  string $email The email to search for (optional)
+     * @param  string $country The country code to search for (optional)
+     * @param  string $reference The reference to search for (optional)
+     * @param  string $external_reference The external reference to search for (optional)
+     *
+     * @throws \BillaBear\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \BillaBear\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAllCustomersWithHttpInfo($limit = null, $last_key = null, $email = null, $country = null, $reference = null, $external_reference = null)
+    {
+        $returnType = '\BillaBear\Model\InlineResponse200';
+        $request = $this->getAllCustomersRequest($limit, $last_key, $email, $country, $reference, $external_reference);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\BillaBear\Model\InlineResponse200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\BillaBear\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAllCustomersAsync
+     *
+     * List
+     *
+     * @param  int $limit How many items to return at one time (max 100) (optional)
+     * @param  string $last_key The key to be used in pagination to say what the last key of the previous page was (optional)
+     * @param  string $email The email to search for (optional)
+     * @param  string $country The country code to search for (optional)
+     * @param  string $reference The reference to search for (optional)
+     * @param  string $external_reference The external reference to search for (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAllCustomersAsync($limit = null, $last_key = null, $email = null, $country = null, $reference = null, $external_reference = null)
+    {
+        return $this->getAllCustomersAsyncWithHttpInfo($limit, $last_key, $email, $country, $reference, $external_reference)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAllCustomersAsyncWithHttpInfo
+     *
+     * List
+     *
+     * @param  int $limit How many items to return at one time (max 100) (optional)
+     * @param  string $last_key The key to be used in pagination to say what the last key of the previous page was (optional)
+     * @param  string $email The email to search for (optional)
+     * @param  string $country The country code to search for (optional)
+     * @param  string $reference The reference to search for (optional)
+     * @param  string $external_reference The external reference to search for (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAllCustomersAsyncWithHttpInfo($limit = null, $last_key = null, $email = null, $country = null, $reference = null, $external_reference = null)
+    {
+        $returnType = '\BillaBear\Model\InlineResponse200';
+        $request = $this->getAllCustomersRequest($limit, $last_key, $email, $country, $reference, $external_reference);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAllCustomers'
+     *
+     * @param  int $limit How many items to return at one time (max 100) (optional)
+     * @param  string $last_key The key to be used in pagination to say what the last key of the previous page was (optional)
+     * @param  string $email The email to search for (optional)
+     * @param  string $country The country code to search for (optional)
+     * @param  string $reference The reference to search for (optional)
+     * @param  string $external_reference The external reference to search for (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getAllCustomersRequest($limit = null, $last_key = null, $email = null, $country = null, $reference = null, $external_reference = null)
+    {
+
+        $resourcePath = '/customer';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit, 'int32');
+        }
+        // query params
+        if ($last_key !== null) {
+            $queryParams['last_key'] = ObjectSerializer::toQueryValue($last_key, null);
+        }
+        // query params
+        if ($email !== null) {
+            $queryParams['email'] = ObjectSerializer::toQueryValue($email, null);
+        }
+        // query params
+        if ($country !== null) {
+            $queryParams['country'] = ObjectSerializer::toQueryValue($country, null);
+        }
+        // query params
+        if ($reference !== null) {
+            $queryParams['reference'] = ObjectSerializer::toQueryValue($reference, null);
+        }
+        // query params
+        if ($external_reference !== null) {
+            $queryParams['external_reference'] = ObjectSerializer::toQueryValue($external_reference, null);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-API-Key');
+        if ($apiKey !== null) {
+            $headers['X-API-Key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getCustomerById
+     *
+     * Detail
+     *
+     * @param  string $customer_id The id of the customer to retrieve (required)
+     *
+     * @throws \BillaBear\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \BillaBear\Model\Customer
+     */
+    public function getCustomerById($customer_id)
+    {
+        list($response) = $this->getCustomerByIdWithHttpInfo($customer_id);
+        return $response;
+    }
+
+    /**
+     * Operation getCustomerByIdWithHttpInfo
+     *
+     * Detail
+     *
+     * @param  string $customer_id The id of the customer to retrieve (required)
+     *
+     * @throws \BillaBear\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \BillaBear\Model\Customer, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCustomerByIdWithHttpInfo($customer_id)
+    {
+        $returnType = '\BillaBear\Model\Customer';
+        $request = $this->getCustomerByIdRequest($customer_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\BillaBear\Model\Customer',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\BillaBear\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getCustomerByIdAsync
+     *
+     * Detail
+     *
+     * @param  string $customer_id The id of the customer to retrieve (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCustomerByIdAsync($customer_id)
+    {
+        return $this->getCustomerByIdAsyncWithHttpInfo($customer_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getCustomerByIdAsyncWithHttpInfo
+     *
+     * Detail
+     *
+     * @param  string $customer_id The id of the customer to retrieve (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCustomerByIdAsyncWithHttpInfo($customer_id)
+    {
+        $returnType = '\BillaBear\Model\Customer';
+        $request = $this->getCustomerByIdRequest($customer_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getCustomerById'
+     *
+     * @param  string $customer_id The id of the customer to retrieve (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getCustomerByIdRequest($customer_id)
+    {
+        // verify the required parameter 'customer_id' is set
+        if ($customer_id === null || (is_array($customer_id) && count($customer_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $customer_id when calling getCustomerById'
+            );
+        }
+
+        $resourcePath = '/customer/{customerId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2617,7 +2927,7 @@ class CustomersApi
     }
 
     /**
-     * Operation listCustomerInvoices
+     * Operation getInvoicesForCustomer
      *
      * List Customer Invoices
      *
@@ -2627,14 +2937,14 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return \BillaBear\Model\InlineResponse2004
      */
-    public function listCustomerInvoices($customer_id)
+    public function getInvoicesForCustomer($customer_id)
     {
-        list($response) = $this->listCustomerInvoicesWithHttpInfo($customer_id);
+        list($response) = $this->getInvoicesForCustomerWithHttpInfo($customer_id);
         return $response;
     }
 
     /**
-     * Operation listCustomerInvoicesWithHttpInfo
+     * Operation getInvoicesForCustomerWithHttpInfo
      *
      * List Customer Invoices
      *
@@ -2644,10 +2954,10 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return array of \BillaBear\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listCustomerInvoicesWithHttpInfo($customer_id)
+    public function getInvoicesForCustomerWithHttpInfo($customer_id)
     {
         $returnType = '\BillaBear\Model\InlineResponse2004';
-        $request = $this->listCustomerInvoicesRequest($customer_id);
+        $request = $this->getInvoicesForCustomerRequest($customer_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2717,7 +3027,7 @@ class CustomersApi
     }
 
     /**
-     * Operation listCustomerInvoicesAsync
+     * Operation getInvoicesForCustomerAsync
      *
      * List Customer Invoices
      *
@@ -2726,9 +3036,9 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCustomerInvoicesAsync($customer_id)
+    public function getInvoicesForCustomerAsync($customer_id)
     {
-        return $this->listCustomerInvoicesAsyncWithHttpInfo($customer_id)
+        return $this->getInvoicesForCustomerAsyncWithHttpInfo($customer_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2737,7 +3047,7 @@ class CustomersApi
     }
 
     /**
-     * Operation listCustomerInvoicesAsyncWithHttpInfo
+     * Operation getInvoicesForCustomerAsyncWithHttpInfo
      *
      * List Customer Invoices
      *
@@ -2746,10 +3056,10 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCustomerInvoicesAsyncWithHttpInfo($customer_id)
+    public function getInvoicesForCustomerAsyncWithHttpInfo($customer_id)
     {
         $returnType = '\BillaBear\Model\InlineResponse2004';
-        $request = $this->listCustomerInvoicesRequest($customer_id);
+        $request = $this->getInvoicesForCustomerRequest($customer_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2789,19 +3099,19 @@ class CustomersApi
     }
 
     /**
-     * Create request for operation 'listCustomerInvoices'
+     * Create request for operation 'getInvoicesForCustomer'
      *
      * @param  string $customer_id The id of the customer to retrieve (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function listCustomerInvoicesRequest($customer_id)
+    protected function getInvoicesForCustomerRequest($customer_id)
     {
         // verify the required parameter 'customer_id' is set
         if ($customer_id === null || (is_array($customer_id) && count($customer_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $customer_id when calling listCustomerInvoices'
+                'Missing the required parameter $customer_id when calling getInvoicesForCustomer'
             );
         }
 
@@ -2892,7 +3202,7 @@ class CustomersApi
     }
 
     /**
-     * Operation listCustomerPayment
+     * Operation getPaymentsForCustomer
      *
      * List Customer Payments
      *
@@ -2905,14 +3215,14 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return \BillaBear\Model\InlineResponse2003
      */
-    public function listCustomerPayment($customer_id, $limit = null, $last_key = null, $name = null)
+    public function getPaymentsForCustomer($customer_id, $limit = null, $last_key = null, $name = null)
     {
-        list($response) = $this->listCustomerPaymentWithHttpInfo($customer_id, $limit, $last_key, $name);
+        list($response) = $this->getPaymentsForCustomerWithHttpInfo($customer_id, $limit, $last_key, $name);
         return $response;
     }
 
     /**
-     * Operation listCustomerPaymentWithHttpInfo
+     * Operation getPaymentsForCustomerWithHttpInfo
      *
      * List Customer Payments
      *
@@ -2925,10 +3235,10 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return array of \BillaBear\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listCustomerPaymentWithHttpInfo($customer_id, $limit = null, $last_key = null, $name = null)
+    public function getPaymentsForCustomerWithHttpInfo($customer_id, $limit = null, $last_key = null, $name = null)
     {
         $returnType = '\BillaBear\Model\InlineResponse2003';
-        $request = $this->listCustomerPaymentRequest($customer_id, $limit, $last_key, $name);
+        $request = $this->getPaymentsForCustomerRequest($customer_id, $limit, $last_key, $name);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2998,7 +3308,7 @@ class CustomersApi
     }
 
     /**
-     * Operation listCustomerPaymentAsync
+     * Operation getPaymentsForCustomerAsync
      *
      * List Customer Payments
      *
@@ -3010,9 +3320,9 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCustomerPaymentAsync($customer_id, $limit = null, $last_key = null, $name = null)
+    public function getPaymentsForCustomerAsync($customer_id, $limit = null, $last_key = null, $name = null)
     {
-        return $this->listCustomerPaymentAsyncWithHttpInfo($customer_id, $limit, $last_key, $name)
+        return $this->getPaymentsForCustomerAsyncWithHttpInfo($customer_id, $limit, $last_key, $name)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3021,7 +3331,7 @@ class CustomersApi
     }
 
     /**
-     * Operation listCustomerPaymentAsyncWithHttpInfo
+     * Operation getPaymentsForCustomerAsyncWithHttpInfo
      *
      * List Customer Payments
      *
@@ -3033,10 +3343,10 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCustomerPaymentAsyncWithHttpInfo($customer_id, $limit = null, $last_key = null, $name = null)
+    public function getPaymentsForCustomerAsyncWithHttpInfo($customer_id, $limit = null, $last_key = null, $name = null)
     {
         $returnType = '\BillaBear\Model\InlineResponse2003';
-        $request = $this->listCustomerPaymentRequest($customer_id, $limit, $last_key, $name);
+        $request = $this->getPaymentsForCustomerRequest($customer_id, $limit, $last_key, $name);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3076,7 +3386,7 @@ class CustomersApi
     }
 
     /**
-     * Create request for operation 'listCustomerPayment'
+     * Create request for operation 'getPaymentsForCustomer'
      *
      * @param  string $customer_id The id of the customer to retrieve (required)
      * @param  int $limit How many items to return at one time (max 100) (optional)
@@ -3086,12 +3396,12 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function listCustomerPaymentRequest($customer_id, $limit = null, $last_key = null, $name = null)
+    protected function getPaymentsForCustomerRequest($customer_id, $limit = null, $last_key = null, $name = null)
     {
         // verify the required parameter 'customer_id' is set
         if ($customer_id === null || (is_array($customer_id) && count($customer_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $customer_id when calling listCustomerPayment'
+                'Missing the required parameter $customer_id when calling getPaymentsForCustomer'
             );
         }
 
@@ -3194,7 +3504,7 @@ class CustomersApi
     }
 
     /**
-     * Operation listCustomerRefund
+     * Operation getRefundsForCustomer
      *
      * List Customer Refunds
      *
@@ -3207,14 +3517,14 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return \BillaBear\Model\InlineResponse2002
      */
-    public function listCustomerRefund($customer_id, $limit = null, $last_key = null, $name = null)
+    public function getRefundsForCustomer($customer_id, $limit = null, $last_key = null, $name = null)
     {
-        list($response) = $this->listCustomerRefundWithHttpInfo($customer_id, $limit, $last_key, $name);
+        list($response) = $this->getRefundsForCustomerWithHttpInfo($customer_id, $limit, $last_key, $name);
         return $response;
     }
 
     /**
-     * Operation listCustomerRefundWithHttpInfo
+     * Operation getRefundsForCustomerWithHttpInfo
      *
      * List Customer Refunds
      *
@@ -3227,10 +3537,10 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return array of \BillaBear\Model\InlineResponse2002, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listCustomerRefundWithHttpInfo($customer_id, $limit = null, $last_key = null, $name = null)
+    public function getRefundsForCustomerWithHttpInfo($customer_id, $limit = null, $last_key = null, $name = null)
     {
         $returnType = '\BillaBear\Model\InlineResponse2002';
-        $request = $this->listCustomerRefundRequest($customer_id, $limit, $last_key, $name);
+        $request = $this->getRefundsForCustomerRequest($customer_id, $limit, $last_key, $name);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3300,7 +3610,7 @@ class CustomersApi
     }
 
     /**
-     * Operation listCustomerRefundAsync
+     * Operation getRefundsForCustomerAsync
      *
      * List Customer Refunds
      *
@@ -3312,9 +3622,9 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCustomerRefundAsync($customer_id, $limit = null, $last_key = null, $name = null)
+    public function getRefundsForCustomerAsync($customer_id, $limit = null, $last_key = null, $name = null)
     {
-        return $this->listCustomerRefundAsyncWithHttpInfo($customer_id, $limit, $last_key, $name)
+        return $this->getRefundsForCustomerAsyncWithHttpInfo($customer_id, $limit, $last_key, $name)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3323,7 +3633,7 @@ class CustomersApi
     }
 
     /**
-     * Operation listCustomerRefundAsyncWithHttpInfo
+     * Operation getRefundsForCustomerAsyncWithHttpInfo
      *
      * List Customer Refunds
      *
@@ -3335,10 +3645,10 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCustomerRefundAsyncWithHttpInfo($customer_id, $limit = null, $last_key = null, $name = null)
+    public function getRefundsForCustomerAsyncWithHttpInfo($customer_id, $limit = null, $last_key = null, $name = null)
     {
         $returnType = '\BillaBear\Model\InlineResponse2002';
-        $request = $this->listCustomerRefundRequest($customer_id, $limit, $last_key, $name);
+        $request = $this->getRefundsForCustomerRequest($customer_id, $limit, $last_key, $name);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3378,7 +3688,7 @@ class CustomersApi
     }
 
     /**
-     * Create request for operation 'listCustomerRefund'
+     * Create request for operation 'getRefundsForCustomer'
      *
      * @param  string $customer_id The id of the customer to retrieve (required)
      * @param  int $limit How many items to return at one time (max 100) (optional)
@@ -3388,12 +3698,12 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function listCustomerRefundRequest($customer_id, $limit = null, $last_key = null, $name = null)
+    protected function getRefundsForCustomerRequest($customer_id, $limit = null, $last_key = null, $name = null)
     {
         // verify the required parameter 'customer_id' is set
         if ($customer_id === null || (is_array($customer_id) && count($customer_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $customer_id when calling listCustomerRefund'
+                'Missing the required parameter $customer_id when calling getRefundsForCustomer'
             );
         }
 
@@ -3425,316 +3735,6 @@ class CustomersApi
                 $resourcePath
             );
         }
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-            // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('X-API-Key');
-        if ($apiKey !== null) {
-            $headers['X-API-Key'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation listCustomers
-     *
-     * List
-     *
-     * @param  int $limit How many items to return at one time (max 100) (optional)
-     * @param  string $last_key The key to be used in pagination to say what the last key of the previous page was (optional)
-     * @param  string $email The email to search for (optional)
-     * @param  string $country The country code to search for (optional)
-     * @param  string $reference The reference to search for (optional)
-     * @param  string $external_reference The external reference to search for (optional)
-     *
-     * @throws \BillaBear\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \BillaBear\Model\InlineResponse200
-     */
-    public function listCustomers($limit = null, $last_key = null, $email = null, $country = null, $reference = null, $external_reference = null)
-    {
-        list($response) = $this->listCustomersWithHttpInfo($limit, $last_key, $email, $country, $reference, $external_reference);
-        return $response;
-    }
-
-    /**
-     * Operation listCustomersWithHttpInfo
-     *
-     * List
-     *
-     * @param  int $limit How many items to return at one time (max 100) (optional)
-     * @param  string $last_key The key to be used in pagination to say what the last key of the previous page was (optional)
-     * @param  string $email The email to search for (optional)
-     * @param  string $country The country code to search for (optional)
-     * @param  string $reference The reference to search for (optional)
-     * @param  string $external_reference The external reference to search for (optional)
-     *
-     * @throws \BillaBear\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \BillaBear\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function listCustomersWithHttpInfo($limit = null, $last_key = null, $email = null, $country = null, $reference = null, $external_reference = null)
-    {
-        $returnType = '\BillaBear\Model\InlineResponse200';
-        $request = $this->listCustomersRequest($limit, $last_key, $email, $country, $reference, $external_reference);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\BillaBear\Model\InlineResponse200',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\BillaBear\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation listCustomersAsync
-     *
-     * List
-     *
-     * @param  int $limit How many items to return at one time (max 100) (optional)
-     * @param  string $last_key The key to be used in pagination to say what the last key of the previous page was (optional)
-     * @param  string $email The email to search for (optional)
-     * @param  string $country The country code to search for (optional)
-     * @param  string $reference The reference to search for (optional)
-     * @param  string $external_reference The external reference to search for (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function listCustomersAsync($limit = null, $last_key = null, $email = null, $country = null, $reference = null, $external_reference = null)
-    {
-        return $this->listCustomersAsyncWithHttpInfo($limit, $last_key, $email, $country, $reference, $external_reference)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation listCustomersAsyncWithHttpInfo
-     *
-     * List
-     *
-     * @param  int $limit How many items to return at one time (max 100) (optional)
-     * @param  string $last_key The key to be used in pagination to say what the last key of the previous page was (optional)
-     * @param  string $email The email to search for (optional)
-     * @param  string $country The country code to search for (optional)
-     * @param  string $reference The reference to search for (optional)
-     * @param  string $external_reference The external reference to search for (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function listCustomersAsyncWithHttpInfo($limit = null, $last_key = null, $email = null, $country = null, $reference = null, $external_reference = null)
-    {
-        $returnType = '\BillaBear\Model\InlineResponse200';
-        $request = $this->listCustomersRequest($limit, $last_key, $email, $country, $reference, $external_reference);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'listCustomers'
-     *
-     * @param  int $limit How many items to return at one time (max 100) (optional)
-     * @param  string $last_key The key to be used in pagination to say what the last key of the previous page was (optional)
-     * @param  string $email The email to search for (optional)
-     * @param  string $country The country code to search for (optional)
-     * @param  string $reference The reference to search for (optional)
-     * @param  string $external_reference The external reference to search for (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function listCustomersRequest($limit = null, $last_key = null, $email = null, $country = null, $reference = null, $external_reference = null)
-    {
-
-        $resourcePath = '/customer';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        if ($limit !== null) {
-            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit, 'int32');
-        }
-        // query params
-        if ($last_key !== null) {
-            $queryParams['last_key'] = ObjectSerializer::toQueryValue($last_key, null);
-        }
-        // query params
-        if ($email !== null) {
-            $queryParams['email'] = ObjectSerializer::toQueryValue($email, null);
-        }
-        // query params
-        if ($country !== null) {
-            $queryParams['country'] = ObjectSerializer::toQueryValue($country, null);
-        }
-        // query params
-        if ($reference !== null) {
-            $queryParams['reference'] = ObjectSerializer::toQueryValue($reference, null);
-        }
-        // query params
-        if ($external_reference !== null) {
-            $queryParams['external_reference'] = ObjectSerializer::toQueryValue($external_reference, null);
-        }
-
 
         // body params
         $_tempBody = null;

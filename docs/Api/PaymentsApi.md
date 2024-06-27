@@ -7,8 +7,8 @@ Method | HTTP request | Description
 [**chargeInvoice**](PaymentsApi.md#chargeinvoice) | **POST** /invoice/{invoiceId}/charge | Charge Invoice
 [**downloadInvoice**](PaymentsApi.md#downloadinvoice) | **GET** /invoice/{invoiceId}/download | Download Invoice
 [**downloadReceipt**](PaymentsApi.md#downloadreceipt) | **GET** /receipt/{receiptId}/download | Download Receipt
-[**listCustomerInvoices**](PaymentsApi.md#listcustomerinvoices) | **GET** /customer/{customerId}/invoices | List Customer Invoices
-[**listCustomerPayment**](PaymentsApi.md#listcustomerpayment) | **GET** /customer/{customerId}/payment | List Customer Payments
+[**getInvoicesForCustomer**](PaymentsApi.md#getinvoicesforcustomer) | **GET** /customer/{customerId}/invoices | List Customer Invoices
+[**getPaymentsForCustomer**](PaymentsApi.md#getpaymentsforcustomer) | **GET** /customer/{customerId}/payment | List Customer Payments
 [**listPayment**](PaymentsApi.md#listpayment) | **GET** /payment | List
 [**refundPayment**](PaymentsApi.md#refundpayment) | **POST** /payment/{paymentId}/refund | Refund Payment
 
@@ -174,8 +174,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **listCustomerInvoices**
-> \BillaBear\Model\InlineResponse2004 listCustomerInvoices($customer_id)
+# **getInvoicesForCustomer**
+> \BillaBear\Model\InlineResponse2004 getInvoicesForCustomer($customer_id)
 
 List Customer Invoices
 
@@ -199,10 +199,10 @@ $apiInstance = new BillaBear\Api\PaymentsApi(
 $customer_id = "customer_id_example"; // string | The id of the customer to retrieve
 
 try {
-    $result = $apiInstance->listCustomerInvoices($customer_id);
+    $result = $apiInstance->getInvoicesForCustomer($customer_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling PaymentsApi->listCustomerInvoices: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PaymentsApi->getInvoicesForCustomer: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -228,8 +228,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **listCustomerPayment**
-> \BillaBear\Model\InlineResponse2003 listCustomerPayment($customer_id, $limit, $last_key, $name)
+# **getPaymentsForCustomer**
+> \BillaBear\Model\InlineResponse2003 getPaymentsForCustomer($customer_id, $limit, $last_key, $name)
 
 List Customer Payments
 
@@ -256,10 +256,10 @@ $last_key = "last_key_example"; // string | The key to be used in pagination to 
 $name = "name_example"; // string | The name to search for
 
 try {
-    $result = $apiInstance->listCustomerPayment($customer_id, $limit, $last_key, $name);
+    $result = $apiInstance->getPaymentsForCustomer($customer_id, $limit, $last_key, $name);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling PaymentsApi->listCustomerPayment: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PaymentsApi->getPaymentsForCustomer: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```

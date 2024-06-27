@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**chargeInvoice**](InvoicesApi.md#chargeinvoice) | **POST** /invoice/{invoiceId}/charge | Charge Invoice
 [**downloadInvoice**](InvoicesApi.md#downloadinvoice) | **GET** /invoice/{invoiceId}/download | Download Invoice
-[**listCustomerInvoices**](InvoicesApi.md#listcustomerinvoices) | **GET** /customer/{customerId}/invoices | List Customer Invoices
+[**getInvoicesForCustomer**](InvoicesApi.md#getinvoicesforcustomer) | **GET** /customer/{customerId}/invoices | List Customer Invoices
 
 # **chargeInvoice**
 > \BillaBear\Model\InlineResponse20012 chargeInvoice($invoice_id)
@@ -116,8 +116,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **listCustomerInvoices**
-> \BillaBear\Model\InlineResponse2004 listCustomerInvoices($customer_id)
+# **getInvoicesForCustomer**
+> \BillaBear\Model\InlineResponse2004 getInvoicesForCustomer($customer_id)
 
 List Customer Invoices
 
@@ -141,10 +141,10 @@ $apiInstance = new BillaBear\Api\InvoicesApi(
 $customer_id = "customer_id_example"; // string | The id of the customer to retrieve
 
 try {
-    $result = $apiInstance->listCustomerInvoices($customer_id);
+    $result = $apiInstance->getInvoicesForCustomer($customer_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling InvoicesApi->listCustomerInvoices: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling InvoicesApi->getInvoicesForCustomer: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```

@@ -904,7 +904,7 @@ class PaymentsApi
     }
 
     /**
-     * Operation listCustomerInvoices
+     * Operation getInvoicesForCustomer
      *
      * List Customer Invoices
      *
@@ -914,14 +914,14 @@ class PaymentsApi
      * @throws \InvalidArgumentException
      * @return \BillaBear\Model\InlineResponse2004
      */
-    public function listCustomerInvoices($customer_id)
+    public function getInvoicesForCustomer($customer_id)
     {
-        list($response) = $this->listCustomerInvoicesWithHttpInfo($customer_id);
+        list($response) = $this->getInvoicesForCustomerWithHttpInfo($customer_id);
         return $response;
     }
 
     /**
-     * Operation listCustomerInvoicesWithHttpInfo
+     * Operation getInvoicesForCustomerWithHttpInfo
      *
      * List Customer Invoices
      *
@@ -931,10 +931,10 @@ class PaymentsApi
      * @throws \InvalidArgumentException
      * @return array of \BillaBear\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listCustomerInvoicesWithHttpInfo($customer_id)
+    public function getInvoicesForCustomerWithHttpInfo($customer_id)
     {
         $returnType = '\BillaBear\Model\InlineResponse2004';
-        $request = $this->listCustomerInvoicesRequest($customer_id);
+        $request = $this->getInvoicesForCustomerRequest($customer_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1004,7 +1004,7 @@ class PaymentsApi
     }
 
     /**
-     * Operation listCustomerInvoicesAsync
+     * Operation getInvoicesForCustomerAsync
      *
      * List Customer Invoices
      *
@@ -1013,9 +1013,9 @@ class PaymentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCustomerInvoicesAsync($customer_id)
+    public function getInvoicesForCustomerAsync($customer_id)
     {
-        return $this->listCustomerInvoicesAsyncWithHttpInfo($customer_id)
+        return $this->getInvoicesForCustomerAsyncWithHttpInfo($customer_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1024,7 +1024,7 @@ class PaymentsApi
     }
 
     /**
-     * Operation listCustomerInvoicesAsyncWithHttpInfo
+     * Operation getInvoicesForCustomerAsyncWithHttpInfo
      *
      * List Customer Invoices
      *
@@ -1033,10 +1033,10 @@ class PaymentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCustomerInvoicesAsyncWithHttpInfo($customer_id)
+    public function getInvoicesForCustomerAsyncWithHttpInfo($customer_id)
     {
         $returnType = '\BillaBear\Model\InlineResponse2004';
-        $request = $this->listCustomerInvoicesRequest($customer_id);
+        $request = $this->getInvoicesForCustomerRequest($customer_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1076,19 +1076,19 @@ class PaymentsApi
     }
 
     /**
-     * Create request for operation 'listCustomerInvoices'
+     * Create request for operation 'getInvoicesForCustomer'
      *
      * @param  string $customer_id The id of the customer to retrieve (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function listCustomerInvoicesRequest($customer_id)
+    protected function getInvoicesForCustomerRequest($customer_id)
     {
         // verify the required parameter 'customer_id' is set
         if ($customer_id === null || (is_array($customer_id) && count($customer_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $customer_id when calling listCustomerInvoices'
+                'Missing the required parameter $customer_id when calling getInvoicesForCustomer'
             );
         }
 
@@ -1179,7 +1179,7 @@ class PaymentsApi
     }
 
     /**
-     * Operation listCustomerPayment
+     * Operation getPaymentsForCustomer
      *
      * List Customer Payments
      *
@@ -1192,14 +1192,14 @@ class PaymentsApi
      * @throws \InvalidArgumentException
      * @return \BillaBear\Model\InlineResponse2003
      */
-    public function listCustomerPayment($customer_id, $limit = null, $last_key = null, $name = null)
+    public function getPaymentsForCustomer($customer_id, $limit = null, $last_key = null, $name = null)
     {
-        list($response) = $this->listCustomerPaymentWithHttpInfo($customer_id, $limit, $last_key, $name);
+        list($response) = $this->getPaymentsForCustomerWithHttpInfo($customer_id, $limit, $last_key, $name);
         return $response;
     }
 
     /**
-     * Operation listCustomerPaymentWithHttpInfo
+     * Operation getPaymentsForCustomerWithHttpInfo
      *
      * List Customer Payments
      *
@@ -1212,10 +1212,10 @@ class PaymentsApi
      * @throws \InvalidArgumentException
      * @return array of \BillaBear\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listCustomerPaymentWithHttpInfo($customer_id, $limit = null, $last_key = null, $name = null)
+    public function getPaymentsForCustomerWithHttpInfo($customer_id, $limit = null, $last_key = null, $name = null)
     {
         $returnType = '\BillaBear\Model\InlineResponse2003';
-        $request = $this->listCustomerPaymentRequest($customer_id, $limit, $last_key, $name);
+        $request = $this->getPaymentsForCustomerRequest($customer_id, $limit, $last_key, $name);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1285,7 +1285,7 @@ class PaymentsApi
     }
 
     /**
-     * Operation listCustomerPaymentAsync
+     * Operation getPaymentsForCustomerAsync
      *
      * List Customer Payments
      *
@@ -1297,9 +1297,9 @@ class PaymentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCustomerPaymentAsync($customer_id, $limit = null, $last_key = null, $name = null)
+    public function getPaymentsForCustomerAsync($customer_id, $limit = null, $last_key = null, $name = null)
     {
-        return $this->listCustomerPaymentAsyncWithHttpInfo($customer_id, $limit, $last_key, $name)
+        return $this->getPaymentsForCustomerAsyncWithHttpInfo($customer_id, $limit, $last_key, $name)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1308,7 +1308,7 @@ class PaymentsApi
     }
 
     /**
-     * Operation listCustomerPaymentAsyncWithHttpInfo
+     * Operation getPaymentsForCustomerAsyncWithHttpInfo
      *
      * List Customer Payments
      *
@@ -1320,10 +1320,10 @@ class PaymentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCustomerPaymentAsyncWithHttpInfo($customer_id, $limit = null, $last_key = null, $name = null)
+    public function getPaymentsForCustomerAsyncWithHttpInfo($customer_id, $limit = null, $last_key = null, $name = null)
     {
         $returnType = '\BillaBear\Model\InlineResponse2003';
-        $request = $this->listCustomerPaymentRequest($customer_id, $limit, $last_key, $name);
+        $request = $this->getPaymentsForCustomerRequest($customer_id, $limit, $last_key, $name);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1363,7 +1363,7 @@ class PaymentsApi
     }
 
     /**
-     * Create request for operation 'listCustomerPayment'
+     * Create request for operation 'getPaymentsForCustomer'
      *
      * @param  string $customer_id The id of the customer to retrieve (required)
      * @param  int $limit How many items to return at one time (max 100) (optional)
@@ -1373,12 +1373,12 @@ class PaymentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function listCustomerPaymentRequest($customer_id, $limit = null, $last_key = null, $name = null)
+    protected function getPaymentsForCustomerRequest($customer_id, $limit = null, $last_key = null, $name = null)
     {
         // verify the required parameter 'customer_id' is set
         if ($customer_id === null || (is_array($customer_id) && count($customer_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $customer_id when calling listCustomerPayment'
+                'Missing the required parameter $customer_id when calling getPaymentsForCustomer'
             );
         }
 

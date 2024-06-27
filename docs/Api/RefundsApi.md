@@ -4,12 +4,12 @@ All URIs are relative to *https://{customerId}.billabear.cloud/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listCustomerRefund**](RefundsApi.md#listcustomerrefund) | **GET** /customer/{customerId}/refund | List Customer Refunds
+[**getRefundsForCustomer**](RefundsApi.md#getrefundsforcustomer) | **GET** /customer/{customerId}/refund | List Customer Refunds
 [**listRefund**](RefundsApi.md#listrefund) | **GET** /refund | List
 [**showRefundById**](RefundsApi.md#showrefundbyid) | **GET** /refund/{refundId} | Detail
 
-# **listCustomerRefund**
-> \BillaBear\Model\InlineResponse2002 listCustomerRefund($customer_id, $limit, $last_key, $name)
+# **getRefundsForCustomer**
+> \BillaBear\Model\InlineResponse2002 getRefundsForCustomer($customer_id, $limit, $last_key, $name)
 
 List Customer Refunds
 
@@ -36,10 +36,10 @@ $last_key = "last_key_example"; // string | The key to be used in pagination to 
 $name = "name_example"; // string | The name to search for
 
 try {
-    $result = $apiInstance->listCustomerRefund($customer_id, $limit, $last_key, $name);
+    $result = $apiInstance->getRefundsForCustomer($customer_id, $limit, $last_key, $name);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling RefundsApi->listCustomerRefund: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling RefundsApi->getRefundsForCustomer: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```

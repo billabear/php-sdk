@@ -87,7 +87,7 @@ class RefundsApi
     }
 
     /**
-     * Operation listCustomerRefund
+     * Operation getRefundsForCustomer
      *
      * List Customer Refunds
      *
@@ -100,14 +100,14 @@ class RefundsApi
      * @throws \InvalidArgumentException
      * @return \BillaBear\Model\InlineResponse2002
      */
-    public function listCustomerRefund($customer_id, $limit = null, $last_key = null, $name = null)
+    public function getRefundsForCustomer($customer_id, $limit = null, $last_key = null, $name = null)
     {
-        list($response) = $this->listCustomerRefundWithHttpInfo($customer_id, $limit, $last_key, $name);
+        list($response) = $this->getRefundsForCustomerWithHttpInfo($customer_id, $limit, $last_key, $name);
         return $response;
     }
 
     /**
-     * Operation listCustomerRefundWithHttpInfo
+     * Operation getRefundsForCustomerWithHttpInfo
      *
      * List Customer Refunds
      *
@@ -120,10 +120,10 @@ class RefundsApi
      * @throws \InvalidArgumentException
      * @return array of \BillaBear\Model\InlineResponse2002, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listCustomerRefundWithHttpInfo($customer_id, $limit = null, $last_key = null, $name = null)
+    public function getRefundsForCustomerWithHttpInfo($customer_id, $limit = null, $last_key = null, $name = null)
     {
         $returnType = '\BillaBear\Model\InlineResponse2002';
-        $request = $this->listCustomerRefundRequest($customer_id, $limit, $last_key, $name);
+        $request = $this->getRefundsForCustomerRequest($customer_id, $limit, $last_key, $name);
 
         try {
             $options = $this->createHttpClientOption();
@@ -193,7 +193,7 @@ class RefundsApi
     }
 
     /**
-     * Operation listCustomerRefundAsync
+     * Operation getRefundsForCustomerAsync
      *
      * List Customer Refunds
      *
@@ -205,9 +205,9 @@ class RefundsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCustomerRefundAsync($customer_id, $limit = null, $last_key = null, $name = null)
+    public function getRefundsForCustomerAsync($customer_id, $limit = null, $last_key = null, $name = null)
     {
-        return $this->listCustomerRefundAsyncWithHttpInfo($customer_id, $limit, $last_key, $name)
+        return $this->getRefundsForCustomerAsyncWithHttpInfo($customer_id, $limit, $last_key, $name)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -216,7 +216,7 @@ class RefundsApi
     }
 
     /**
-     * Operation listCustomerRefundAsyncWithHttpInfo
+     * Operation getRefundsForCustomerAsyncWithHttpInfo
      *
      * List Customer Refunds
      *
@@ -228,10 +228,10 @@ class RefundsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCustomerRefundAsyncWithHttpInfo($customer_id, $limit = null, $last_key = null, $name = null)
+    public function getRefundsForCustomerAsyncWithHttpInfo($customer_id, $limit = null, $last_key = null, $name = null)
     {
         $returnType = '\BillaBear\Model\InlineResponse2002';
-        $request = $this->listCustomerRefundRequest($customer_id, $limit, $last_key, $name);
+        $request = $this->getRefundsForCustomerRequest($customer_id, $limit, $last_key, $name);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -271,7 +271,7 @@ class RefundsApi
     }
 
     /**
-     * Create request for operation 'listCustomerRefund'
+     * Create request for operation 'getRefundsForCustomer'
      *
      * @param  string $customer_id The id of the customer to retrieve (required)
      * @param  int $limit How many items to return at one time (max 100) (optional)
@@ -281,12 +281,12 @@ class RefundsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function listCustomerRefundRequest($customer_id, $limit = null, $last_key = null, $name = null)
+    protected function getRefundsForCustomerRequest($customer_id, $limit = null, $last_key = null, $name = null)
     {
         // verify the required parameter 'customer_id' is set
         if ($customer_id === null || (is_array($customer_id) && count($customer_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $customer_id when calling listCustomerRefund'
+                'Missing the required parameter $customer_id when calling getRefundsForCustomer'
             );
         }
 

@@ -56,8 +56,8 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'limits' => 'null[]',
-        'features' => 'null[]',
+        'limits' => '\BillaBear\Model\Limit[]',
+        'features' => '\BillaBear\Model\Feature[]',
         'user_count' => 'int'
     ];
 
@@ -216,7 +216,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
     /**
      * Gets limits
      *
-     * @return null[]
+     * @return \BillaBear\Model\Limit[]
      */
     public function getLimits()
     {
@@ -226,7 +226,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
     /**
      * Sets limits
      *
-     * @param null[] $limits limits
+     * @param \BillaBear\Model\Limit[] $limits limits
      *
      * @return $this
      */
@@ -240,7 +240,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
     /**
      * Gets features
      *
-     * @return null[]
+     * @return \BillaBear\Model\Feature[]
      */
     public function getFeatures()
     {
@@ -250,7 +250,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
     /**
      * Sets features
      *
-     * @param null[] $features features
+     * @param \BillaBear\Model\Feature[] $features features
      *
      * @return $this
      */

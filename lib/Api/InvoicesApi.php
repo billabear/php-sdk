@@ -637,7 +637,7 @@ class InvoicesApi
     }
 
     /**
-     * Operation listCustomerInvoices
+     * Operation getInvoicesForCustomer
      *
      * List Customer Invoices
      *
@@ -647,14 +647,14 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      * @return \BillaBear\Model\InlineResponse2004
      */
-    public function listCustomerInvoices($customer_id)
+    public function getInvoicesForCustomer($customer_id)
     {
-        list($response) = $this->listCustomerInvoicesWithHttpInfo($customer_id);
+        list($response) = $this->getInvoicesForCustomerWithHttpInfo($customer_id);
         return $response;
     }
 
     /**
-     * Operation listCustomerInvoicesWithHttpInfo
+     * Operation getInvoicesForCustomerWithHttpInfo
      *
      * List Customer Invoices
      *
@@ -664,10 +664,10 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      * @return array of \BillaBear\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listCustomerInvoicesWithHttpInfo($customer_id)
+    public function getInvoicesForCustomerWithHttpInfo($customer_id)
     {
         $returnType = '\BillaBear\Model\InlineResponse2004';
-        $request = $this->listCustomerInvoicesRequest($customer_id);
+        $request = $this->getInvoicesForCustomerRequest($customer_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -737,7 +737,7 @@ class InvoicesApi
     }
 
     /**
-     * Operation listCustomerInvoicesAsync
+     * Operation getInvoicesForCustomerAsync
      *
      * List Customer Invoices
      *
@@ -746,9 +746,9 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCustomerInvoicesAsync($customer_id)
+    public function getInvoicesForCustomerAsync($customer_id)
     {
-        return $this->listCustomerInvoicesAsyncWithHttpInfo($customer_id)
+        return $this->getInvoicesForCustomerAsyncWithHttpInfo($customer_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -757,7 +757,7 @@ class InvoicesApi
     }
 
     /**
-     * Operation listCustomerInvoicesAsyncWithHttpInfo
+     * Operation getInvoicesForCustomerAsyncWithHttpInfo
      *
      * List Customer Invoices
      *
@@ -766,10 +766,10 @@ class InvoicesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCustomerInvoicesAsyncWithHttpInfo($customer_id)
+    public function getInvoicesForCustomerAsyncWithHttpInfo($customer_id)
     {
         $returnType = '\BillaBear\Model\InlineResponse2004';
-        $request = $this->listCustomerInvoicesRequest($customer_id);
+        $request = $this->getInvoicesForCustomerRequest($customer_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -809,19 +809,19 @@ class InvoicesApi
     }
 
     /**
-     * Create request for operation 'listCustomerInvoices'
+     * Create request for operation 'getInvoicesForCustomer'
      *
      * @param  string $customer_id The id of the customer to retrieve (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function listCustomerInvoicesRequest($customer_id)
+    protected function getInvoicesForCustomerRequest($customer_id)
     {
         // verify the required parameter 'customer_id' is set
         if ($customer_id === null || (is_array($customer_id) && count($customer_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $customer_id when calling listCustomerInvoices'
+                'Missing the required parameter $customer_id when calling getInvoicesForCustomer'
             );
         }
 
