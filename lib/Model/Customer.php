@@ -256,7 +256,7 @@ class Customer implements ModelInterface, ArrayAccess
     public function getInvoiceFormatAllowableValues()
     {
         return [
-            self::INVOICE_FORMAT_PDF
+            self::INVOICE_FORMAT_PDF,
             self::INVOICE_FORMAT_XRECHNUNG
         ];
     }

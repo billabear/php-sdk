@@ -188,7 +188,7 @@ class MetricFilter implements ModelInterface, ArrayAccess
     public function getTypeAllowableValues()
     {
         return [
-            self::TYPE_INCLUSIVE
+            self::TYPE_INCLUSIVE,
             self::TYPE_EXCLUSIVE
         ];
     }

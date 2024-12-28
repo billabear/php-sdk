@@ -178,7 +178,7 @@ class UsageLimit implements ModelInterface, ArrayAccess
     public function getActionAllowableValues()
     {
         return [
-            self::ACTION_WARNING
+            self::ACTION_WARNING,
             self::ACTION_DISABLE
         ];
     }

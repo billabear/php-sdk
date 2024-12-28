@@ -173,7 +173,7 @@ class SubscriptionIdPriceBody implements ModelInterface, ArrayAccess
     public function getWhenAllowableValues()
     {
         return [
-            self::WHEN_NEXT_CYCLE
+            self::WHEN_NEXT_CYCLE,
             self::WHEN_INSTANTLY
         ];
     }
