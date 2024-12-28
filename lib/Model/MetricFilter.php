@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20010
+ * MetricFilter
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \BillaBear\ObjectSerializer;
 
 /**
- * InlineResponse20010 Class Doc Comment
+ * MetricFilter Class Doc Comment
  *
  * @category Class
  * @package  BillaBear
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse20010 implements ModelInterface, ArrayAccess
+class MetricFilter implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'inline_response_200_10';
+    protected static $swaggerModelName = 'MetricFilter';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,9 +56,11 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'data' => '\BillaBear\Model\Product[]',
-        'has_more' => 'bool',
-        'last_key' => 'string'
+        'id' => 'string',
+        'name' => 'string',
+        'code' => 'string',
+        'value' => 'string',
+        'type' => 'string'
     ];
 
     /**
@@ -67,9 +69,11 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'data' => null,
-        'has_more' => null,
-        'last_key' => 'uuid'
+        'id' => 'uuid',
+        'name' => null,
+        'code' => null,
+        'value' => null,
+        'type' => null
     ];
 
     /**
@@ -99,9 +103,11 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'has_more' => 'has_more',
-        'last_key' => 'last_key'
+        'id' => 'id',
+        'name' => 'name',
+        'code' => 'code',
+        'value' => 'value',
+        'type' => 'type'
     ];
 
     /**
@@ -110,9 +116,11 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'has_more' => 'setHasMore',
-        'last_key' => 'setLastKey'
+        'id' => 'setId',
+        'name' => 'setName',
+        'code' => 'setCode',
+        'value' => 'setValue',
+        'type' => 'setType'
     ];
 
     /**
@@ -121,9 +129,11 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'has_more' => 'getHasMore',
-        'last_key' => 'getLastKey'
+        'id' => 'getId',
+        'name' => 'getName',
+        'code' => 'getCode',
+        'value' => 'getValue',
+        'type' => 'getType'
     ];
 
     /**
@@ -167,7 +177,21 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
+    const TYPE_INCLUSIVE = 'inclusive';
+    const TYPE_EXCLUSIVE = 'exclusive';
 
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_INCLUSIVE
+            self::TYPE_EXCLUSIVE
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -184,9 +208,11 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
-        $this->container['has_more'] = isset($data['has_more']) ? $data['has_more'] : null;
-        $this->container['last_key'] = isset($data['last_key']) ? $data['last_key'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
     }
 
     /**
@@ -197,6 +223,14 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -214,73 +248,130 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets data
-     *
-     * @return \BillaBear\Model\Product[]
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \BillaBear\Model\Product[] $data data
-     *
-     * @return $this
-     */
-    public function setData($data)
-    {
-        $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets has_more
-     *
-     * @return bool
-     */
-    public function getHasMore()
-    {
-        return $this->container['has_more'];
-    }
-
-    /**
-     * Sets has_more
-     *
-     * @param bool $has_more has_more
-     *
-     * @return $this
-     */
-    public function setHasMore($has_more)
-    {
-        $this->container['has_more'] = $has_more;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_key
+     * Gets id
      *
      * @return string
      */
-    public function getLastKey()
+    public function getId()
     {
-        return $this->container['last_key'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets last_key
+     * Sets id
      *
-     * @param string $last_key last_key
+     * @param string $id id
      *
      * @return $this
      */
-    public function setLastKey($last_key)
+    public function setId($id)
     {
-        $this->container['last_key'] = $last_key;
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->container['code'];
+    }
+
+    /**
+     * Sets code
+     *
+     * @param string $code code
+     *
+     * @return $this
+     */
+    public function setCode($code)
+    {
+        $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets value
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param string $value value
+     *
+     * @return $this
+     */
+    public function setValue($value)
+    {
+        $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type type
+     *
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

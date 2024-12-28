@@ -56,9 +56,9 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'data' => '\BillaBear\Model\Refund[]',
-        'has_more' => 'bool',
-        'last_key' => 'string'
+        'limits' => '\BillaBear\Model\Limit[]',
+        'features' => '\BillaBear\Model\Feature[]',
+        'user_count' => 'int'
     ];
 
     /**
@@ -67,9 +67,9 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'data' => null,
-        'has_more' => null,
-        'last_key' => 'uuid'
+        'limits' => null,
+        'features' => null,
+        'user_count' => null
     ];
 
     /**
@@ -99,9 +99,9 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'has_more' => 'has_more',
-        'last_key' => 'last_key'
+        'limits' => 'limits',
+        'features' => 'features',
+        'user_count' => 'user_count'
     ];
 
     /**
@@ -110,9 +110,9 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'has_more' => 'setHasMore',
-        'last_key' => 'setLastKey'
+        'limits' => 'setLimits',
+        'features' => 'setFeatures',
+        'user_count' => 'setUserCount'
     ];
 
     /**
@@ -121,9 +121,9 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'has_more' => 'getHasMore',
-        'last_key' => 'getLastKey'
+        'limits' => 'getLimits',
+        'features' => 'getFeatures',
+        'user_count' => 'getUserCount'
     ];
 
     /**
@@ -184,9 +184,9 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
-        $this->container['has_more'] = isset($data['has_more']) ? $data['has_more'] : null;
-        $this->container['last_key'] = isset($data['last_key']) ? $data['last_key'] : null;
+        $this->container['limits'] = isset($data['limits']) ? $data['limits'] : null;
+        $this->container['features'] = isset($data['features']) ? $data['features'] : null;
+        $this->container['user_count'] = isset($data['user_count']) ? $data['user_count'] : null;
     }
 
     /**
@@ -214,73 +214,73 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets data
+     * Gets limits
      *
-     * @return \BillaBear\Model\Refund[]
+     * @return \BillaBear\Model\Limit[]
      */
-    public function getData()
+    public function getLimits()
     {
-        return $this->container['data'];
+        return $this->container['limits'];
     }
 
     /**
-     * Sets data
+     * Sets limits
      *
-     * @param \BillaBear\Model\Refund[] $data data
+     * @param \BillaBear\Model\Limit[] $limits limits
      *
      * @return $this
      */
-    public function setData($data)
+    public function setLimits($limits)
     {
-        $this->container['data'] = $data;
+        $this->container['limits'] = $limits;
 
         return $this;
     }
 
     /**
-     * Gets has_more
+     * Gets features
      *
-     * @return bool
+     * @return \BillaBear\Model\Feature[]
      */
-    public function getHasMore()
+    public function getFeatures()
     {
-        return $this->container['has_more'];
+        return $this->container['features'];
     }
 
     /**
-     * Sets has_more
+     * Sets features
      *
-     * @param bool $has_more has_more
+     * @param \BillaBear\Model\Feature[] $features features
      *
      * @return $this
      */
-    public function setHasMore($has_more)
+    public function setFeatures($features)
     {
-        $this->container['has_more'] = $has_more;
+        $this->container['features'] = $features;
 
         return $this;
     }
 
     /**
-     * Gets last_key
+     * Gets user_count
      *
-     * @return string
+     * @return int
      */
-    public function getLastKey()
+    public function getUserCount()
     {
-        return $this->container['last_key'];
+        return $this->container['user_count'];
     }
 
     /**
-     * Sets last_key
+     * Sets user_count
      *
-     * @param string $last_key last_key
+     * @param int $user_count user_count
      *
      * @return $this
      */
-    public function setLastKey($last_key)
+    public function setUserCount($user_count)
     {
-        $this->container['last_key'] = $last_key;
+        $this->container['user_count'] = $user_count;
 
         return $this;
     }

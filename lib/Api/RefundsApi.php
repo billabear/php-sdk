@@ -98,7 +98,7 @@ class RefundsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \BillaBear\Model\InlineResponse2002
+     * @return \BillaBear\Model\InlineResponse2003
      */
     public function getRefundsForCustomer($customer_id, $limit = null, $last_key = null, $name = null)
     {
@@ -118,11 +118,11 @@ class RefundsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \BillaBear\Model\InlineResponse2002, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BillaBear\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRefundsForCustomerWithHttpInfo($customer_id, $limit = null, $last_key = null, $name = null)
     {
-        $returnType = '\BillaBear\Model\InlineResponse2002';
+        $returnType = '\BillaBear\Model\InlineResponse2003';
         $request = $this->getRefundsForCustomerRequest($customer_id, $limit, $last_key, $name);
 
         try {
@@ -174,7 +174,7 @@ class RefundsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\BillaBear\Model\InlineResponse2002',
+                        '\BillaBear\Model\InlineResponse2003',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -230,7 +230,7 @@ class RefundsApi
      */
     public function getRefundsForCustomerAsyncWithHttpInfo($customer_id, $limit = null, $last_key = null, $name = null)
     {
-        $returnType = '\BillaBear\Model\InlineResponse2002';
+        $returnType = '\BillaBear\Model\InlineResponse2003';
         $request = $this->getRefundsForCustomerRequest($customer_id, $limit, $last_key, $name);
 
         return $this->client
@@ -399,7 +399,7 @@ class RefundsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \BillaBear\Model\InlineResponse2002
+     * @return \BillaBear\Model\InlineResponse2003
      */
     public function listRefund($limit = null, $last_key = null, $name = null)
     {
@@ -418,11 +418,11 @@ class RefundsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \BillaBear\Model\InlineResponse2002, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BillaBear\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
      */
     public function listRefundWithHttpInfo($limit = null, $last_key = null, $name = null)
     {
-        $returnType = '\BillaBear\Model\InlineResponse2002';
+        $returnType = '\BillaBear\Model\InlineResponse2003';
         $request = $this->listRefundRequest($limit, $last_key, $name);
 
         try {
@@ -474,7 +474,7 @@ class RefundsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\BillaBear\Model\InlineResponse2002',
+                        '\BillaBear\Model\InlineResponse2003',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -528,7 +528,7 @@ class RefundsApi
      */
     public function listRefundAsyncWithHttpInfo($limit = null, $last_key = null, $name = null)
     {
-        $returnType = '\BillaBear\Model\InlineResponse2002';
+        $returnType = '\BillaBear\Model\InlineResponse2003';
         $request = $this->listRefundRequest($limit, $last_key, $name);
 
         return $this->client
@@ -754,14 +754,6 @@ class RefundsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\BillaBear\Model\Refund',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

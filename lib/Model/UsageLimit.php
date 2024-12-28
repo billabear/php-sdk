@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20010
+ * UsageLimit
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \BillaBear\ObjectSerializer;
 
 /**
- * InlineResponse20010 Class Doc Comment
+ * UsageLimit Class Doc Comment
  *
  * @category Class
  * @package  BillaBear
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse20010 implements ModelInterface, ArrayAccess
+class UsageLimit implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'inline_response_200_10';
+    protected static $swaggerModelName = 'UsageLimit';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,9 +56,9 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'data' => '\BillaBear\Model\Product[]',
-        'has_more' => 'bool',
-        'last_key' => 'string'
+        'id' => 'string',
+        'amount' => 'int',
+        'action' => 'string'
     ];
 
     /**
@@ -67,9 +67,9 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'data' => null,
-        'has_more' => null,
-        'last_key' => 'uuid'
+        'id' => 'uuid',
+        'amount' => null,
+        'action' => null
     ];
 
     /**
@@ -99,9 +99,9 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'has_more' => 'has_more',
-        'last_key' => 'last_key'
+        'id' => 'id',
+        'amount' => 'amount',
+        'action' => 'action'
     ];
 
     /**
@@ -110,9 +110,9 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'has_more' => 'setHasMore',
-        'last_key' => 'setLastKey'
+        'id' => 'setId',
+        'amount' => 'setAmount',
+        'action' => 'setAction'
     ];
 
     /**
@@ -121,9 +121,9 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'has_more' => 'getHasMore',
-        'last_key' => 'getLastKey'
+        'id' => 'getId',
+        'amount' => 'getAmount',
+        'action' => 'getAction'
     ];
 
     /**
@@ -167,7 +167,21 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
+    const ACTION_WARNING = 'WARNING';
+    const ACTION_DISABLE = 'DISABLE';
 
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getActionAllowableValues()
+    {
+        return [
+            self::ACTION_WARNING
+            self::ACTION_DISABLE
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -184,9 +198,9 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
-        $this->container['has_more'] = isset($data['has_more']) ? $data['has_more'] : null;
-        $this->container['last_key'] = isset($data['last_key']) ? $data['last_key'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        $this->container['action'] = isset($data['action']) ? $data['action'] : null;
     }
 
     /**
@@ -197,6 +211,14 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getActionAllowableValues();
+        if (!is_null($this->container['action']) && !in_array($this->container['action'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'action', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -214,73 +236,82 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets data
-     *
-     * @return \BillaBear\Model\Product[]
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \BillaBear\Model\Product[] $data data
-     *
-     * @return $this
-     */
-    public function setData($data)
-    {
-        $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets has_more
-     *
-     * @return bool
-     */
-    public function getHasMore()
-    {
-        return $this->container['has_more'];
-    }
-
-    /**
-     * Sets has_more
-     *
-     * @param bool $has_more has_more
-     *
-     * @return $this
-     */
-    public function setHasMore($has_more)
-    {
-        $this->container['has_more'] = $has_more;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_key
+     * Gets id
      *
      * @return string
      */
-    public function getLastKey()
+    public function getId()
     {
-        return $this->container['last_key'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets last_key
+     * Sets id
      *
-     * @param string $last_key last_key
+     * @param string $id id
      *
      * @return $this
      */
-    public function setLastKey($last_key)
+    public function setId($id)
     {
-        $this->container['last_key'] = $last_key;
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount
+     *
+     * @return int
+     */
+    public function getAmount()
+    {
+        return $this->container['amount'];
+    }
+
+    /**
+     * Sets amount
+     *
+     * @param int $amount amount
+     *
+     * @return $this
+     */
+    public function setAmount($amount)
+    {
+        $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets action
+     *
+     * @return string
+     */
+    public function getAction()
+    {
+        return $this->container['action'];
+    }
+
+    /**
+     * Sets action
+     *
+     * @param string $action action
+     *
+     * @return $this
+     */
+    public function setAction($action)
+    {
+        $allowedValues = $this->getActionAllowableValues();
+        if (!is_null($action) && !in_array($action, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'action', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['action'] = $action;
 
         return $this;
     }

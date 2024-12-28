@@ -56,8 +56,9 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'paid' => 'bool',
-        'failure_reason' => 'string'
+        'data' => '\BillaBear\Model\SubscriptionPlan[]',
+        'has_more' => 'bool',
+        'last_key' => 'string'
     ];
 
     /**
@@ -66,8 +67,9 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'paid' => null,
-        'failure_reason' => null
+        'data' => null,
+        'has_more' => null,
+        'last_key' => 'uuid'
     ];
 
     /**
@@ -97,8 +99,9 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'paid' => 'paid',
-        'failure_reason' => 'failure_reason'
+        'data' => 'data',
+        'has_more' => 'has_more',
+        'last_key' => 'last_key'
     ];
 
     /**
@@ -107,8 +110,9 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'paid' => 'setPaid',
-        'failure_reason' => 'setFailureReason'
+        'data' => 'setData',
+        'has_more' => 'setHasMore',
+        'last_key' => 'setLastKey'
     ];
 
     /**
@@ -117,8 +121,9 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'paid' => 'getPaid',
-        'failure_reason' => 'getFailureReason'
+        'data' => 'getData',
+        'has_more' => 'getHasMore',
+        'last_key' => 'getLastKey'
     ];
 
     /**
@@ -162,33 +167,7 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    const FAILURE_REASON_EXPIRED_CARD = 'expired_card';
-    const FAILURE_REASON_INVALID_DETAILS = 'invalid_details';
-    const FAILURE_REASON_FRAUD = 'fraud';
-    const FAILURE_REASON_AUTHENTICATION_REQUIRED = 'authentication_required';
-    const FAILURE_REASON_INVALID_CARD = 'invalid_card';
-    const FAILURE_REASON_GENERAL_DECLINE = 'general_decline';
-    const FAILURE_REASON_CONTACT_PROVIDER = 'contact_provider';
-    const FAILURE_REASON_LACK_OF_FUNDS = 'lack_of_funds';
 
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getFailureReasonAllowableValues()
-    {
-        return [
-            self::FAILURE_REASON_EXPIRED_CARD,
-            self::FAILURE_REASON_INVALID_DETAILS,
-            self::FAILURE_REASON_FRAUD,
-            self::FAILURE_REASON_AUTHENTICATION_REQUIRED,
-            self::FAILURE_REASON_INVALID_CARD,
-            self::FAILURE_REASON_GENERAL_DECLINE,
-            self::FAILURE_REASON_CONTACT_PROVIDER,
-            self::FAILURE_REASON_LACK_OF_FUNDS,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -205,8 +184,9 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['paid'] = isset($data['paid']) ? $data['paid'] : null;
-        $this->container['failure_reason'] = isset($data['failure_reason']) ? $data['failure_reason'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['has_more'] = isset($data['has_more']) ? $data['has_more'] : null;
+        $this->container['last_key'] = isset($data['last_key']) ? $data['last_key'] : null;
     }
 
     /**
@@ -217,14 +197,6 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getFailureReasonAllowableValues();
-        if (!is_null($this->container['failure_reason']) && !in_array($this->container['failure_reason'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'failure_reason', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -242,58 +214,73 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets paid
+     * Gets data
      *
-     * @return bool
+     * @return \BillaBear\Model\SubscriptionPlan[]
      */
-    public function getPaid()
+    public function getData()
     {
-        return $this->container['paid'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets paid
+     * Sets data
      *
-     * @param bool $paid paid
+     * @param \BillaBear\Model\SubscriptionPlan[] $data data
      *
      * @return $this
      */
-    public function setPaid($paid)
+    public function setData($data)
     {
-        $this->container['paid'] = $paid;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets failure_reason
+     * Gets has_more
      *
-     * @return string
+     * @return bool
      */
-    public function getFailureReason()
+    public function getHasMore()
     {
-        return $this->container['failure_reason'];
+        return $this->container['has_more'];
     }
 
     /**
-     * Sets failure_reason
+     * Sets has_more
      *
-     * @param string $failure_reason failure_reason
+     * @param bool $has_more has_more
      *
      * @return $this
      */
-    public function setFailureReason($failure_reason)
+    public function setHasMore($has_more)
     {
-        $allowedValues = $this->getFailureReasonAllowableValues();
-        if (!is_null($failure_reason) && !in_array($failure_reason, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'failure_reason', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['failure_reason'] = $failure_reason;
+        $this->container['has_more'] = $has_more;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_key
+     *
+     * @return string
+     */
+    public function getLastKey()
+    {
+        return $this->container['last_key'];
+    }
+
+    /**
+     * Sets last_key
+     *
+     * @param string $last_key last_key
+     *
+     * @return $this
+     */
+    public function setLastKey($last_key)
+    {
+        $this->container['last_key'] = $last_key;
 
         return $this;
     }

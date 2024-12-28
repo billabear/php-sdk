@@ -56,7 +56,7 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'data' => '\BillaBear\Model\Invoice[]',
+        'data' => '\BillaBear\Model\Paths1paymentGetResponses200ContentApplication1jsonSchemaPropertiesDataItems[]',
         'has_more' => 'bool',
         'last_key' => 'string'
     ];
@@ -216,7 +216,7 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess
     /**
      * Gets data
      *
-     * @return \BillaBear\Model\Invoice[]
+     * @return \BillaBear\Model\Paths1paymentGetResponses200ContentApplication1jsonSchemaPropertiesDataItems[]
      */
     public function getData()
     {
@@ -226,7 +226,7 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param \BillaBear\Model\Invoice[] $data data
+     * @param \BillaBear\Model\Paths1paymentGetResponses200ContentApplication1jsonSchemaPropertiesDataItems[] $data data
      *
      * @return $this
      */

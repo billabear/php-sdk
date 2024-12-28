@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20010
+ * OneOfSubscriptionMetadata
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \BillaBear\ObjectSerializer;
 
 /**
- * InlineResponse20010 Class Doc Comment
+ * OneOfSubscriptionMetadata Class Doc Comment
  *
  * @category Class
  * @package  BillaBear
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse20010 implements ModelInterface, ArrayAccess
+class OneOfSubscriptionMetadata implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'inline_response_200_10';
+    protected static $swaggerModelName = 'OneOfSubscriptionMetadata';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,9 +56,6 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'data' => '\BillaBear\Model\Product[]',
-        'has_more' => 'bool',
-        'last_key' => 'string'
     ];
 
     /**
@@ -67,9 +64,6 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'data' => null,
-        'has_more' => null,
-        'last_key' => 'uuid'
     ];
 
     /**
@@ -99,9 +93,6 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'has_more' => 'has_more',
-        'last_key' => 'last_key'
     ];
 
     /**
@@ -110,9 +101,6 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'has_more' => 'setHasMore',
-        'last_key' => 'setLastKey'
     ];
 
     /**
@@ -121,9 +109,6 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'has_more' => 'getHasMore',
-        'last_key' => 'getLastKey'
     ];
 
     /**
@@ -184,9 +169,6 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
-        $this->container['has_more'] = isset($data['has_more']) ? $data['has_more'] : null;
-        $this->container['last_key'] = isset($data['last_key']) ? $data['last_key'] : null;
     }
 
     /**
@@ -212,78 +194,6 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets data
-     *
-     * @return \BillaBear\Model\Product[]
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \BillaBear\Model\Product[] $data data
-     *
-     * @return $this
-     */
-    public function setData($data)
-    {
-        $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets has_more
-     *
-     * @return bool
-     */
-    public function getHasMore()
-    {
-        return $this->container['has_more'];
-    }
-
-    /**
-     * Sets has_more
-     *
-     * @param bool $has_more has_more
-     *
-     * @return $this
-     */
-    public function setHasMore($has_more)
-    {
-        $this->container['has_more'] = $has_more;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_key
-     *
-     * @return string
-     */
-    public function getLastKey()
-    {
-        return $this->container['last_key'];
-    }
-
-    /**
-     * Sets last_key
-     *
-     * @param string $last_key last_key
-     *
-     * @return $this
-     */
-    public function setLastKey($last_key)
-    {
-        $this->container['last_key'] = $last_key;
-
-        return $this;
-    }
     /**
      * Returns true if offset exists. False otherwise.
      *

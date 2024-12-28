@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20010
+ * Event
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \BillaBear\ObjectSerializer;
 
 /**
- * InlineResponse20010 Class Doc Comment
+ * Event Class Doc Comment
  *
  * @category Class
  * @package  BillaBear
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse20010 implements ModelInterface, ArrayAccess
+class Event implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'inline_response_200_10';
+    protected static $swaggerModelName = 'Event';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,9 +56,11 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'data' => '\BillaBear\Model\Product[]',
-        'has_more' => 'bool',
-        'last_key' => 'string'
+        'event_id' => 'string',
+        'subscription' => 'string',
+        'properties' => 'object',
+        'value' => 'float',
+        'code' => 'string'
     ];
 
     /**
@@ -67,9 +69,11 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'data' => null,
-        'has_more' => null,
-        'last_key' => 'uuid'
+        'event_id' => 'uuid',
+        'subscription' => 'uuid',
+        'properties' => null,
+        'value' => null,
+        'code' => null
     ];
 
     /**
@@ -99,9 +103,11 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'has_more' => 'has_more',
-        'last_key' => 'last_key'
+        'event_id' => 'event_id',
+        'subscription' => 'subscription',
+        'properties' => 'properties',
+        'value' => 'value',
+        'code' => 'code'
     ];
 
     /**
@@ -110,9 +116,11 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'has_more' => 'setHasMore',
-        'last_key' => 'setLastKey'
+        'event_id' => 'setEventId',
+        'subscription' => 'setSubscription',
+        'properties' => 'setProperties',
+        'value' => 'setValue',
+        'code' => 'setCode'
     ];
 
     /**
@@ -121,9 +129,11 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'has_more' => 'getHasMore',
-        'last_key' => 'getLastKey'
+        'event_id' => 'getEventId',
+        'subscription' => 'getSubscription',
+        'properties' => 'getProperties',
+        'value' => 'getValue',
+        'code' => 'getCode'
     ];
 
     /**
@@ -184,9 +194,11 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
-        $this->container['has_more'] = isset($data['has_more']) ? $data['has_more'] : null;
-        $this->container['last_key'] = isset($data['last_key']) ? $data['last_key'] : null;
+        $this->container['event_id'] = isset($data['event_id']) ? $data['event_id'] : null;
+        $this->container['subscription'] = isset($data['subscription']) ? $data['subscription'] : null;
+        $this->container['properties'] = isset($data['properties']) ? $data['properties'] : null;
+        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
     }
 
     /**
@@ -198,6 +210,18 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['event_id'] === null) {
+            $invalidProperties[] = "'event_id' can't be null";
+        }
+        if ($this->container['subscription'] === null) {
+            $invalidProperties[] = "'subscription' can't be null";
+        }
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
+        }
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -214,73 +238,121 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets data
-     *
-     * @return \BillaBear\Model\Product[]
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \BillaBear\Model\Product[] $data data
-     *
-     * @return $this
-     */
-    public function setData($data)
-    {
-        $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets has_more
-     *
-     * @return bool
-     */
-    public function getHasMore()
-    {
-        return $this->container['has_more'];
-    }
-
-    /**
-     * Sets has_more
-     *
-     * @param bool $has_more has_more
-     *
-     * @return $this
-     */
-    public function setHasMore($has_more)
-    {
-        $this->container['has_more'] = $has_more;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_key
+     * Gets event_id
      *
      * @return string
      */
-    public function getLastKey()
+    public function getEventId()
     {
-        return $this->container['last_key'];
+        return $this->container['event_id'];
     }
 
     /**
-     * Sets last_key
+     * Sets event_id
      *
-     * @param string $last_key last_key
+     * @param string $event_id event_id
      *
      * @return $this
      */
-    public function setLastKey($last_key)
+    public function setEventId($event_id)
     {
-        $this->container['last_key'] = $last_key;
+        $this->container['event_id'] = $event_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets subscription
+     *
+     * @return string
+     */
+    public function getSubscription()
+    {
+        return $this->container['subscription'];
+    }
+
+    /**
+     * Sets subscription
+     *
+     * @param string $subscription subscription
+     *
+     * @return $this
+     */
+    public function setSubscription($subscription)
+    {
+        $this->container['subscription'] = $subscription;
+
+        return $this;
+    }
+
+    /**
+     * Gets properties
+     *
+     * @return object
+     */
+    public function getProperties()
+    {
+        return $this->container['properties'];
+    }
+
+    /**
+     * Sets properties
+     *
+     * @param object $properties properties
+     *
+     * @return $this
+     */
+    public function setProperties($properties)
+    {
+        $this->container['properties'] = $properties;
+
+        return $this;
+    }
+
+    /**
+     * Gets value
+     *
+     * @return float
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param float $value value
+     *
+     * @return $this
+     */
+    public function setValue($value)
+    {
+        $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->container['code'];
+    }
+
+    /**
+     * Sets code
+     *
+     * @param string $code code
+     *
+     * @return $this
+     */
+    public function setCode($code)
+    {
+        $this->container['code'] = $code;
 
         return $this;
     }

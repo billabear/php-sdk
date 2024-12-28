@@ -56,7 +56,7 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'data' => '\BillaBear\Model\Price[]',
+        'data' => '\BillaBear\Model\InlineResponse2009Data[]',
         'has_more' => 'bool',
         'last_key' => 'string'
     ];
@@ -216,7 +216,7 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     /**
      * Gets data
      *
-     * @return \BillaBear\Model\Price[]
+     * @return \BillaBear\Model\InlineResponse2009Data[]
      */
     public function getData()
     {
@@ -226,7 +226,7 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param \BillaBear\Model\Price[] $data data
+     * @param \BillaBear\Model\InlineResponse2009Data[] $data data
      *
      * @return $this
      */

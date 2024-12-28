@@ -95,12 +95,11 @@ class ProductsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string
+     * @return void
      */
     public function createProduct($body)
     {
-        list($response) = $this->createProductWithHttpInfo($body);
-        return $response;
+        $this->createProductWithHttpInfo($body);
     }
 
     /**
@@ -112,11 +111,11 @@ class ProductsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function createProductWithHttpInfo($body)
     {
-        $returnType = 'string';
+        $returnType = '';
         $request = $this->createProductRequest($body);
 
         try {
@@ -147,32 +146,10 @@ class ProductsApi
                 );
             }
 
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return [null, $statusCode, $response->getHeaders()];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -218,28 +195,14 @@ class ProductsApi
      */
     public function createProductAsyncWithHttpInfo($body)
     {
-        $returnType = 'string';
+        $returnType = '';
         $request = $this->createProductRequest($body);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -367,7 +330,7 @@ class ProductsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \BillaBear\Model\InlineResponse2008
+     * @return \BillaBear\Model\InlineResponse20010
      */
     public function listProduct($limit = null, $last_key = null, $name = null)
     {
@@ -386,11 +349,11 @@ class ProductsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \BillaBear\Model\InlineResponse2008, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BillaBear\Model\InlineResponse20010, HTTP status code, HTTP response headers (array of strings)
      */
     public function listProductWithHttpInfo($limit = null, $last_key = null, $name = null)
     {
-        $returnType = '\BillaBear\Model\InlineResponse2008';
+        $returnType = '\BillaBear\Model\InlineResponse20010';
         $request = $this->listProductRequest($limit, $last_key, $name);
 
         try {
@@ -442,7 +405,7 @@ class ProductsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\BillaBear\Model\InlineResponse2008',
+                        '\BillaBear\Model\InlineResponse20010',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -496,7 +459,7 @@ class ProductsApi
      */
     public function listProductAsyncWithHttpInfo($limit = null, $last_key = null, $name = null)
     {
-        $returnType = '\BillaBear\Model\InlineResponse2008';
+        $returnType = '\BillaBear\Model\InlineResponse20010';
         $request = $this->listProductRequest($limit, $last_key, $name);
 
         return $this->client

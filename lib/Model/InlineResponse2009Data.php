@@ -1,6 +1,6 @@
 <?php
 /**
- * SubscriptionStartBody
+ * InlineResponse2009Data
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \BillaBear\ObjectSerializer;
 
 /**
- * SubscriptionStartBody Class Doc Comment
+ * InlineResponse2009Data Class Doc Comment
  *
  * @category Class
  * @package  BillaBear
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SubscriptionStartBody implements ModelInterface, ArrayAccess
+class InlineResponse2009Data implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'subscription_start_body';
+    protected static $swaggerModelName = 'inline_response_200_9_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,15 +56,14 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'subscription_plan' => 'string',
-        'payment_details' => 'string',
-        'card_token' => 'string',
-        'price' => 'string',
-        'schedule' => 'string',
+        'id' => 'string',
+        'amount' => 'int',
         'currency' => 'string',
-        'seat_numbrers' => 'int',
-        'deny_trial' => 'Bool',
-        'metadata' => 'object'
+        'external_reference' => 'string',
+        'status' => 'string',
+        'created_at' => 'string',
+        'customer' => '\BillaBear\Model\Customer',
+        'receipts' => '\BillaBear\Model\InlineResponse2009Receipts[]'
     ];
 
     /**
@@ -73,15 +72,14 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'subscription_plan' => 'uuid',
-        'payment_details' => 'uuid',
-        'card_token' => null,
-        'price' => 'uuid',
-        'schedule' => null,
+        'id' => 'uuid',
+        'amount' => null,
         'currency' => null,
-        'seat_numbrers' => null,
-        'deny_trial' => null,
-        'metadata' => null
+        'external_reference' => null,
+        'status' => null,
+        'created_at' => null,
+        'customer' => null,
+        'receipts' => null
     ];
 
     /**
@@ -111,15 +109,14 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'subscription_plan' => 'subscription_plan',
-        'payment_details' => 'payment_details',
-        'card_token' => 'card_token',
-        'price' => 'price',
-        'schedule' => 'schedule',
+        'id' => 'id',
+        'amount' => 'amount',
         'currency' => 'currency',
-        'seat_numbrers' => 'seat_numbrers',
-        'deny_trial' => 'deny_trial',
-        'metadata' => 'metadata'
+        'external_reference' => 'external_reference',
+        'status' => 'status',
+        'created_at' => 'created_at',
+        'customer' => 'customer',
+        'receipts' => 'receipts'
     ];
 
     /**
@@ -128,15 +125,14 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'subscription_plan' => 'setSubscriptionPlan',
-        'payment_details' => 'setPaymentDetails',
-        'card_token' => 'setCardToken',
-        'price' => 'setPrice',
-        'schedule' => 'setSchedule',
+        'id' => 'setId',
+        'amount' => 'setAmount',
         'currency' => 'setCurrency',
-        'seat_numbrers' => 'setSeatNumbrers',
-        'deny_trial' => 'setDenyTrial',
-        'metadata' => 'setMetadata'
+        'external_reference' => 'setExternalReference',
+        'status' => 'setStatus',
+        'created_at' => 'setCreatedAt',
+        'customer' => 'setCustomer',
+        'receipts' => 'setReceipts'
     ];
 
     /**
@@ -145,15 +141,14 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'subscription_plan' => 'getSubscriptionPlan',
-        'payment_details' => 'getPaymentDetails',
-        'card_token' => 'getCardToken',
-        'price' => 'getPrice',
-        'schedule' => 'getSchedule',
+        'id' => 'getId',
+        'amount' => 'getAmount',
         'currency' => 'getCurrency',
-        'seat_numbrers' => 'getSeatNumbrers',
-        'deny_trial' => 'getDenyTrial',
-        'metadata' => 'getMetadata'
+        'external_reference' => 'getExternalReference',
+        'status' => 'getStatus',
+        'created_at' => 'getCreatedAt',
+        'customer' => 'getCustomer',
+        'receipts' => 'getReceipts'
     ];
 
     /**
@@ -197,23 +192,25 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    const SCHEDULE_WEEK = 'week';
-    const SCHEDULE_MONTH = 'month';
-    const SCHEDULE_YEAR = 'year';
-    const SCHEDULE_ONE_OFF = 'one-off';
+    const STATUS_PENDING = 'pending';
+    const STATUS_COMPLETED = 'completed';
+    const STATUS_DISPUTED = 'disputed';
+    const STATUS_PARTIALLY_REFUNDED = 'partially_refunded';
+    const STATUS_FULLY_REFUNDED = 'fully_refunded';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getScheduleAllowableValues()
+    public function getStatusAllowableValues()
     {
         return [
-            self::SCHEDULE_WEEK,
-            self::SCHEDULE_MONTH,
-            self::SCHEDULE_YEAR,
-            self::SCHEDULE_ONE_OFF,
+            self::STATUS_PENDING,
+            self::STATUS_COMPLETED,
+            self::STATUS_DISPUTED,
+            self::STATUS_PARTIALLY_REFUNDED,
+            self::STATUS_FULLY_REFUNDED,
         ];
     }
 
@@ -232,15 +229,14 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['subscription_plan'] = isset($data['subscription_plan']) ? $data['subscription_plan'] : null;
-        $this->container['payment_details'] = isset($data['payment_details']) ? $data['payment_details'] : null;
-        $this->container['card_token'] = isset($data['card_token']) ? $data['card_token'] : null;
-        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
-        $this->container['schedule'] = isset($data['schedule']) ? $data['schedule'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
-        $this->container['seat_numbrers'] = isset($data['seat_numbrers']) ? $data['seat_numbrers'] : null;
-        $this->container['deny_trial'] = isset($data['deny_trial']) ? $data['deny_trial'] : null;
-        $this->container['metadata'] = isset($data['metadata']) ? $data['metadata'] : null;
+        $this->container['external_reference'] = isset($data['external_reference']) ? $data['external_reference'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['customer'] = isset($data['customer']) ? $data['customer'] : null;
+        $this->container['receipts'] = isset($data['receipts']) ? $data['receipts'] : null;
     }
 
     /**
@@ -252,13 +248,10 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['subscription_plan'] === null) {
-            $invalidProperties[] = "'subscription_plan' can't be null";
-        }
-        $allowedValues = $this->getScheduleAllowableValues();
-        if (!is_null($this->container['schedule']) && !in_array($this->container['schedule'], $allowedValues, true)) {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'schedule', must be one of '%s'",
+                "invalid value for 'status', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
@@ -279,130 +272,49 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets subscription_plan
+     * Gets id
      *
      * @return string
      */
-    public function getSubscriptionPlan()
+    public function getId()
     {
-        return $this->container['subscription_plan'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets subscription_plan
+     * Sets id
      *
-     * @param string $subscription_plan The ID for the subscription plan to be used (Can also be the code name)
+     * @param string $id id
      *
      * @return $this
      */
-    public function setSubscriptionPlan($subscription_plan)
+    public function setId($id)
     {
-        $this->container['subscription_plan'] = $subscription_plan;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets payment_details
+     * Gets amount
      *
-     * @return string
+     * @return int
      */
-    public function getPaymentDetails()
+    public function getAmount()
     {
-        return $this->container['payment_details'];
+        return $this->container['amount'];
     }
 
     /**
-     * Sets payment_details
+     * Sets amount
      *
-     * @param string $payment_details The Id for the customer's payment details to be used
+     * @param int $amount amount
      *
      * @return $this
      */
-    public function setPaymentDetails($payment_details)
+    public function setAmount($amount)
     {
-        $this->container['payment_details'] = $payment_details;
-
-        return $this;
-    }
-
-    /**
-     * Gets card_token
-     *
-     * @return string
-     */
-    public function getCardToken()
-    {
-        return $this->container['card_token'];
-    }
-
-    /**
-     * Sets card_token
-     *
-     * @param string $card_token A stripe card token that's been created using Stripe's js sdk. It'll create the payment details for the customer.
-     *
-     * @return $this
-     */
-    public function setCardToken($card_token)
-    {
-        $this->container['card_token'] = $card_token;
-
-        return $this;
-    }
-
-    /**
-     * Gets price
-     *
-     * @return string
-     */
-    public function getPrice()
-    {
-        return $this->container['price'];
-    }
-
-    /**
-     * Sets price
-     *
-     * @param string $price The ID for the price to be used
-     *
-     * @return $this
-     */
-    public function setPrice($price)
-    {
-        $this->container['price'] = $price;
-
-        return $this;
-    }
-
-    /**
-     * Gets schedule
-     *
-     * @return string
-     */
-    public function getSchedule()
-    {
-        return $this->container['schedule'];
-    }
-
-    /**
-     * Sets schedule
-     *
-     * @param string $schedule The schedule of the plan that is to be started. Only used if price isn't given. Requires currency as well.
-     *
-     * @return $this
-     */
-    public function setSchedule($schedule)
-    {
-        $allowedValues = $this->getScheduleAllowableValues();
-        if (!is_null($schedule) && !in_array($schedule, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'schedule', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['schedule'] = $schedule;
+        $this->container['amount'] = $amount;
 
         return $this;
     }
@@ -420,7 +332,7 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
     /**
      * Sets currency
      *
-     * @param string $currency The currency of the plan that is to be started. Only used if price isn't given. Requires schedule as well.
+     * @param string $currency Three-letter ISO currency code. Must be upper-case
      *
      * @return $this
      */
@@ -432,73 +344,130 @@ class SubscriptionStartBody implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets seat_numbrers
+     * Gets external_reference
      *
-     * @return int
+     * @return string
      */
-    public function getSeatNumbrers()
+    public function getExternalReference()
     {
-        return $this->container['seat_numbrers'];
+        return $this->container['external_reference'];
     }
 
     /**
-     * Sets seat_numbrers
+     * Sets external_reference
      *
-     * @param int $seat_numbrers seat_numbrers
+     * @param string $external_reference external_reference
      *
      * @return $this
      */
-    public function setSeatNumbrers($seat_numbrers)
+    public function setExternalReference($external_reference)
     {
-        $this->container['seat_numbrers'] = $seat_numbrers;
+        $this->container['external_reference'] = $external_reference;
 
         return $this;
     }
 
     /**
-     * Gets deny_trial
+     * Gets status
      *
-     * @return Bool
+     * @return string
      */
-    public function getDenyTrial()
+    public function getStatus()
     {
-        return $this->container['deny_trial'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets deny_trial
+     * Sets status
      *
-     * @param Bool $deny_trial deny_trial
+     * @param string $status status
      *
      * @return $this
      */
-    public function setDenyTrial($deny_trial)
+    public function setStatus($status)
     {
-        $this->container['deny_trial'] = $deny_trial;
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'status', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets metadata
+     * Gets created_at
      *
-     * @return object
+     * @return string
      */
-    public function getMetadata()
+    public function getCreatedAt()
     {
-        return $this->container['metadata'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets metadata
+     * Sets created_at
      *
-     * @param object $metadata Any metadata you want to add to a subscription
+     * @param string $created_at created_at
      *
      * @return $this
      */
-    public function setMetadata($metadata)
+    public function setCreatedAt($created_at)
     {
-        $this->container['metadata'] = $metadata;
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer
+     *
+     * @return \BillaBear\Model\Customer
+     */
+    public function getCustomer()
+    {
+        return $this->container['customer'];
+    }
+
+    /**
+     * Sets customer
+     *
+     * @param \BillaBear\Model\Customer $customer customer
+     *
+     * @return $this
+     */
+    public function setCustomer($customer)
+    {
+        $this->container['customer'] = $customer;
+
+        return $this;
+    }
+
+    /**
+     * Gets receipts
+     *
+     * @return \BillaBear\Model\InlineResponse2009Receipts[]
+     */
+    public function getReceipts()
+    {
+        return $this->container['receipts'];
+    }
+
+    /**
+     * Sets receipts
+     *
+     * @param \BillaBear\Model\InlineResponse2009Receipts[] $receipts receipts
+     *
+     * @return $this
+     */
+    public function setReceipts($receipts)
+    {
+        $this->container['receipts'] = $receipts;
 
         return $this;
     }

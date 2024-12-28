@@ -56,9 +56,8 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'limits' => '\BillaBear\Model\Limit[]',
-        'features' => '\BillaBear\Model\Feature[]',
-        'user_count' => 'int'
+        'costs' => '\BillaBear\Model\MetricCost[]',
+        'cost' => '\BillaBear\Model\Cost'
     ];
 
     /**
@@ -67,9 +66,8 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'limits' => null,
-        'features' => null,
-        'user_count' => null
+        'costs' => null,
+        'cost' => null
     ];
 
     /**
@@ -99,9 +97,8 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'limits' => 'limits',
-        'features' => 'features',
-        'user_count' => 'user_count'
+        'costs' => 'costs',
+        'cost' => 'cost'
     ];
 
     /**
@@ -110,9 +107,8 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'limits' => 'setLimits',
-        'features' => 'setFeatures',
-        'user_count' => 'setUserCount'
+        'costs' => 'setCosts',
+        'cost' => 'setCost'
     ];
 
     /**
@@ -121,9 +117,8 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'limits' => 'getLimits',
-        'features' => 'getFeatures',
-        'user_count' => 'getUserCount'
+        'costs' => 'getCosts',
+        'cost' => 'getCost'
     ];
 
     /**
@@ -184,9 +179,8 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['limits'] = isset($data['limits']) ? $data['limits'] : null;
-        $this->container['features'] = isset($data['features']) ? $data['features'] : null;
-        $this->container['user_count'] = isset($data['user_count']) ? $data['user_count'] : null;
+        $this->container['costs'] = isset($data['costs']) ? $data['costs'] : null;
+        $this->container['cost'] = isset($data['cost']) ? $data['cost'] : null;
     }
 
     /**
@@ -214,73 +208,49 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets limits
+     * Gets costs
      *
-     * @return \BillaBear\Model\Limit[]
+     * @return \BillaBear\Model\MetricCost[]
      */
-    public function getLimits()
+    public function getCosts()
     {
-        return $this->container['limits'];
+        return $this->container['costs'];
     }
 
     /**
-     * Sets limits
+     * Sets costs
      *
-     * @param \BillaBear\Model\Limit[] $limits limits
+     * @param \BillaBear\Model\MetricCost[] $costs costs
      *
      * @return $this
      */
-    public function setLimits($limits)
+    public function setCosts($costs)
     {
-        $this->container['limits'] = $limits;
+        $this->container['costs'] = $costs;
 
         return $this;
     }
 
     /**
-     * Gets features
+     * Gets cost
      *
-     * @return \BillaBear\Model\Feature[]
+     * @return \BillaBear\Model\Cost
      */
-    public function getFeatures()
+    public function getCost()
     {
-        return $this->container['features'];
+        return $this->container['cost'];
     }
 
     /**
-     * Sets features
+     * Sets cost
      *
-     * @param \BillaBear\Model\Feature[] $features features
+     * @param \BillaBear\Model\Cost $cost cost
      *
      * @return $this
      */
-    public function setFeatures($features)
+    public function setCost($cost)
     {
-        $this->container['features'] = $features;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_count
-     *
-     * @return int
-     */
-    public function getUserCount()
-    {
-        return $this->container['user_count'];
-    }
-
-    /**
-     * Sets user_count
-     *
-     * @param int $user_count user_count
-     *
-     * @return $this
-     */
-    public function setUserCount($user_count)
-    {
-        $this->container['user_count'] = $user_count;
+        $this->container['cost'] = $cost;
 
         return $this;
     }

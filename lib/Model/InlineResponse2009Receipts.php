@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20010
+ * InlineResponse2009Receipts
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \BillaBear\ObjectSerializer;
 
 /**
- * InlineResponse20010 Class Doc Comment
+ * InlineResponse2009Receipts Class Doc Comment
  *
  * @category Class
  * @package  BillaBear
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse20010 implements ModelInterface, ArrayAccess
+class InlineResponse2009Receipts implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'inline_response_200_10';
+    protected static $swaggerModelName = 'inline_response_200_9_receipts';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,9 +56,9 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'data' => '\BillaBear\Model\Product[]',
-        'has_more' => 'bool',
-        'last_key' => 'string'
+        'created_at' => 'string',
+        'id' => 'string',
+        'valid' => 'bool'
     ];
 
     /**
@@ -67,9 +67,9 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'data' => null,
-        'has_more' => null,
-        'last_key' => 'uuid'
+        'created_at' => null,
+        'id' => null,
+        'valid' => null
     ];
 
     /**
@@ -99,9 +99,9 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'has_more' => 'has_more',
-        'last_key' => 'last_key'
+        'created_at' => 'created_at',
+        'id' => 'id',
+        'valid' => 'valid'
     ];
 
     /**
@@ -110,9 +110,9 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'has_more' => 'setHasMore',
-        'last_key' => 'setLastKey'
+        'created_at' => 'setCreatedAt',
+        'id' => 'setId',
+        'valid' => 'setValid'
     ];
 
     /**
@@ -121,9 +121,9 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'has_more' => 'getHasMore',
-        'last_key' => 'getLastKey'
+        'created_at' => 'getCreatedAt',
+        'id' => 'getId',
+        'valid' => 'getValid'
     ];
 
     /**
@@ -184,9 +184,9 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
-        $this->container['has_more'] = isset($data['has_more']) ? $data['has_more'] : null;
-        $this->container['last_key'] = isset($data['last_key']) ? $data['last_key'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['valid'] = isset($data['valid']) ? $data['valid'] : null;
     }
 
     /**
@@ -214,73 +214,73 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets data
-     *
-     * @return \BillaBear\Model\Product[]
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \BillaBear\Model\Product[] $data data
-     *
-     * @return $this
-     */
-    public function setData($data)
-    {
-        $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets has_more
-     *
-     * @return bool
-     */
-    public function getHasMore()
-    {
-        return $this->container['has_more'];
-    }
-
-    /**
-     * Sets has_more
-     *
-     * @param bool $has_more has_more
-     *
-     * @return $this
-     */
-    public function setHasMore($has_more)
-    {
-        $this->container['has_more'] = $has_more;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_key
+     * Gets created_at
      *
      * @return string
      */
-    public function getLastKey()
+    public function getCreatedAt()
     {
-        return $this->container['last_key'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets last_key
+     * Sets created_at
      *
-     * @param string $last_key last_key
+     * @param string $created_at created_at
      *
      * @return $this
      */
-    public function setLastKey($last_key)
+    public function setCreatedAt($created_at)
     {
-        $this->container['last_key'] = $last_key;
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id id
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets valid
+     *
+     * @return bool
+     */
+    public function getValid()
+    {
+        return $this->container['valid'];
+    }
+
+    /**
+     * Sets valid
+     *
+     * @param bool $valid valid
+     *
+     * @return $this
+     */
+    public function setValid($valid)
+    {
+        $this->container['valid'] = $valid;
 
         return $this;
     }

@@ -96,7 +96,7 @@ class SubscriptionsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \BillaBear\Model\InlineResponse20011
+     * @return \BillaBear\Model\InlineResponse20013
      */
     public function addSeatsSubscriptions($body, $subscription_id)
     {
@@ -114,11 +114,11 @@ class SubscriptionsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \BillaBear\Model\InlineResponse20011, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BillaBear\Model\InlineResponse20013, HTTP status code, HTTP response headers (array of strings)
      */
     public function addSeatsSubscriptionsWithHttpInfo($body, $subscription_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse20011';
+        $returnType = '\BillaBear\Model\InlineResponse20013';
         $request = $this->addSeatsSubscriptionsRequest($body, $subscription_id);
 
         try {
@@ -170,7 +170,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\BillaBear\Model\InlineResponse20011',
+                        '\BillaBear\Model\InlineResponse20013',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -222,7 +222,7 @@ class SubscriptionsApi
      */
     public function addSeatsSubscriptionsAsyncWithHttpInfo($body, $subscription_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse20011';
+        $returnType = '\BillaBear\Model\InlineResponse20013';
         $request = $this->addSeatsSubscriptionsRequest($body, $subscription_id);
 
         return $this->client
@@ -385,12 +385,11 @@ class SubscriptionsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string
+     * @return void
      */
     public function cancelSubscription($body, $subscription_id)
     {
-        list($response) = $this->cancelSubscriptionWithHttpInfo($body, $subscription_id);
-        return $response;
+        $this->cancelSubscriptionWithHttpInfo($body, $subscription_id);
     }
 
     /**
@@ -403,11 +402,11 @@ class SubscriptionsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function cancelSubscriptionWithHttpInfo($body, $subscription_id)
     {
-        $returnType = 'string';
+        $returnType = '';
         $request = $this->cancelSubscriptionRequest($body, $subscription_id);
 
         try {
@@ -438,40 +437,10 @@ class SubscriptionsApi
                 );
             }
 
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return [null, $statusCode, $response->getHeaders()];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 202:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -519,28 +488,14 @@ class SubscriptionsApi
      */
     public function cancelSubscriptionAsyncWithHttpInfo($body, $subscription_id)
     {
-        $returnType = 'string';
+        $returnType = '';
         $request = $this->cancelSubscriptionRequest($body, $subscription_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -682,7 +637,7 @@ class SubscriptionsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \BillaBear\Model\InlineResponse20011
+     * @return \BillaBear\Model\InlineResponse20013
      */
     public function changeSubscriptionPrice($body, $subscription_id)
     {
@@ -700,11 +655,11 @@ class SubscriptionsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \BillaBear\Model\InlineResponse20011, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BillaBear\Model\InlineResponse20013, HTTP status code, HTTP response headers (array of strings)
      */
     public function changeSubscriptionPriceWithHttpInfo($body, $subscription_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse20011';
+        $returnType = '\BillaBear\Model\InlineResponse20013';
         $request = $this->changeSubscriptionPriceRequest($body, $subscription_id);
 
         try {
@@ -756,7 +711,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\BillaBear\Model\InlineResponse20011',
+                        '\BillaBear\Model\InlineResponse20013',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -808,7 +763,7 @@ class SubscriptionsApi
      */
     public function changeSubscriptionPriceAsyncWithHttpInfo($body, $subscription_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse20011';
+        $returnType = '\BillaBear\Model\InlineResponse20013';
         $request = $this->changeSubscriptionPriceRequest($body, $subscription_id);
 
         return $this->client
@@ -1046,14 +1001,6 @@ class SubscriptionsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\BillaBear\Model\Subscription',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1845,7 +1792,7 @@ class SubscriptionsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \BillaBear\Model\InlineResponse2006
+     * @return \BillaBear\Model\InlineResponse2008
      */
     public function getActiveForCustomer($customer_id)
     {
@@ -1862,11 +1809,11 @@ class SubscriptionsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \BillaBear\Model\InlineResponse2006, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BillaBear\Model\InlineResponse2008, HTTP status code, HTTP response headers (array of strings)
      */
     public function getActiveForCustomerWithHttpInfo($customer_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse2006';
+        $returnType = '\BillaBear\Model\InlineResponse2008';
         $request = $this->getActiveForCustomerRequest($customer_id);
 
         try {
@@ -1918,7 +1865,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\BillaBear\Model\InlineResponse2006',
+                        '\BillaBear\Model\InlineResponse2008',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1968,7 +1915,7 @@ class SubscriptionsApi
      */
     public function getActiveForCustomerAsyncWithHttpInfo($customer_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse2006';
+        $returnType = '\BillaBear\Model\InlineResponse2008';
         $request = $this->getActiveForCustomerRequest($customer_id);
 
         return $this->client
@@ -2120,7 +2067,7 @@ class SubscriptionsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \BillaBear\Model\InlineResponse2006
+     * @return \BillaBear\Model\InlineResponse2008
      */
     public function getForCustomer($customer_id)
     {
@@ -2137,11 +2084,11 @@ class SubscriptionsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \BillaBear\Model\InlineResponse2006, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BillaBear\Model\InlineResponse2008, HTTP status code, HTTP response headers (array of strings)
      */
     public function getForCustomerWithHttpInfo($customer_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse2006';
+        $returnType = '\BillaBear\Model\InlineResponse2008';
         $request = $this->getForCustomerRequest($customer_id);
 
         try {
@@ -2193,7 +2140,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\BillaBear\Model\InlineResponse2006',
+                        '\BillaBear\Model\InlineResponse2008',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2243,7 +2190,7 @@ class SubscriptionsApi
      */
     public function getForCustomerAsyncWithHttpInfo($customer_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse2006';
+        $returnType = '\BillaBear\Model\InlineResponse2008';
         $request = $this->getForCustomerRequest($customer_id);
 
         return $this->client
@@ -2396,7 +2343,7 @@ class SubscriptionsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \BillaBear\Model\InlineResponse20010
+     * @return \BillaBear\Model\InlineResponse20012
      */
     public function listSubscriptionPlans($limit = null, $last_key = null)
     {
@@ -2414,11 +2361,11 @@ class SubscriptionsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \BillaBear\Model\InlineResponse20010, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BillaBear\Model\InlineResponse20012, HTTP status code, HTTP response headers (array of strings)
      */
     public function listSubscriptionPlansWithHttpInfo($limit = null, $last_key = null)
     {
-        $returnType = '\BillaBear\Model\InlineResponse20010';
+        $returnType = '\BillaBear\Model\InlineResponse20012';
         $request = $this->listSubscriptionPlansRequest($limit, $last_key);
 
         try {
@@ -2470,7 +2417,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\BillaBear\Model\InlineResponse20010',
+                        '\BillaBear\Model\InlineResponse20012',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2522,7 +2469,7 @@ class SubscriptionsApi
      */
     public function listSubscriptionPlansAsyncWithHttpInfo($limit = null, $last_key = null)
     {
-        $returnType = '\BillaBear\Model\InlineResponse20010';
+        $returnType = '\BillaBear\Model\InlineResponse20012';
         $request = $this->listSubscriptionPlansRequest($limit, $last_key);
 
         return $this->client
@@ -2670,7 +2617,7 @@ class SubscriptionsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \BillaBear\Model\InlineResponse2006
+     * @return \BillaBear\Model\InlineResponse2008
      */
     public function listSubscriptions($limit = null, $last_key = null)
     {
@@ -2688,11 +2635,11 @@ class SubscriptionsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \BillaBear\Model\InlineResponse2006, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BillaBear\Model\InlineResponse2008, HTTP status code, HTTP response headers (array of strings)
      */
     public function listSubscriptionsWithHttpInfo($limit = null, $last_key = null)
     {
-        $returnType = '\BillaBear\Model\InlineResponse2006';
+        $returnType = '\BillaBear\Model\InlineResponse2008';
         $request = $this->listSubscriptionsRequest($limit, $last_key);
 
         try {
@@ -2744,7 +2691,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\BillaBear\Model\InlineResponse2006',
+                        '\BillaBear\Model\InlineResponse2008',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2796,7 +2743,7 @@ class SubscriptionsApi
      */
     public function listSubscriptionsAsyncWithHttpInfo($limit = null, $last_key = null)
     {
-        $returnType = '\BillaBear\Model\InlineResponse2006';
+        $returnType = '\BillaBear\Model\InlineResponse2008';
         $request = $this->listSubscriptionsRequest($limit, $last_key);
 
         return $this->client
@@ -2944,7 +2891,7 @@ class SubscriptionsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \BillaBear\Model\InlineResponse20011
+     * @return \BillaBear\Model\InlineResponse20013
      */
     public function removeSeatsSubscriptions($body, $subscription_id)
     {
@@ -2962,11 +2909,11 @@ class SubscriptionsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \BillaBear\Model\InlineResponse20011, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BillaBear\Model\InlineResponse20013, HTTP status code, HTTP response headers (array of strings)
      */
     public function removeSeatsSubscriptionsWithHttpInfo($body, $subscription_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse20011';
+        $returnType = '\BillaBear\Model\InlineResponse20013';
         $request = $this->removeSeatsSubscriptionsRequest($body, $subscription_id);
 
         try {
@@ -3018,7 +2965,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\BillaBear\Model\InlineResponse20011',
+                        '\BillaBear\Model\InlineResponse20013',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3070,7 +3017,7 @@ class SubscriptionsApi
      */
     public function removeSeatsSubscriptionsAsyncWithHttpInfo($body, $subscription_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse20011';
+        $returnType = '\BillaBear\Model\InlineResponse20013';
         $request = $this->removeSeatsSubscriptionsRequest($body, $subscription_id);
 
         return $this->client
@@ -3306,14 +3253,6 @@ class SubscriptionsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\BillaBear\Model\Subscription',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3591,14 +3530,6 @@ class SubscriptionsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\BillaBear\Model\Subscription',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

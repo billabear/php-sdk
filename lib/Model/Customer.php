@@ -67,7 +67,8 @@ class Customer implements ModelInterface, ArrayAccess
         'external_reference' => 'string',
         'address' => '\BillaBear\Model\Address',
         'locale' => 'string',
-        'brand' => 'string'
+        'brand' => 'string',
+        'invoice_format' => 'string'
     ];
 
     /**
@@ -87,7 +88,8 @@ class Customer implements ModelInterface, ArrayAccess
         'external_reference' => null,
         'address' => null,
         'locale' => null,
-        'brand' => null
+        'brand' => null,
+        'invoice_format' => null
     ];
 
     /**
@@ -128,7 +130,8 @@ class Customer implements ModelInterface, ArrayAccess
         'external_reference' => 'external_reference',
         'address' => 'address',
         'locale' => 'locale',
-        'brand' => 'brand'
+        'brand' => 'brand',
+        'invoice_format' => 'invoice_format'
     ];
 
     /**
@@ -148,7 +151,8 @@ class Customer implements ModelInterface, ArrayAccess
         'external_reference' => 'setExternalReference',
         'address' => 'setAddress',
         'locale' => 'setLocale',
-        'brand' => 'setBrand'
+        'brand' => 'setBrand',
+        'invoice_format' => 'setInvoiceFormat'
     ];
 
     /**
@@ -168,7 +172,8 @@ class Customer implements ModelInterface, ArrayAccess
         'external_reference' => 'getExternalReference',
         'address' => 'getAddress',
         'locale' => 'getLocale',
-        'brand' => 'getBrand'
+        'brand' => 'getBrand',
+        'invoice_format' => 'getInvoiceFormat'
     ];
 
     /**
@@ -216,6 +221,8 @@ class Customer implements ModelInterface, ArrayAccess
     const BILLING_TYPE_INVOICE = 'invoice';
     const TYPE_INDIVIDUAL = 'individual';
     const TYPE_BUSINESS = 'business';
+    const INVOICE_FORMAT_PDF = 'pdf';
+    const INVOICE_FORMAT_XRECHNUNG = 'xrechnung';
 
     /**
      * Gets allowable values of the enum
@@ -239,6 +246,18 @@ class Customer implements ModelInterface, ArrayAccess
         return [
             self::TYPE_INDIVIDUAL,
             self::TYPE_BUSINESS,
+        ];
+    }
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getInvoiceFormatAllowableValues()
+    {
+        return [
+            self::INVOICE_FORMAT_PDF
+            self::INVOICE_FORMAT_XRECHNUNG
         ];
     }
 
@@ -269,6 +288,7 @@ class Customer implements ModelInterface, ArrayAccess
         $this->container['address'] = isset($data['address']) ? $data['address'] : null;
         $this->container['locale'] = isset($data['locale']) ? $data['locale'] : null;
         $this->container['brand'] = isset($data['brand']) ? $data['brand'] : null;
+        $this->container['invoice_format'] = isset($data['invoice_format']) ? $data['invoice_format'] : null;
     }
 
     /**
@@ -295,6 +315,14 @@ class Customer implements ModelInterface, ArrayAccess
         if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getInvoiceFormatAllowableValues();
+        if (!is_null($this->container['invoice_format']) && !in_array($this->container['invoice_format'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'invoice_format', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
@@ -616,6 +644,39 @@ class Customer implements ModelInterface, ArrayAccess
     public function setBrand($brand)
     {
         $this->container['brand'] = $brand;
+
+        return $this;
+    }
+
+    /**
+     * Gets invoice_format
+     *
+     * @return string
+     */
+    public function getInvoiceFormat()
+    {
+        return $this->container['invoice_format'];
+    }
+
+    /**
+     * Sets invoice_format
+     *
+     * @param string $invoice_format Choice between 'pdf' and 'xrechnung'. <strong>Since 2024.02.01</strong>
+     *
+     * @return $this
+     */
+    public function setInvoiceFormat($invoice_format)
+    {
+        $allowedValues = $this->getInvoiceFormatAllowableValues();
+        if (!is_null($invoice_format) && !in_array($invoice_format, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'invoice_format', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['invoice_format'] = $invoice_format;
 
         return $this;
     }

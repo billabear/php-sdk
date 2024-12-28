@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20010
+ * MetricCost
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \BillaBear\ObjectSerializer;
 
 /**
- * InlineResponse20010 Class Doc Comment
+ * MetricCost Class Doc Comment
  *
  * @category Class
  * @package  BillaBear
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse20010 implements ModelInterface, ArrayAccess
+class MetricCost implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'inline_response_200_10';
+    protected static $swaggerModelName = 'MetricCost';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,9 +56,10 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'data' => '\BillaBear\Model\Product[]',
-        'has_more' => 'bool',
-        'last_key' => 'string'
+        'name' => 'string',
+        'amount' => 'Int',
+        'currency' => 'string',
+        'usage' => 'float'
     ];
 
     /**
@@ -67,9 +68,10 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'data' => null,
-        'has_more' => null,
-        'last_key' => 'uuid'
+        'name' => null,
+        'amount' => null,
+        'currency' => null,
+        'usage' => null
     ];
 
     /**
@@ -99,9 +101,10 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'has_more' => 'has_more',
-        'last_key' => 'last_key'
+        'name' => 'name',
+        'amount' => 'amount',
+        'currency' => 'currency',
+        'usage' => 'usage'
     ];
 
     /**
@@ -110,9 +113,10 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'has_more' => 'setHasMore',
-        'last_key' => 'setLastKey'
+        'name' => 'setName',
+        'amount' => 'setAmount',
+        'currency' => 'setCurrency',
+        'usage' => 'setUsage'
     ];
 
     /**
@@ -121,9 +125,10 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'has_more' => 'getHasMore',
-        'last_key' => 'getLastKey'
+        'name' => 'getName',
+        'amount' => 'getAmount',
+        'currency' => 'getCurrency',
+        'usage' => 'getUsage'
     ];
 
     /**
@@ -184,9 +189,10 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
-        $this->container['has_more'] = isset($data['has_more']) ? $data['has_more'] : null;
-        $this->container['last_key'] = isset($data['last_key']) ? $data['last_key'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        $this->container['usage'] = isset($data['usage']) ? $data['usage'] : null;
     }
 
     /**
@@ -214,73 +220,97 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets data
-     *
-     * @return \BillaBear\Model\Product[]
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \BillaBear\Model\Product[] $data data
-     *
-     * @return $this
-     */
-    public function setData($data)
-    {
-        $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets has_more
-     *
-     * @return bool
-     */
-    public function getHasMore()
-    {
-        return $this->container['has_more'];
-    }
-
-    /**
-     * Sets has_more
-     *
-     * @param bool $has_more has_more
-     *
-     * @return $this
-     */
-    public function setHasMore($has_more)
-    {
-        $this->container['has_more'] = $has_more;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_key
+     * Gets name
      *
      * @return string
      */
-    public function getLastKey()
+    public function getName()
     {
-        return $this->container['last_key'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets last_key
+     * Sets name
      *
-     * @param string $last_key last_key
+     * @param string $name The name of the metric that the cost is for
      *
      * @return $this
      */
-    public function setLastKey($last_key)
+    public function setName($name)
     {
-        $this->container['last_key'] = $last_key;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount
+     *
+     * @return Int
+     */
+    public function getAmount()
+    {
+        return $this->container['amount'];
+    }
+
+    /**
+     * Sets amount
+     *
+     * @param Int $amount amount
+     *
+     * @return $this
+     */
+    public function setAmount($amount)
+    {
+        $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency
+     *
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return $this->container['currency'];
+    }
+
+    /**
+     * Sets currency
+     *
+     * @param string $currency currency
+     *
+     * @return $this
+     */
+    public function setCurrency($currency)
+    {
+        $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets usage
+     *
+     * @return float
+     */
+    public function getUsage()
+    {
+        return $this->container['usage'];
+    }
+
+    /**
+     * Sets usage
+     *
+     * @param float $usage usage
+     *
+     * @return $this
+     */
+    public function setUsage($usage)
+    {
+        $this->container['usage'] = $usage;
 
         return $this;
     }

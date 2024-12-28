@@ -63,7 +63,8 @@ class Price implements ModelInterface, ArrayAccess
         'recurring' => 'bool',
         'schedule' => 'string',
         'including_tax' => 'bool',
-        'public' => 'bool'
+        'public' => 'bool',
+        'metric' => 'Metric'
     ];
 
     /**
@@ -79,7 +80,8 @@ class Price implements ModelInterface, ArrayAccess
         'recurring' => null,
         'schedule' => null,
         'including_tax' => null,
-        'public' => null
+        'public' => null,
+        'metric' => null
     ];
 
     /**
@@ -116,7 +118,8 @@ class Price implements ModelInterface, ArrayAccess
         'recurring' => 'recurring',
         'schedule' => 'schedule',
         'including_tax' => 'including_tax',
-        'public' => 'public'
+        'public' => 'public',
+        'metric' => 'metric'
     ];
 
     /**
@@ -132,7 +135,8 @@ class Price implements ModelInterface, ArrayAccess
         'recurring' => 'setRecurring',
         'schedule' => 'setSchedule',
         'including_tax' => 'setIncludingTax',
-        'public' => 'setPublic'
+        'public' => 'setPublic',
+        'metric' => 'setMetric'
     ];
 
     /**
@@ -148,7 +152,8 @@ class Price implements ModelInterface, ArrayAccess
         'recurring' => 'getRecurring',
         'schedule' => 'getSchedule',
         'including_tax' => 'getIncludingTax',
-        'public' => 'getPublic'
+        'public' => 'getPublic',
+        'metric' => 'getMetric'
     ];
 
     /**
@@ -235,6 +240,7 @@ class Price implements ModelInterface, ArrayAccess
         $this->container['schedule'] = isset($data['schedule']) ? $data['schedule'] : null;
         $this->container['including_tax'] = isset($data['including_tax']) ? $data['including_tax'] : null;
         $this->container['public'] = isset($data['public']) ? $data['public'] : null;
+        $this->container['metric'] = isset($data['metric']) ? $data['metric'] : null;
     }
 
     /**
@@ -475,6 +481,30 @@ class Price implements ModelInterface, ArrayAccess
     public function setPublic($public)
     {
         $this->container['public'] = $public;
+
+        return $this;
+    }
+
+    /**
+     * Gets metric
+     *
+     * @return Metric
+     */
+    public function getMetric()
+    {
+        return $this->container['metric'];
+    }
+
+    /**
+     * Sets metric
+     *
+     * @param Metric $metric metric
+     *
+     * @return $this
+     */
+    public function setMetric($metric)
+    {
+        $this->container['metric'] = $metric;
 
         return $this;
     }

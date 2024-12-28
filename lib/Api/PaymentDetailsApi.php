@@ -175,14 +175,6 @@ class PaymentDetailsApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -392,12 +384,11 @@ class PaymentDetailsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string
+     * @return void
      */
     public function deletePaymentDetails($payment_details_id)
     {
-        list($response) = $this->deletePaymentDetailsWithHttpInfo($payment_details_id);
-        return $response;
+        $this->deletePaymentDetailsWithHttpInfo($payment_details_id);
     }
 
     /**
@@ -409,11 +400,11 @@ class PaymentDetailsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function deletePaymentDetailsWithHttpInfo($payment_details_id)
     {
-        $returnType = 'string';
+        $returnType = '';
         $request = $this->deletePaymentDetailsRequest($payment_details_id);
 
         try {
@@ -444,40 +435,10 @@ class PaymentDetailsApi
                 );
             }
 
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return [null, $statusCode, $response->getHeaders()];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 202:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -523,28 +484,14 @@ class PaymentDetailsApi
      */
     public function deletePaymentDetailsAsyncWithHttpInfo($payment_details_id)
     {
-        $returnType = 'string';
+        $returnType = '';
         $request = $this->deletePaymentDetailsRequest($payment_details_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -676,12 +623,11 @@ class PaymentDetailsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string
+     * @return void
      */
     public function deletePaymentDetailsCustomer($customer_id, $payment_details_id)
     {
-        list($response) = $this->deletePaymentDetailsCustomerWithHttpInfo($customer_id, $payment_details_id);
-        return $response;
+        $this->deletePaymentDetailsCustomerWithHttpInfo($customer_id, $payment_details_id);
     }
 
     /**
@@ -694,11 +640,11 @@ class PaymentDetailsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function deletePaymentDetailsCustomerWithHttpInfo($customer_id, $payment_details_id)
     {
-        $returnType = 'string';
+        $returnType = '';
         $request = $this->deletePaymentDetailsCustomerRequest($customer_id, $payment_details_id);
 
         try {
@@ -729,40 +675,10 @@ class PaymentDetailsApi
                 );
             }
 
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return [null, $statusCode, $response->getHeaders()];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 202:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -810,28 +726,14 @@ class PaymentDetailsApi
      */
     public function deletePaymentDetailsCustomerAsyncWithHttpInfo($customer_id, $payment_details_id)
     {
-        $returnType = 'string';
+        $returnType = '';
         $request = $this->deletePaymentDetailsCustomerRequest($customer_id, $payment_details_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1055,14 +957,6 @@ class PaymentDetailsApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1260,7 +1154,7 @@ class PaymentDetailsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \BillaBear\Model\InlineResponse2005
+     * @return \BillaBear\Model\InlineResponse2007
      */
     public function listPaymentDetails($customer_id)
     {
@@ -1277,11 +1171,11 @@ class PaymentDetailsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \BillaBear\Model\InlineResponse2005, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BillaBear\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
      */
     public function listPaymentDetailsWithHttpInfo($customer_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse2005';
+        $returnType = '\BillaBear\Model\InlineResponse2007';
         $request = $this->listPaymentDetailsRequest($customer_id);
 
         try {
@@ -1333,15 +1227,7 @@ class PaymentDetailsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\BillaBear\Model\InlineResponse2005',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
+                        '\BillaBear\Model\InlineResponse2007',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1391,7 +1277,7 @@ class PaymentDetailsApi
      */
     public function listPaymentDetailsAsyncWithHttpInfo($customer_id)
     {
-        $returnType = '\BillaBear\Model\InlineResponse2005';
+        $returnType = '\BillaBear\Model\InlineResponse2007';
         $request = $this->listPaymentDetailsRequest($customer_id);
 
         return $this->client
@@ -1544,12 +1430,11 @@ class PaymentDetailsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string
+     * @return void
      */
     public function makeDefaultPaymentDetails($customer_id, $payment_details_id)
     {
-        list($response) = $this->makeDefaultPaymentDetailsWithHttpInfo($customer_id, $payment_details_id);
-        return $response;
+        $this->makeDefaultPaymentDetailsWithHttpInfo($customer_id, $payment_details_id);
     }
 
     /**
@@ -1562,11 +1447,11 @@ class PaymentDetailsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function makeDefaultPaymentDetailsWithHttpInfo($customer_id, $payment_details_id)
     {
-        $returnType = 'string';
+        $returnType = '';
         $request = $this->makeDefaultPaymentDetailsRequest($customer_id, $payment_details_id);
 
         try {
@@ -1597,40 +1482,10 @@ class PaymentDetailsApi
                 );
             }
 
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return [null, $statusCode, $response->getHeaders()];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 202:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1678,28 +1533,14 @@ class PaymentDetailsApi
      */
     public function makeDefaultPaymentDetailsAsyncWithHttpInfo($customer_id, $payment_details_id)
     {
-        $returnType = 'string';
+        $returnType = '';
         $request = $this->makeDefaultPaymentDetailsRequest($customer_id, $payment_details_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1846,12 +1687,11 @@ class PaymentDetailsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string
+     * @return void
      */
     public function makeDefaultPaymentDetailsCustomer($customer_id, $payment_details_id)
     {
-        list($response) = $this->makeDefaultPaymentDetailsCustomerWithHttpInfo($customer_id, $payment_details_id);
-        return $response;
+        $this->makeDefaultPaymentDetailsCustomerWithHttpInfo($customer_id, $payment_details_id);
     }
 
     /**
@@ -1864,11 +1704,11 @@ class PaymentDetailsApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function makeDefaultPaymentDetailsCustomerWithHttpInfo($customer_id, $payment_details_id)
     {
-        $returnType = 'string';
+        $returnType = '';
         $request = $this->makeDefaultPaymentDetailsCustomerRequest($customer_id, $payment_details_id);
 
         try {
@@ -1899,40 +1739,10 @@ class PaymentDetailsApi
                 );
             }
 
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return [null, $statusCode, $response->getHeaders()];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 202:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1980,28 +1790,14 @@ class PaymentDetailsApi
      */
     public function makeDefaultPaymentDetailsCustomerAsyncWithHttpInfo($customer_id, $payment_details_id)
     {
-        $returnType = 'string';
+        $returnType = '';
         $request = $this->makeDefaultPaymentDetailsCustomerRequest($customer_id, $payment_details_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2221,14 +2017,6 @@ class PaymentDetailsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\BillaBear\Model\FrontendToken',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

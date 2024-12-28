@@ -96,12 +96,11 @@ class PricesApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string
+     * @return void
      */
     public function createPrice($body, $product_id)
     {
-        list($response) = $this->createPriceWithHttpInfo($body, $product_id);
-        return $response;
+        $this->createPriceWithHttpInfo($body, $product_id);
     }
 
     /**
@@ -114,11 +113,11 @@ class PricesApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function createPriceWithHttpInfo($body, $product_id)
     {
-        $returnType = 'string';
+        $returnType = '';
         $request = $this->createPriceRequest($body, $product_id);
 
         try {
@@ -149,32 +148,10 @@ class PricesApi
                 );
             }
 
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return [null, $statusCode, $response->getHeaders()];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -222,28 +199,14 @@ class PricesApi
      */
     public function createPriceAsyncWithHttpInfo($body, $product_id)
     {
-        $returnType = 'string';
+        $returnType = '';
         $request = $this->createPriceRequest($body, $product_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -386,7 +349,7 @@ class PricesApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \BillaBear\Model\InlineResponse2009
+     * @return \BillaBear\Model\InlineResponse20011
      */
     public function listPrice($product_id, $limit = null, $last_key = null)
     {
@@ -405,11 +368,11 @@ class PricesApi
      *
      * @throws \BillaBear\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \BillaBear\Model\InlineResponse2009, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BillaBear\Model\InlineResponse20011, HTTP status code, HTTP response headers (array of strings)
      */
     public function listPriceWithHttpInfo($product_id, $limit = null, $last_key = null)
     {
-        $returnType = '\BillaBear\Model\InlineResponse2009';
+        $returnType = '\BillaBear\Model\InlineResponse20011';
         $request = $this->listPriceRequest($product_id, $limit, $last_key);
 
         try {
@@ -461,7 +424,7 @@ class PricesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\BillaBear\Model\InlineResponse2009',
+                        '\BillaBear\Model\InlineResponse20011',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -515,7 +478,7 @@ class PricesApi
      */
     public function listPriceAsyncWithHttpInfo($product_id, $limit = null, $last_key = null)
     {
-        $returnType = '\BillaBear\Model\InlineResponse2009';
+        $returnType = '\BillaBear\Model\InlineResponse20011';
         $request = $this->listPriceRequest($product_id, $limit, $last_key);
 
         return $this->client

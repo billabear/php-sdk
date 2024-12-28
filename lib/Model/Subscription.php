@@ -66,6 +66,7 @@ class Subscription implements ModelInterface, ArrayAccess
         'valid_until' => 'string',
         'main_external_reference' => 'string',
         'child_external_reference' => 'string',
+        'metadata' => 'OneOfSubscriptionMetadata',
         'price' => '\BillaBear\Model\Price',
         'plan' => '\BillaBear\Model\SubscriptionPlan'
     ];
@@ -86,6 +87,7 @@ class Subscription implements ModelInterface, ArrayAccess
         'valid_until' => null,
         'main_external_reference' => null,
         'child_external_reference' => null,
+        'metadata' => null,
         'price' => null,
         'plan' => null
     ];
@@ -127,6 +129,7 @@ class Subscription implements ModelInterface, ArrayAccess
         'valid_until' => 'valid_until',
         'main_external_reference' => 'main_external_reference',
         'child_external_reference' => 'child_external_reference',
+        'metadata' => 'metadata',
         'price' => 'price',
         'plan' => 'plan'
     ];
@@ -147,6 +150,7 @@ class Subscription implements ModelInterface, ArrayAccess
         'valid_until' => 'setValidUntil',
         'main_external_reference' => 'setMainExternalReference',
         'child_external_reference' => 'setChildExternalReference',
+        'metadata' => 'setMetadata',
         'price' => 'setPrice',
         'plan' => 'setPlan'
     ];
@@ -167,6 +171,7 @@ class Subscription implements ModelInterface, ArrayAccess
         'valid_until' => 'getValidUntil',
         'main_external_reference' => 'getMainExternalReference',
         'child_external_reference' => 'getChildExternalReference',
+        'metadata' => 'getMetadata',
         'price' => 'getPrice',
         'plan' => 'getPlan'
     ];
@@ -239,6 +244,7 @@ class Subscription implements ModelInterface, ArrayAccess
         $this->container['valid_until'] = isset($data['valid_until']) ? $data['valid_until'] : null;
         $this->container['main_external_reference'] = isset($data['main_external_reference']) ? $data['main_external_reference'] : null;
         $this->container['child_external_reference'] = isset($data['child_external_reference']) ? $data['child_external_reference'] : null;
+        $this->container['metadata'] = isset($data['metadata']) ? $data['metadata'] : null;
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
         $this->container['plan'] = isset($data['plan']) ? $data['plan'] : null;
     }
@@ -503,6 +509,30 @@ class Subscription implements ModelInterface, ArrayAccess
     public function setChildExternalReference($child_external_reference)
     {
         $this->container['child_external_reference'] = $child_external_reference;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return OneOfSubscriptionMetadata
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param OneOfSubscriptionMetadata $metadata metadata
+     *
+     * @return $this
+     */
+    public function setMetadata($metadata)
+    {
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }
