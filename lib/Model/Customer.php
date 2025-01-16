@@ -68,7 +68,8 @@ class Customer implements ModelInterface, ArrayAccess
         'address' => '\BillaBear\Model\Address',
         'locale' => 'string',
         'brand' => 'string',
-        'invoice_format' => 'string'
+        'invoice_format' => 'string',
+        'marketing_opt_in' => 'bool'
     ];
 
     /**
@@ -89,7 +90,8 @@ class Customer implements ModelInterface, ArrayAccess
         'address' => null,
         'locale' => null,
         'brand' => null,
-        'invoice_format' => null
+        'invoice_format' => null,
+        'marketing_opt_in' => null
     ];
 
     /**
@@ -131,7 +133,8 @@ class Customer implements ModelInterface, ArrayAccess
         'address' => 'address',
         'locale' => 'locale',
         'brand' => 'brand',
-        'invoice_format' => 'invoice_format'
+        'invoice_format' => 'invoice_format',
+        'marketing_opt_in' => 'marketing_opt_in'
     ];
 
     /**
@@ -152,7 +155,8 @@ class Customer implements ModelInterface, ArrayAccess
         'address' => 'setAddress',
         'locale' => 'setLocale',
         'brand' => 'setBrand',
-        'invoice_format' => 'setInvoiceFormat'
+        'invoice_format' => 'setInvoiceFormat',
+        'marketing_opt_in' => 'setMarketingOptIn'
     ];
 
     /**
@@ -173,7 +177,8 @@ class Customer implements ModelInterface, ArrayAccess
         'address' => 'getAddress',
         'locale' => 'getLocale',
         'brand' => 'getBrand',
-        'invoice_format' => 'getInvoiceFormat'
+        'invoice_format' => 'getInvoiceFormat',
+        'marketing_opt_in' => 'getMarketingOptIn'
     ];
 
     /**
@@ -257,7 +262,7 @@ class Customer implements ModelInterface, ArrayAccess
     {
         return [
             self::INVOICE_FORMAT_PDF,
-            self::INVOICE_FORMAT_XRECHNUNG
+            self::INVOICE_FORMAT_XRECHNUNG,
         ];
     }
 
@@ -289,6 +294,7 @@ class Customer implements ModelInterface, ArrayAccess
         $this->container['locale'] = isset($data['locale']) ? $data['locale'] : null;
         $this->container['brand'] = isset($data['brand']) ? $data['brand'] : null;
         $this->container['invoice_format'] = isset($data['invoice_format']) ? $data['invoice_format'] : null;
+        $this->container['marketing_opt_in'] = isset($data['marketing_opt_in']) ? $data['marketing_opt_in'] : null;
     }
 
     /**
@@ -677,6 +683,30 @@ class Customer implements ModelInterface, ArrayAccess
             );
         }
         $this->container['invoice_format'] = $invoice_format;
+
+        return $this;
+    }
+
+    /**
+     * Gets marketing_opt_in
+     *
+     * @return bool
+     */
+    public function getMarketingOptIn()
+    {
+        return $this->container['marketing_opt_in'];
+    }
+
+    /**
+     * Sets marketing_opt_in
+     *
+     * @param bool $marketing_opt_in If the customer has opted in for marketing
+     *
+     * @return $this
+     */
+    public function setMarketingOptIn($marketing_opt_in)
+    {
+        $this->container['marketing_opt_in'] = $marketing_opt_in;
 
         return $this;
     }

@@ -66,7 +66,7 @@ class Subscription implements ModelInterface, ArrayAccess
         'valid_until' => 'string',
         'main_external_reference' => 'string',
         'child_external_reference' => 'string',
-        'metadata' => 'OneOfSubscriptionMetadata',
+        'metadata' => 'object',
         'price' => '\BillaBear\Model\Price',
         'plan' => '\BillaBear\Model\SubscriptionPlan'
     ];
@@ -516,7 +516,7 @@ class Subscription implements ModelInterface, ArrayAccess
     /**
      * Gets metadata
      *
-     * @return OneOfSubscriptionMetadata
+     * @return object
      */
     public function getMetadata()
     {
@@ -526,7 +526,7 @@ class Subscription implements ModelInterface, ArrayAccess
     /**
      * Sets metadata
      *
-     * @param OneOfSubscriptionMetadata $metadata metadata
+     * @param object $metadata metadata
      *
      * @return $this
      */
