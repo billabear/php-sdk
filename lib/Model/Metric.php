@@ -61,7 +61,7 @@ class Metric implements ModelInterface, ArrayAccess
         'code' => 'string',
         'aggregation_method' => 'string',
         'aggregation_property' => 'string',
-        'filters' => 'MetricFilter[]'
+        'filters' => '\BillaBear\Model\MetricFilter[]'
     ];
 
     /**
@@ -391,7 +391,7 @@ class Metric implements ModelInterface, ArrayAccess
     /**
      * Gets filters
      *
-     * @return MetricFilter[]
+     * @return \BillaBear\Model\MetricFilter[]
      */
     public function getFilters()
     {
@@ -401,7 +401,7 @@ class Metric implements ModelInterface, ArrayAccess
     /**
      * Sets filters
      *
-     * @param MetricFilter[] $filters filters
+     * @param \BillaBear\Model\MetricFilter[] $filters filters
      *
      * @return $this
      */

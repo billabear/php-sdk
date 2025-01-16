@@ -64,7 +64,7 @@ class Price implements ModelInterface, ArrayAccess
         'schedule' => 'string',
         'including_tax' => 'bool',
         'public' => 'bool',
-        'metric' => 'Metric'
+        'metric' => '\BillaBear\Model\Metric'
     ];
 
     /**
@@ -488,7 +488,7 @@ class Price implements ModelInterface, ArrayAccess
     /**
      * Gets metric
      *
-     * @return Metric
+     * @return \BillaBear\Model\Metric
      */
     public function getMetric()
     {
@@ -498,7 +498,7 @@ class Price implements ModelInterface, ArrayAccess
     /**
      * Sets metric
      *
-     * @param Metric $metric metric
+     * @param \BillaBear\Model\Metric $metric metric
      *
      * @return $this
      */

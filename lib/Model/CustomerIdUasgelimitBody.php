@@ -174,7 +174,7 @@ class CustomerIdUasgelimitBody implements ModelInterface, ArrayAccess
     {
         return [
             self::ACTION_WARNING,
-            self::ACTION_DISABLE,
+            self::ACTION_DISABLE
         ];
     }
 
