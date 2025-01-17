@@ -19,21 +19,9 @@ PHP 5.5 and later
 
 To install the bindings via [Composer](http://getcomposer.org/), add the following to `composer.json`:
 
+```sh
+composer require billabear/php-sdk
 ```
-{
-  "repositories": [
-    {
-      "type": "git",
-      "url": "https://github.com/billabear/php-sdk.git"
-    }
-  ],
-  "require": {
-    "billabear/php-sdk": "*@dev"
-  }
-}
-```
-
-Then run `composer install`
 
 ### Manual Installation
 
@@ -61,10 +49,10 @@ Please follow the [installation procedure](#installation--usage) and then run th
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: ApiKeyAuth
-$config = BillaBear\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = BillaBear\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
-
+$config = BillaBear\Configuration::getDefaultConfiguration()
+        ->setHost('YOUR_API_URL')
+        ->setApiKey('X-API-Key', 'YOUR_API_KEY');
+        
 $apiInstance = new BillaBear\Api\CheckoutApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
