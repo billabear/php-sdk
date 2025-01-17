@@ -19,7 +19,7 @@ Method | HTTP request | Description
 [**startTrial**](SubscriptionsApi.md#starttrial) | **POST** /customer/{customerId}/subscription/trial | Start Trial Subscription For Customer
 
 # **addSeatsSubscriptions**
-> \BillaBear\Model\InlineResponse20011 addSeatsSubscriptions($body, $subscription_id)
+> \BillaBear\Model\InlineResponse20013 addSeatsSubscriptions($body, $subscription_id)
 
 Add Seats
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
+[**\BillaBear\Model\InlineResponse20013**](../Model/InlineResponse20013.md)
 
 ### Authorization
 
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **cancelSubscription**
-> string cancelSubscription($body, $subscription_id)
+> cancelSubscription($body, $subscription_id)
 
 Cancel Subscription
 
@@ -100,8 +100,7 @@ $body = new \BillaBear\Model\SubscriptionIdCancelBody(); // \BillaBear\Model\Sub
 $subscription_id = "subscription_id_example"; // string | The id of the subscription to retrieve
 
 try {
-    $result = $apiInstance->cancelSubscription($body, $subscription_id);
-    print_r($result);
+    $apiInstance->cancelSubscription($body, $subscription_id);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionsApi->cancelSubscription: ', $e->getMessage(), PHP_EOL;
 }
@@ -117,7 +116,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+void (empty response body)
 
 ### Authorization
 
@@ -131,7 +130,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **changeSubscriptionPrice**
-> \BillaBear\Model\InlineResponse20011 changeSubscriptionPrice($body, $subscription_id)
+> \BillaBear\Model\InlineResponse20013 changeSubscriptionPrice($body, $subscription_id)
 
 Change Price
 
@@ -173,7 +172,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
+[**\BillaBear\Model\InlineResponse20013**](../Model/InlineResponse20013.md)
 
 ### Authorization
 
@@ -355,7 +354,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getActiveForCustomer**
-> \BillaBear\Model\InlineResponse2006 getActiveForCustomer($customer_id)
+> \BillaBear\Model\InlineResponse2008 getActiveForCustomer($customer_id)
 
 List Customer Active Subscriptions
 
@@ -395,7 +394,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
+[**\BillaBear\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
 
 ### Authorization
 
@@ -409,7 +408,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getForCustomer**
-> \BillaBear\Model\InlineResponse2006 getForCustomer($customer_id)
+> \BillaBear\Model\InlineResponse2008 getForCustomer($customer_id)
 
 List Customer Subscriptions
 
@@ -449,7 +448,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
+[**\BillaBear\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
 
 ### Authorization
 
@@ -463,7 +462,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listSubscriptionPlans**
-> \BillaBear\Model\InlineResponse20010 listSubscriptionPlans($limit, $last_key)
+> \BillaBear\Model\InlineResponse20012 listSubscriptionPlans($limit, $last_key)
 
 List Subscription Plans
 
@@ -505,7 +504,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse20010**](../Model/InlineResponse20010.md)
+[**\BillaBear\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
 
 ### Authorization
 
@@ -519,7 +518,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listSubscriptions**
-> \BillaBear\Model\InlineResponse2006 listSubscriptions($limit, $last_key)
+> \BillaBear\Model\InlineResponse2008 listSubscriptions($limit, $last_key)
 
 List
 
@@ -561,7 +560,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
+[**\BillaBear\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
 
 ### Authorization
 
@@ -575,7 +574,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **removeSeatsSubscriptions**
-> \BillaBear\Model\InlineResponse20011 removeSeatsSubscriptions($body, $subscription_id)
+> \BillaBear\Model\InlineResponse20013 removeSeatsSubscriptions($body, $subscription_id)
 
 Remove Seats
 
@@ -617,7 +616,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
+[**\BillaBear\Model\InlineResponse20013**](../Model/InlineResponse20013.md)
 
 ### Authorization
 

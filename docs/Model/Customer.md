@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **address** | [**\BillaBear\Model\Address**](Address.md) |  | [optional] 
 **locale** | **string** | Defaults to &#x27;en&#x27; if not sent. | [optional] 
 **brand** | **string** | Defaults to &#x27;default&#x27; if not sent. | [optional] 
+**invoice_format** | **string** | Choice between &#x27;pdf&#x27; and &#x27;xrechnung&#x27;. &lt;strong&gt;Since 2024.02.01&lt;/strong&gt; | [optional] 
+**marketing_opt_in** | **bool** | If the customer has opted in for marketing | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

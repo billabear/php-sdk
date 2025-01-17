@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **valid_until** | **string** |  | [optional] 
 **main_external_reference** | **string** |  | [optional] 
 **child_external_reference** | **string** |  | [optional] 
+**metadata** | **object** |  | [optional] 
 **price** | [**\BillaBear\Model\Price**](Price.md) |  | [optional] 
 **plan** | [**\BillaBear\Model\SubscriptionPlan**](SubscriptionPlan.md) |  | [optional] 
 

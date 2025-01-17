@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**refundPayment**](PaymentsApi.md#refundpayment) | **POST** /payment/{paymentId}/refund | Refund Payment
 
 # **chargeInvoice**
-> \BillaBear\Model\InlineResponse20012 chargeInvoice($invoice_id)
+> \BillaBear\Model\InlineResponse20014 chargeInvoice($invoice_id)
 
 Charge Invoice
 
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
+[**\BillaBear\Model\InlineResponse20014**](../Model/InlineResponse20014.md)
 
 ### Authorization
 
@@ -175,7 +175,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getInvoicesForCustomer**
-> \BillaBear\Model\InlineResponse2004 getInvoicesForCustomer($customer_id)
+> \BillaBear\Model\InlineResponse2006 getInvoicesForCustomer($customer_id)
 
 List Customer Invoices
 
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
+[**\BillaBear\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
 
 ### Authorization
 
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getPaymentsForCustomer**
-> \BillaBear\Model\InlineResponse2003 getPaymentsForCustomer($customer_id, $limit, $last_key, $name)
+> \BillaBear\Model\InlineResponse2004 getPaymentsForCustomer($customer_id, $limit, $last_key, $name)
 
 List Customer Payments
 
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
+[**\BillaBear\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
 
 ### Authorization
 
@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listPayment**
-> \BillaBear\Model\InlineResponse2007 listPayment($limit, $last_key, $name)
+> \BillaBear\Model\InlineResponse2009 listPayment($limit, $last_key, $name)
 
 List
 
@@ -333,7 +333,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
+[**\BillaBear\Model\InlineResponse2009**](../Model/InlineResponse2009.md)
 
 ### Authorization
 
@@ -347,7 +347,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **refundPayment**
-> string refundPayment($body, $payment_id)
+> refundPayment($body, $payment_id)
 
 Refund Payment
 
@@ -372,8 +372,7 @@ $body = new \BillaBear\Model\IssueRefundPayment(); // \BillaBear\Model\IssueRefu
 $payment_id = "payment_id_example"; // string | The id of the payment
 
 try {
-    $result = $apiInstance->refundPayment($body, $payment_id);
-    print_r($result);
+    $apiInstance->refundPayment($body, $payment_id);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentsApi->refundPayment: ', $e->getMessage(), PHP_EOL;
 }
@@ -389,7 +388,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+void (empty response body)
 
 ### Authorization
 

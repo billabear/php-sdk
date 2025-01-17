@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\BillaBear\Model\Price[]**](Price.md) |  | [optional] 
+**data** | [**\BillaBear\Model\InlineResponse2009Data[]**](InlineResponse2009Data.md) |  | [optional] 
 **has_more** | **bool** |  | [optional] 
 **last_key** | **string** |  | [optional] 
 

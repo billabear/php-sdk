@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\BillaBear\Model\SubscriptionPlan[]**](SubscriptionPlan.md) |  | [optional] 
+**data** | [**\BillaBear\Model\Product[]**](Product.md) |  | [optional] 
 **has_more** | **bool** |  | [optional] 
 **last_key** | **string** |  | [optional] 
 

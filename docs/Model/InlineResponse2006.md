@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\BillaBear\Model\Subscription[]**](Subscription.md) |  | [optional] 
+**data** | [**\BillaBear\Model\Invoice[]**](Invoice.md) |  | [optional] 
 **has_more** | **bool** |  | [optional] 
 **last_key** | **string** |  | [optional] 
 

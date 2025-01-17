@@ -7,12 +7,16 @@ Method | HTTP request | Description
 [**addSeatsSubscriptions**](CustomersApi.md#addseatssubscriptions) | **POST** /subscription/{subscriptionId}/seats/add | Add Seats
 [**applyVoucherToCustomer**](CustomersApi.md#applyvouchertocustomer) | **POST** /customer/{customerId}/voucher | Apply voucher
 [**createCustomer**](CustomersApi.md#createcustomer) | **POST** /customer | Create
+[**createCustomerUsageLimit**](CustomersApi.md#createcustomerusagelimit) | **POST** /customer/{customerId}/uasge-limit | Create Usage Limit
+[**customerCustomerIdUasgeLimitLimitIdDelete**](CustomersApi.md#customercustomeriduasgelimitlimitiddelete) | **DELETE** /customer/{customerId}/uasge-limit/{limitId} | Delete Usage Limit
 [**disableCustomer**](CustomersApi.md#disablecustomer) | **POST** /customer/{customerId}/disable | Disable Customer
 [**enableCustomer**](CustomersApi.md#enablecustomer) | **POST** /customer/{customerId}/enable | Enable Customer
 [**getActiveForCustomer**](CustomersApi.md#getactiveforcustomer) | **GET** /customer/{customerId}/subscription/active | List Customer Active Subscriptions
 [**getAllCustomers**](CustomersApi.md#getallcustomers) | **GET** /customer | List
 [**getCustomerById**](CustomersApi.md#getcustomerbyid) | **GET** /customer/{customerId} | Detail
+[**getCustomerCosts**](CustomersApi.md#getcustomercosts) | **GET** /customer/{customerId}/costs | Usage Cost Estimate
 [**getCustomerLimitsById**](CustomersApi.md#getcustomerlimitsbyid) | **GET** /customer/{customerId}/limits | Fetch Customer Limits
+[**getCustomerUsageLimitsById**](CustomersApi.md#getcustomerusagelimitsbyid) | **GET** /customer/{customerId}/uasge-limit | Fetch Customer Usage Limits
 [**getForCustomer**](CustomersApi.md#getforcustomer) | **GET** /customer/{customerId}/subscription | List Customer Subscriptions
 [**getInvoicesForCustomer**](CustomersApi.md#getinvoicesforcustomer) | **GET** /customer/{customerId}/invoices | List Customer Invoices
 [**getPaymentsForCustomer**](CustomersApi.md#getpaymentsforcustomer) | **GET** /customer/{customerId}/payment | List Customer Payments
@@ -22,7 +26,7 @@ Method | HTTP request | Description
 [**updateCustomer**](CustomersApi.md#updatecustomer) | **PUT** /customer/{customerId} | Update
 
 # **addSeatsSubscriptions**
-> \BillaBear\Model\InlineResponse20011 addSeatsSubscriptions($body, $subscription_id)
+> \BillaBear\Model\InlineResponse20013 addSeatsSubscriptions($body, $subscription_id)
 
 Add Seats
 
@@ -64,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
+[**\BillaBear\Model\InlineResponse20013**](../Model/InlineResponse20013.md)
 
 ### Authorization
 
@@ -78,7 +82,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **applyVoucherToCustomer**
-> string applyVoucherToCustomer($body, $customer_id)
+> applyVoucherToCustomer($body, $customer_id)
 
 Apply voucher
 
@@ -103,8 +107,7 @@ $body = new \BillaBear\Model\VoucherCode(); // \BillaBear\Model\VoucherCode |
 $customer_id = "customer_id_example"; // string | The id of the customer to retrieve
 
 try {
-    $result = $apiInstance->applyVoucherToCustomer($body, $customer_id);
-    print_r($result);
+    $apiInstance->applyVoucherToCustomer($body, $customer_id);
 } catch (Exception $e) {
     echo 'Exception when calling CustomersApi->applyVoucherToCustomer: ', $e->getMessage(), PHP_EOL;
 }
@@ -120,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+void (empty response body)
 
 ### Authorization
 
@@ -187,8 +190,119 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **createCustomerUsageLimit**
+> \BillaBear\Model\UsageLimit createCustomerUsageLimit($body, $customer_id)
+
+Create Usage Limit
+
+Create Usage Limit for the custoemr
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: ApiKeyAuth
+$config = BillaBear\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = BillaBear\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
+
+$apiInstance = new BillaBear\Api\CustomersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$body = new \BillaBear\Model\CustomerIdUasgelimitBody(); // \BillaBear\Model\CustomerIdUasgelimitBody | 
+$customer_id = "customer_id_example"; // string | The id of the customer to retrieve
+
+try {
+    $result = $apiInstance->createCustomerUsageLimit($body, $customer_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CustomersApi->createCustomerUsageLimit: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**\BillaBear\Model\CustomerIdUasgelimitBody**](../Model/CustomerIdUasgelimitBody.md)|  |
+ **customer_id** | **string**| The id of the customer to retrieve |
+
+### Return type
+
+[**\BillaBear\Model\UsageLimit**](../Model/UsageLimit.md)
+
+### Authorization
+
+[ApiKeyAuth](../../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **customerCustomerIdUasgeLimitLimitIdDelete**
+> customerCustomerIdUasgeLimitLimitIdDelete($customer_id, $usage_limit_id)
+
+Delete Usage Limit
+
+Delete Usage Limit for the custoemr
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: ApiKeyAuth
+$config = BillaBear\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = BillaBear\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
+
+$apiInstance = new BillaBear\Api\CustomersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$customer_id = "customer_id_example"; // string | The id of the customer to retrieve
+$usage_limit_id = "usage_limit_id_example"; // string | The id of the usage limit
+
+try {
+    $apiInstance->customerCustomerIdUasgeLimitLimitIdDelete($customer_id, $usage_limit_id);
+} catch (Exception $e) {
+    echo 'Exception when calling CustomersApi->customerCustomerIdUasgeLimitLimitIdDelete: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customer_id** | **string**| The id of the customer to retrieve |
+ **usage_limit_id** | **string**| The id of the usage limit |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **disableCustomer**
-> string disableCustomer($customer_id)
+> disableCustomer($customer_id)
 
 Disable Customer
 
@@ -212,8 +326,7 @@ $apiInstance = new BillaBear\Api\CustomersApi(
 $customer_id = "customer_id_example"; // string | The id of the customer to retrieve
 
 try {
-    $result = $apiInstance->disableCustomer($customer_id);
-    print_r($result);
+    $apiInstance->disableCustomer($customer_id);
 } catch (Exception $e) {
     echo 'Exception when calling CustomersApi->disableCustomer: ', $e->getMessage(), PHP_EOL;
 }
@@ -228,7 +341,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+void (empty response body)
 
 ### Authorization
 
@@ -242,7 +355,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **enableCustomer**
-> string enableCustomer($customer_id)
+> enableCustomer($customer_id)
 
 Enable Customer
 
@@ -266,8 +379,7 @@ $apiInstance = new BillaBear\Api\CustomersApi(
 $customer_id = "customer_id_example"; // string | The id of the customer to retrieve
 
 try {
-    $result = $apiInstance->enableCustomer($customer_id);
-    print_r($result);
+    $apiInstance->enableCustomer($customer_id);
 } catch (Exception $e) {
     echo 'Exception when calling CustomersApi->enableCustomer: ', $e->getMessage(), PHP_EOL;
 }
@@ -282,7 +394,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+void (empty response body)
 
 ### Authorization
 
@@ -296,7 +408,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getActiveForCustomer**
-> \BillaBear\Model\InlineResponse2006 getActiveForCustomer($customer_id)
+> \BillaBear\Model\InlineResponse2008 getActiveForCustomer($customer_id)
 
 List Customer Active Subscriptions
 
@@ -336,7 +448,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
+[**\BillaBear\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
 
 ### Authorization
 
@@ -350,7 +462,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getAllCustomers**
-> \BillaBear\Model\InlineResponse200 getAllCustomers($limit, $last_key, $email, $country, $reference, $external_reference)
+> \BillaBear\Model\InlineResponse200 getAllCustomers($limit, $last_key, $email, $country, $reference, $external_reference, $company_name)
 
 List
 
@@ -377,9 +489,10 @@ $email = "email_example"; // string | The email to search for
 $country = "country_example"; // string | The country code to search for
 $reference = "reference_example"; // string | The reference to search for
 $external_reference = "external_reference_example"; // string | The external reference to search for
+$company_name = "company_name_example"; // string | The company name to search for
 
 try {
-    $result = $apiInstance->getAllCustomers($limit, $last_key, $email, $country, $reference, $external_reference);
+    $result = $apiInstance->getAllCustomers($limit, $last_key, $email, $country, $reference, $external_reference, $company_name);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomersApi->getAllCustomers: ', $e->getMessage(), PHP_EOL;
@@ -397,6 +510,7 @@ Name | Type | Description  | Notes
  **country** | **string**| The country code to search for | [optional]
  **reference** | **string**| The reference to search for | [optional]
  **external_reference** | **string**| The external reference to search for | [optional]
+ **company_name** | **string**| The company name to search for | [optional]
 
 ### Return type
 
@@ -467,8 +581,62 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **getCustomerCosts**
+> \BillaBear\Model\InlineResponse2001 getCustomerCosts($customer_id)
+
+Usage Cost Estimate
+
+The estimated costs from usage based billing for a customer
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: ApiKeyAuth
+$config = BillaBear\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = BillaBear\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
+
+$apiInstance = new BillaBear\Api\CustomersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$customer_id = "customer_id_example"; // string | The id of the customer to retrieve
+
+try {
+    $result = $apiInstance->getCustomerCosts($customer_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CustomersApi->getCustomerCosts: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customer_id** | **string**| The id of the customer to retrieve |
+
+### Return type
+
+[**\BillaBear\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+
+### Authorization
+
+[ApiKeyAuth](../../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **getCustomerLimitsById**
-> \BillaBear\Model\InlineResponse2001 getCustomerLimitsById($customer_id)
+> \BillaBear\Model\InlineResponse2002 getCustomerLimitsById($customer_id)
 
 Fetch Customer Limits
 
@@ -508,7 +676,61 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\BillaBear\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
+
+### Authorization
+
+[ApiKeyAuth](../../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getCustomerUsageLimitsById**
+> \BillaBear\Model\InlineResponse2005 getCustomerUsageLimitsById($customer_id)
+
+Fetch Customer Usage Limits
+
+Usage Limits for a specific customer
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: ApiKeyAuth
+$config = BillaBear\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = BillaBear\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
+
+$apiInstance = new BillaBear\Api\CustomersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$customer_id = "customer_id_example"; // string | The id of the customer to retrieve
+
+try {
+    $result = $apiInstance->getCustomerUsageLimitsById($customer_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CustomersApi->getCustomerUsageLimitsById: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customer_id** | **string**| The id of the customer to retrieve |
+
+### Return type
+
+[**\BillaBear\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
 
 ### Authorization
 
@@ -522,7 +744,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getForCustomer**
-> \BillaBear\Model\InlineResponse2006 getForCustomer($customer_id)
+> \BillaBear\Model\InlineResponse2008 getForCustomer($customer_id)
 
 List Customer Subscriptions
 
@@ -562,7 +784,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
+[**\BillaBear\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
 
 ### Authorization
 
@@ -576,7 +798,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getInvoicesForCustomer**
-> \BillaBear\Model\InlineResponse2004 getInvoicesForCustomer($customer_id)
+> \BillaBear\Model\InlineResponse2006 getInvoicesForCustomer($customer_id)
 
 List Customer Invoices
 
@@ -616,7 +838,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
+[**\BillaBear\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
 
 ### Authorization
 
@@ -630,7 +852,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getPaymentsForCustomer**
-> \BillaBear\Model\InlineResponse2003 getPaymentsForCustomer($customer_id, $limit, $last_key, $name)
+> \BillaBear\Model\InlineResponse2004 getPaymentsForCustomer($customer_id, $limit, $last_key, $name)
 
 List Customer Payments
 
@@ -676,7 +898,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
+[**\BillaBear\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
 
 ### Authorization
 
@@ -690,7 +912,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRefundsForCustomer**
-> \BillaBear\Model\InlineResponse2002 getRefundsForCustomer($customer_id, $limit, $last_key, $name)
+> \BillaBear\Model\InlineResponse2003 getRefundsForCustomer($customer_id, $limit, $last_key, $name)
 
 List Customer Refunds
 
@@ -736,7 +958,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
+[**\BillaBear\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
 
 ### Authorization
 
@@ -750,7 +972,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listPaymentDetails**
-> \BillaBear\Model\InlineResponse2005 listPaymentDetails($customer_id)
+> \BillaBear\Model\InlineResponse2007 listPaymentDetails($customer_id)
 
 List Customer's Payment Details
 
@@ -790,7 +1012,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
+[**\BillaBear\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
 
 ### Authorization
 
@@ -804,7 +1026,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **removeSeatsSubscriptions**
-> \BillaBear\Model\InlineResponse20011 removeSeatsSubscriptions($body, $subscription_id)
+> \BillaBear\Model\InlineResponse20013 removeSeatsSubscriptions($body, $subscription_id)
 
 Remove Seats
 
@@ -846,7 +1068,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
+[**\BillaBear\Model\InlineResponse20013**](../Model/InlineResponse20013.md)
 
 ### Authorization
 

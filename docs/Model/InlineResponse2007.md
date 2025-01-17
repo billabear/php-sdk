@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\BillaBear\Model\InlineResponse2007Data[]**](InlineResponse2007Data.md) |  | [optional] 
+**data** | [**\BillaBear\Model\PaymentDetails[]**](PaymentDetails.md) |  | [optional] 
 **has_more** | **bool** |  | [optional] 
 **last_key** | **string** |  | [optional] 
 

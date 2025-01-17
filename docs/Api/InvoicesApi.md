@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**getInvoicesForCustomer**](InvoicesApi.md#getinvoicesforcustomer) | **GET** /customer/{customerId}/invoices | List Customer Invoices
 
 # **chargeInvoice**
-> \BillaBear\Model\InlineResponse20012 chargeInvoice($invoice_id)
+> \BillaBear\Model\InlineResponse20014 chargeInvoice($invoice_id)
 
 Charge Invoice
 
@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
+[**\BillaBear\Model\InlineResponse20014**](../Model/InlineResponse20014.md)
 
 ### Authorization
 
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getInvoicesForCustomer**
-> \BillaBear\Model\InlineResponse2004 getInvoicesForCustomer($customer_id)
+> \BillaBear\Model\InlineResponse2006 getInvoicesForCustomer($customer_id)
 
 List Customer Invoices
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
+[**\BillaBear\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
 
 ### Authorization
 

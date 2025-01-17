@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**listPrice**](PricesApi.md#listprice) | **GET** /product/{productId}/price | List
 
 # **createPrice**
-> string createPrice($body, $product_id)
+> createPrice($body, $product_id)
 
 Create
 
@@ -33,8 +33,7 @@ $body = new \BillaBear\Model\Price(); // \BillaBear\Model\Price |
 $product_id = "product_id_example"; // string | The id of the product to retrieve
 
 try {
-    $result = $apiInstance->createPrice($body, $product_id);
-    print_r($result);
+    $apiInstance->createPrice($body, $product_id);
 } catch (Exception $e) {
     echo 'Exception when calling PricesApi->createPrice: ', $e->getMessage(), PHP_EOL;
 }
@@ -50,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+void (empty response body)
 
 ### Authorization
 
@@ -64,7 +63,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listPrice**
-> \BillaBear\Model\InlineResponse2009 listPrice($product_id, $limit, $last_key)
+> \BillaBear\Model\InlineResponse20011 listPrice($product_id, $limit, $last_key)
 
 List
 
@@ -108,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse2009**](../Model/InlineResponse2009.md)
+[**\BillaBear\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
 
 ### Authorization
 

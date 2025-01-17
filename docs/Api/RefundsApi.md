@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**showRefundById**](RefundsApi.md#showrefundbyid) | **GET** /refund/{refundId} | Detail
 
 # **getRefundsForCustomer**
-> \BillaBear\Model\InlineResponse2002 getRefundsForCustomer($customer_id, $limit, $last_key, $name)
+> \BillaBear\Model\InlineResponse2003 getRefundsForCustomer($customer_id, $limit, $last_key, $name)
 
 List Customer Refunds
 
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
+[**\BillaBear\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listRefund**
-> \BillaBear\Model\InlineResponse2002 listRefund($limit, $last_key, $name)
+> \BillaBear\Model\InlineResponse2003 listRefund($limit, $last_key, $name)
 
 List
 
@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
+[**\BillaBear\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
 
 ### Authorization
 

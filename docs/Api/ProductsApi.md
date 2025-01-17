@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**updateProduct**](ProductsApi.md#updateproduct) | **PUT** /product/{productId} | Update
 
 # **createProduct**
-> string createProduct($body)
+> createProduct($body)
 
 Create
 
@@ -34,8 +34,7 @@ $apiInstance = new BillaBear\Api\ProductsApi(
 $body = new \BillaBear\Model\Product(); // \BillaBear\Model\Product | 
 
 try {
-    $result = $apiInstance->createProduct($body);
-    print_r($result);
+    $apiInstance->createProduct($body);
 } catch (Exception $e) {
     echo 'Exception when calling ProductsApi->createProduct: ', $e->getMessage(), PHP_EOL;
 }
@@ -50,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+void (empty response body)
 
 ### Authorization
 
@@ -64,7 +63,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listProduct**
-> \BillaBear\Model\InlineResponse2008 listProduct($limit, $last_key, $name)
+> \BillaBear\Model\InlineResponse20010 listProduct($limit, $last_key, $name)
 
 List
 
@@ -108,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
+[**\BillaBear\Model\InlineResponse20010**](../Model/InlineResponse20010.md)
 
 ### Authorization
 

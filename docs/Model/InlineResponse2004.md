@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\BillaBear\Model\Invoice[]**](Invoice.md) |  | [optional] 
+**data** | [**\BillaBear\Model\Paths1paymentGetResponses200ContentApplication1jsonSchemaPropertiesDataItems[]**](Paths1paymentGetResponses200ContentApplication1jsonSchemaPropertiesDataItems.md) |  | [optional] 
 **has_more** | **bool** |  | [optional] 
 **last_key** | **string** |  | [optional] 
 

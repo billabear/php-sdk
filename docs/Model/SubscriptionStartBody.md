@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **currency** | **string** | The currency of the plan that is to be started. Only used if price isn&#x27;t given. Requires schedule as well. | [optional] 
 **seat_numbrers** | **int** |  | [optional] 
 **deny_trial** | [**Bool**](Bool.md) |  | [optional] 
+**metadata** | **object** | Any metadata you want to add to a subscription | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

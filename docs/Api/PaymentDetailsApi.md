@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deletePaymentDetails**
-> string deletePaymentDetails($payment_details_id)
+> deletePaymentDetails($payment_details_id)
 
 Delete
 
@@ -94,8 +94,7 @@ $apiInstance = new BillaBear\Api\PaymentDetailsApi(
 $payment_details_id = "payment_details_id_example"; // string | The id of the payment details
 
 try {
-    $result = $apiInstance->deletePaymentDetails($payment_details_id);
-    print_r($result);
+    $apiInstance->deletePaymentDetails($payment_details_id);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentDetailsApi->deletePaymentDetails: ', $e->getMessage(), PHP_EOL;
 }
@@ -110,7 +109,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+void (empty response body)
 
 ### Authorization
 
@@ -124,7 +123,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deletePaymentDetailsCustomer**
-> string deletePaymentDetailsCustomer($customer_id, $payment_details_id)
+> deletePaymentDetailsCustomer($customer_id, $payment_details_id)
 
 Delete With Customer
 
@@ -149,8 +148,7 @@ $customer_id = "customer_id_example"; // string | The id of the customer to retr
 $payment_details_id = "payment_details_id_example"; // string | The id of the payment details
 
 try {
-    $result = $apiInstance->deletePaymentDetailsCustomer($customer_id, $payment_details_id);
-    print_r($result);
+    $apiInstance->deletePaymentDetailsCustomer($customer_id, $payment_details_id);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentDetailsApi->deletePaymentDetailsCustomer: ', $e->getMessage(), PHP_EOL;
 }
@@ -166,7 +164,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+void (empty response body)
 
 ### Authorization
 
@@ -234,7 +232,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listPaymentDetails**
-> \BillaBear\Model\InlineResponse2005 listPaymentDetails($customer_id)
+> \BillaBear\Model\InlineResponse2007 listPaymentDetails($customer_id)
 
 List Customer's Payment Details
 
@@ -274,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\BillaBear\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
+[**\BillaBear\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
 
 ### Authorization
 
@@ -288,7 +286,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **makeDefaultPaymentDetails**
-> string makeDefaultPaymentDetails($customer_id, $payment_details_id)
+> makeDefaultPaymentDetails($customer_id, $payment_details_id)
 
 Make Default
 
@@ -313,8 +311,7 @@ $customer_id = "customer_id_example"; // string | The id of the customer to retr
 $payment_details_id = "payment_details_id_example"; // string | The id of the payment details
 
 try {
-    $result = $apiInstance->makeDefaultPaymentDetails($customer_id, $payment_details_id);
-    print_r($result);
+    $apiInstance->makeDefaultPaymentDetails($customer_id, $payment_details_id);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentDetailsApi->makeDefaultPaymentDetails: ', $e->getMessage(), PHP_EOL;
 }
@@ -330,7 +327,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+void (empty response body)
 
 ### Authorization
 
@@ -344,7 +341,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **makeDefaultPaymentDetailsCustomer**
-> string makeDefaultPaymentDetailsCustomer($customer_id, $payment_details_id)
+> makeDefaultPaymentDetailsCustomer($customer_id, $payment_details_id)
 
 Make Default With Customer
 
@@ -369,8 +366,7 @@ $customer_id = "customer_id_example"; // string | The id of the customer to retr
 $payment_details_id = "payment_details_id_example"; // string | The id of the payment details
 
 try {
-    $result = $apiInstance->makeDefaultPaymentDetailsCustomer($customer_id, $payment_details_id);
-    print_r($result);
+    $apiInstance->makeDefaultPaymentDetailsCustomer($customer_id, $payment_details_id);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentDetailsApi->makeDefaultPaymentDetailsCustomer: ', $e->getMessage(), PHP_EOL;
 }
@@ -386,7 +382,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+void (empty response body)
 
 ### Authorization
 

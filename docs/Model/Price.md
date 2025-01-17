@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **schedule** | **string** | Required if recurring is true | [optional] 
 **including_tax** | **bool** | If the price is including tax. If false tax will be added on top of the price. | [optional] 
 **public** | **bool** |  | [optional] 
+**metric** | [**\BillaBear\Model\Metric**](Metric.md) |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
