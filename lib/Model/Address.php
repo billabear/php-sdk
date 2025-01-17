@@ -202,7 +202,7 @@ class Address implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['company_name'] = isset($data['company_name']) ? $data['company_name'] : null;
         $this->container['street_line_one'] = isset($data['street_line_one']) ? $data['street_line_one'] : null;

@@ -207,7 +207,7 @@ class InlineResponse201Lines implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['subscription_plan'] = isset($data['subscription_plan']) ? $data['subscription_plan'] : null;
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
