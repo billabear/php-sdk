@@ -57,7 +57,7 @@ class MetricCost implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'name' => 'string',
-        'amount' => 'Int',
+        'amount' => 'int',
         'currency' => 'string',
         'usage' => 'float'
     ];
@@ -187,7 +187,7 @@ class MetricCost implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(?array $data = null)
+    public function __construct(array $data = null)
     {
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
@@ -246,7 +246,7 @@ class MetricCost implements ModelInterface, ArrayAccess
     /**
      * Gets amount
      *
-     * @return Int
+     * @return int
      */
     public function getAmount()
     {
@@ -256,7 +256,7 @@ class MetricCost implements ModelInterface, ArrayAccess
     /**
      * Sets amount
      *
-     * @param Int $amount amount
+     * @param int $amount amount
      *
      * @return $this
      */
